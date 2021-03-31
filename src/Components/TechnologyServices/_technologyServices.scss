@@ -1,0 +1,124 @@
+.technology{
+    .bx--row{
+        margin:0;
+    }
+
+    &__banner{
+        background-image:linear-gradient(180deg, #01010100 0%, #010101BA 65%, #000000 100%), url("./../../img/technologyservices/bg1.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        .technology__banner__content{
+            padding-top:201px;
+            padding-bottom:218px;
+
+           .section-heading {
+               p{
+                text-align: center;
+                font: normal normal normal 18px/65px IBM Plex Sans;
+                letter-spacing: 1.64px;
+                color: #FFFFFF;
+                text-transform: uppercase;
+                opacity: 1;  
+               }            
+        }
+
+        .section-mainHead{
+            margin:0 auto;
+        }
+
+        .section-mainHeading{
+            h1 {
+            text-align: center;
+            font: normal normal normal 96px/100px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+            }
+        }
+       
+        // paraheading styles
+        .section-paraHeading{
+            p {
+                 text-align: center;
+                font: normal normal 300 22px/34px IBM Plex Sans;
+                letter-spacing: 0px;
+                color: #E0E0E0;
+                opacity: 1;
+                margin-top: 32px;
+            }
+        }
+
+        .section-button{
+            margin-top: 64px;
+            text-align:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            button{
+                     
+            }
+            .btn-secondary {
+                margin-left:16px;
+               
+            }
+        }
+
+    }
+    }
+     
+    .image_application{
+        margin:0;
+        padding:0;
+       img{
+           object-fit: fill;
+           height:100%;
+           width:100%;
+        //    background-position: center;
+           
+        //    height:auto;
+       }
+    }
+
+    .tech_application {
+        background-color: #010101;
+        padding:209px 0;
+
+    .technology_application {
+        // width: 578px; 
+        // height: 419px;
+        padding: 0 2rem;
+    .technology_application_content_icon{
+        padding-top: 1rem;
+        svg {
+          margin-left: -0.5rem;
+          width: 96px;
+          height: 96px;
+          stroke: #FFFFFF 
+        }
+      }
+
+    .technology_application_content_heading {
+        h1{
+            color:white;
+        }
+    }
+    .technology_application_content_para{
+        margin-top:24px;
+        p{
+        font: normal normal 300 16px/24px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #E0E0E0;
+        opacity: 1;
+        padding-right: 1rem;
+        }
+    }
+
+    .technology_application_content_button{
+        margin-top:48px;
+
+    }
+}
+    }
+}

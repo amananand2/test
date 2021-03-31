@@ -1,0 +1,501 @@
+.main-header {
+  .bx--header {
+    background-color: #010101;
+    height: 3.5rem;
+  }
+  .bx--header__action {
+    min-width: 3rem;
+    height: 3.5rem;
+    // border: 2px solid $gray-80;
+  }
+  .bx--header__global {
+    .bx--search-input {
+      background-color: $gray-100;
+      border: none;
+      height: 3.5rem;
+    }
+    .bx--search-input:focus {
+      background-color: $gray-10;
+    }
+  }
+
+  .header-menu-bar {
+    // display: block;
+    // width: 40%;
+    // color: $white-0;
+    flex: 0.37 0;
+    .menu-items {
+      display: flex;
+      width: 100%;
+
+      .item {
+        cursor: pointer;
+        display: flex;
+        height: 3.5rem;
+        border-right: 1px solid $gray-80;
+        border-bottom: 1px solid $gray-80;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem;
+
+        &:hover {
+          background-color: $white-0;
+          color: $gray-100;
+          a {
+            color: $gray-100;
+            svg {
+              fill: $gray-100;
+              // transform: rotate(180deg);
+            }
+          }
+        }
+        &:active {
+          background-color: $white-0;
+          a {
+            color: $gray-100;
+            svg {
+              fill: $gray-100;
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+      a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: $white-0;
+        text-decoration: none;
+        text-align: left;
+        p {
+          font: normal normal 300 14px/18px IBM Plex Sans;
+          letter-spacing: 0.16px;
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .main-logo {
+    // display: block;
+    // min-width: 17.5%;
+    // text-align: center;
+    flex: 0.26 0;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    span {
+      color: $gray-10;
+      font: normal normal 500 24px/26px IBM Plex Mono-italic;
+      letter-spacing: 5px;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    img {
+      filter: invert(1);
+      margin-right: 5px;
+    }
+    &:hover {
+      a {
+        text-decoration: none;
+      }
+      span {
+        visibility: visible;
+        // transform: translateX(0);
+        transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        opacity: 1;
+      }
+    }
+  }
+  .cards {
+    position: absolute;
+    top: 3.5rem;
+    background-color: $white-0;
+    transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+
+    .bx--row {
+      margin: 0;
+    }
+    .card--col {
+      min-height: 700px;
+      position: relative;
+      padding: 1.5rem;
+      border-right: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      padding-right: 4rem;
+      a {
+        text-decoration: none;
+        color: $gray-100;
+        svg {
+          fill: $blue-60;
+        }
+        .heading {
+          padding-top: 1.5rem;
+          h3 {
+            text-align: left;
+            font: normal normal normal 24px/32px IBM Plex Sans;
+            letter-spacing: 0px;
+
+            opacity: 1;
+          }
+        }
+        .subheading {
+          padding-top: 3rem;
+          h6 {
+            padding-bottom: 10px;
+            text-align: left;
+            font: normal normal 500 16px/20px IBM Plex Sans;
+            letter-spacing: 0.18px;
+            opacity: 1;
+          }
+          p {
+            text-align: left;
+            font: normal normal 300 14px/18px IBM Plex Sans;
+            letter-spacing: 0.16px;
+          }
+        }
+        .items-list {
+          padding-top: 1.5rem;
+          p {
+            text-align: left;
+            font: normal normal normal 14px/18px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: $gray-70;
+            padding-bottom: 6px;
+          }
+        }
+        .learn-more {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          background: $blue-60;
+          padding: 1rem;
+          height: 76px;
+          width: 180px;
+
+          .arrow {
+            text-align: end;
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            svg {
+              fill: $white-0;
+            }
+          }
+          a {
+            text-decoration: none;
+            text-align: left;
+            font: normal normal 300 14px/18px IBM Plex Sans;
+            letter-spacing: 0.08px;
+            color: $white-0;
+          }
+        }
+      }
+      &:hover {
+        cursor: pointer;
+
+        a {
+          opacity: 1;
+          color: $white-0;
+          .items-list {
+            p {
+              color: $white-0;
+            }
+          }
+
+          svg {
+            fill: currentColor;
+          }
+          .learn-more {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+        background-image: linear-gradient(
+            180deg,
+            #000000 0%,
+            #000000bd 55%,
+            #00000000 100%
+          ),
+          url('./../../../img/Homepage/hdrcardbg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation: all 0.2s ease-out;
+      }
+    }
+  }
+
+  .headset-icon {
+    .bx--tab-content {
+      padding: 0;
+      margin-left: 1rem;
+      outline: none;
+    }
+    svg {
+      fill: $gray-100;
+    }
+    .reach {
+      padding: 1rem;
+      p {
+        text-align: left;
+        font: normal normal normal 18px/23px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #010101;
+        opacity: 1;
+      }
+    }
+    .bx--header-panel {
+      top: 3.5rem;
+      background-color: $white-0;
+      min-height: 100vh;
+      color: $gray-80;
+
+      .bx--tabs--scrollable {
+        .bx--tabs--scrollable__nav-link {
+          justify-content: center;
+          display: flex;
+          width: -webkit-fill-available;
+          outline: none;
+        }
+        .bx--tabs--scrollable__nav {
+          width: 100%;
+          justify-content: center;
+          outline: none;
+        }
+      }
+      .bx--tabs--scrollable .bx--tab--overflow-nav-button--hidden,
+      .bx--tabs--scrollable .bx--tab--overflow-nav-button {
+        display: none;
+      }
+      .bx--tabs--scrollable .bx--tabs--scrollable__nav-item {
+        width: inherit;
+      }
+      a.bx--tabs__nav-link {
+        &:focus {
+          border: none;
+        }
+        &:hover {
+          svg {
+            fill: $blue-60;
+          }
+        }
+      }
+    }
+    .bx--header-panel--expanded {
+      max-width: 29.125rem;
+      width: 100%;
+      top: 3.5rem;
+    }
+
+    .contact-us {
+      margin: 0;
+      padding-top: 0;
+      background-color: $white-0;
+
+      .info--cards {
+        padding-top: 0.5rem;
+
+        h5 {
+          width: 100%;
+        }
+      }
+
+      .heading {
+        border: none;
+        padding: 1rem 0;
+        text-transform: uppercase;
+      }
+      .info--cards {
+        padding: 1rem 0;
+      }
+    }
+  }
+
+  .user-icon {
+    z-index: 8003;
+    .bx--header-panel {
+      display: grid;
+      background-color: $white-0;
+      height: 100px;
+      color: $gray-80;
+      right: 48.5px;
+      top: 3.5rem;
+
+      .login {
+        a {
+          text-decoration: none;
+          color: $gray-100;
+          svg {
+            fill: $gray-100;
+          }
+          p {
+            font: normal normal 500 16px/20px IBM PLEX SANS;
+          }
+          &:hover {
+            svg {
+              fill: $blue-60;
+            }
+          }
+        }
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .sidenav--link {
+    svg {
+      fill: $gray-100;
+    }
+    svg:hover {
+      background-color: $white-0;
+    }
+    .bx--header-panel {
+      background-color: $white-0;
+      max-height: 100vh;
+      top: 3.5rem;
+
+      .side-links {
+        text-decoration: none;
+        color: $gray-100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 3rem;
+        padding: 0 1.5rem;
+        text-align: left;
+        font: normal normal 500 14px/27px IBM Plex Sans;
+        .social-links {
+          a > svg {
+            fill: $gray-100;
+            &:hover {
+              fill: $blue-60;
+            }
+          }
+        }
+      }
+    }
+    .bx--header-panel--expanded {
+      max-width: 29.125rem;
+      width: 100%;
+      top: 3.5rem;
+    }
+  }
+  .bx--header__global {
+    flex: 0.37;
+    .header__left {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid $gray-80 !important;
+      .bx--search-input {
+        outline: none;
+        &:hover {
+          cursor: pointer;
+          background-color: $white-0;
+        }
+      }
+      .bx--search--xl .bx--search-close,
+      .bx--search-button {
+        background-color: $gray-20;
+        height: 55px;
+        outline: none;
+        &:focus,
+        &:hover {
+          outline: none;
+          outline-offset: 0;
+        }
+      }
+    }
+    .searchbar {
+      width: 100%;
+      .bx--search {
+        .bx--search-input {
+          border-bottom: 1px solid $gray-80;
+          background-color: $gray-100;
+          outline: none;
+          &:hover {
+            background-color: $white-0;
+          }
+        }
+      }
+    }
+    .bx--header__action {
+      &:hover {
+        background-color: $white-0 !important;
+        svg {
+          fill: $gray-100;
+        }
+      }
+    }
+  }
+  .line {
+    height: fit-content;
+    width: 2px;
+    background: $gray-20;
+  }
+
+  .bx--header__action--active {
+    background-color: $white-0;
+    svg {
+      fill: $gray-100;
+    }
+  }
+}
+@media only screen and (max-width: 1050px) {
+  .main-header .header-menu-bar {
+    display: none;
+  }
+  .main-header .main-logo {
+    display: none;
+    // padding: 0 1rem;
+    // min-width: 10%;
+  }
+  .main-header .bx--header__global {
+    flex: 1 !important;
+  }
+}
+.chat-box {
+  height: 60px;
+  width: 60px;
+  background: $black-100;
+  bottom: 2rem;
+  right: 2rem;
+  border-radius: 10%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+svg {
+  fill: $white-0;
+}
+
+.active {
+  background-color: $white-0;
+  color: $gray-100 !important;
+  a {
+    color: $gray-100 !important;
+    svg {
+      fill: $gray-100;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.bx--tabs--scrollable
+  .bx--tabs--scrollable__nav-item--selected
+  .bx--tabs--scrollable__nav-link:focus,
+.bx--tabs--scrollable__nav-link:active {
+  outline: none;
+  svg {
+    fill: $blue-60;
+  }
+}

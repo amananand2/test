@@ -1,0 +1,121 @@
+.home__slider {
+  @mixin sliderBg(
+    $url,
+    $linearGradient: (90deg, #010101, #010101e1, #00000000)
+  ) {
+    padding-left: 4.5rem;
+    width: 100%;
+    background-color: $black-100;
+    background-image: linear-gradient($linearGradient), url($url);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50% 100%;
+    animation: mymove 0.5s forwards ease-in-out;
+
+    @keyframes mymove {
+      0% {
+        background-position: right -100% top 0;
+      }
+      100% {
+        background-position: right;
+      }
+    }
+    .breakthrough {
+      padding-top: 142px;
+      padding-bottom: 264px;
+      position: relative;
+      animation: para 0.3s;
+
+      h2 {
+        text-align: left;
+        font: normal normal 200 54px/70px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $white-0;
+      }
+      p {
+        padding-top: 30px;
+        text-align: left;
+        font: normal normal 300 16px/22px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-30;
+      }
+    }
+  }
+
+  .tabs {
+    display: flex;
+    background-color: $black-100;
+    color: $gray-40;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .banner {
+      padding-top: 86px;
+      color: $white-0;
+      h6 {
+        text-align: left;
+        font: normal normal normal 12px/15px IBM Plex Sans;
+        letter-spacing: 0.32px;
+      }
+      h3 {
+        text-align: left;
+        font: normal normal 300 36px/47px IBM Plex Sans;
+        letter-spacing: 0px;
+      }
+      p {
+        text-align: left;
+        font: normal normal 300 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+      }
+    }
+    .content1 {
+      @include sliderBg($url: '../../../img/Homepage/Slider/bghistory.png');
+    }
+    .content2 {
+      @include sliderBg($url: '../../../img/Homepage/Slider/slider2.png');
+    }
+    .content3 {
+      @include sliderBg($url: '../../../img/Homepage/Slider/slider3.png');
+    }
+  }
+  .tabitem__title {
+    text-align: left;
+    font: normal normal 600 16px/20px IBM Plex Sans;
+    letter-spacing: 0.09px;
+    color: $white-0;
+  }
+  .tabitem__title__inactive {
+    text-align: left;
+    font: normal normal 500 16px/20px IBM Plex Sans;
+    letter-spacing: 0.06px;
+    color: $gray-40;
+  }
+
+  .tabitem--inactive {
+    height: 2px;
+    width: 12px;
+    background: $gray-40;
+    transition: width 0.6s;
+    margin-right: 0.5rem;
+  }
+  .tabitem {
+    width: 48px;
+    height: 2px;
+    width: 48px;
+    background: $white-0;
+    margin-right: 0.5rem;
+  }
+
+  .tabsList {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,170 @@
+@keyframes slideup {
+  0% {
+    top: 20%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.deploy {
+  background: $gray-10;
+  padding-bottom: 6rem;
+  .bx--row {
+    margin: 0;
+  }
+  .sectionTitle {
+    padding: 6rem 0 4rem 0;
+    .subtitle {
+      h6 {
+        text-align: left;
+        font: normal normal 500 12px/15px IBM Plex Sans;
+        letter-spacing: 0.32px;
+        color: $gray-70;
+        text-transform: uppercase;
+      }
+    }
+    .title {
+      h2 {
+        text-align: left;
+        font: normal normal normal 36px/47px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+      }
+    }
+    .about {
+      padding-top: 0.75rem;
+      p {
+        text-align: left;
+        font: normal normal normal 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        color: $gray-100;
+      }
+    }
+  }
+  .product-tab {
+    display: flex;
+    background: $white-0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    li {
+      list-style: none;
+      height: 4rem;
+      padding: 1.5rem;
+      border-bottom: 1px solid $gray-30;
+      &:hover {
+        p {
+          font-weight: 600;
+          color: $gray-100;
+        }
+        border-left: 3px solid $blue-60;
+      }
+      p {
+        text-align: left;
+        font: normal normal normal 14px/18px IBM Plex Sans;
+        letter-spacing: 0.36px;
+        color: $gray-70;
+        text-transform: uppercase;
+        & > span {
+          text-align: left;
+          font: normal normal 600 16px/20px IBM Plex Mono;
+          letter-spacing: 0.42px;
+          color: $gray-70;
+          margin-right: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .product-cards {
+    min-height: 239px;
+    padding: 1.5rem;
+    background: $white-0;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $blue-60;
+      .icon svg,
+      .title h4,
+      .about p,
+      .icon-bott svg {
+        fill: $white-0;
+        color: $white-0;
+      }
+    }
+
+    .icon svg {
+      fill: $blue-60;
+    }
+    .title {
+      padding-top: 1rem;
+      h4 {
+        text-align: left;
+        font: normal normal 600 20px/27px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+        text-transform: capitalize;
+      }
+    }
+    .about {
+      width: 60%;
+
+      p {
+        padding-top: 1rem;
+        text-align: left;
+        font: normal normal normal 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        color: $gray-70;
+        padding-bottom: 2rem;
+      }
+    }
+    .icon-bott {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      svg {
+        fill: $gray-100;
+      }
+    }
+  }
+
+  .actives {
+    p {
+      font-weight: 600 !important;
+      color: $gray-100 !important;
+    }
+    border-left: 3px solid $blue-60;
+  }
+
+  .slide {
+    position: relative;
+    animation: parass 0.4s ease-out;
+
+    @keyframes parass {
+      from {
+        top: 2rem;
+      }
+      to {
+        top: 0rem;
+      }
+    }
+  }
+}
+@media only screen and (max-width: '1050px') {
+  .CaseStudy .product-cards {
+    margin-left: 0px;
+  }
+}
+
+.section-active {
+  p {
+    font-weight: 600;
+    color: $gray-100;
+  }
+  border-left: 3px solid $blue-60;
+}

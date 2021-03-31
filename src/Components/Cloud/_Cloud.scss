@@ -1,0 +1,420 @@
+
+.cloud{
+    .bx--row{
+        margin:0;
+    }
+    &__banner{
+        background-color:black;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding-bottom:64px;
+
+        .cloud__banner__content{
+            padding-top:220px;
+
+            .cloud__header_content_icon{
+                padding-top: 1rem;
+                svg {
+                  margin-left: -0.5rem;
+                  width: 80px;
+                  height: 80px;
+                  stroke: #FFFFFF 
+                }
+              }
+
+            .cloud__header_content_heading{
+                margin-top:36px;
+                  h1{
+                font: normal normal 300 72px/65px IBM Plex Sans;
+                letter-spacing: -0.79px;
+                color: #FFFFFF;
+                opacity: 1;
+                  }
+              }
+
+              .cloud__header_content_para{
+                margin-top:32px;
+                p{
+                  font: normal normal 300 16px/24px IBM Plex Sans;
+                  letter-spacing: 0px;
+                  color: #E0E0E0;
+                  opacity: 1;
+                }
+            }
+
+            .cloud__header_content_button{
+                margin-top:48px;
+              
+            }
+
+            .cloud__header_content_downbutton{
+                display:flex;
+                margin-top:235px;
+                align-items: center;
+                grid-gap: 3rem;
+                flex-wrap:wrap;
+        
+                p{
+                    font: normal normal 300 14px/18px IBM Plex Sans;
+                    letter-spacing: 0.32px;
+                    color: #FFFFFF;
+                    text-transform: uppercase;
+                    opacity: 1;
+                }
+                .arrow-left{
+                    margin-right: -30px;
+                    margin-top: 4px;
+                }
+                .border{
+                    border-left:2px solid #515151 ;
+                    height:20px;
+                }
+                .arrow-right{
+                    margin-left: -27px;
+                    margin-top: 4px;
+                }
+                
+            }
+        
+    
+        }
+}
+
+.cloud_benefits{
+    background-color:black;
+    padding-bottom:72px;
+
+    .cloud__benefits__heading{
+        padding-top:72px;
+        h1{
+        font: normal normal 300 48px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        width:80%;
+        }
+    }
+
+    .cloud__benefits__content__first__heading{
+        margin-top: 64px;
+        display:flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        .box{
+            background-color:blue;
+            font: normal normal medium 18px/65px IBM Plex Mono;
+            letter-spacing: -0.2px;
+            color: #FFFFFF;
+            opacity: 1;
+            height: 32px;
+            width: 32px;
+            padding: 8px;
+            margin-top: 15px;
+
+          
+        }
+        p{
+        margin-left: 24px;    
+        font: normal normal normal 24px/65px IBM Plex Sans;
+        letter-spacing: 0.77px;
+        color: #FFFFFF;
+        opacity: 1;
+        }
+    }
+
+    .cloud__benefits__content__first__content{
+        // border: 2px solid red;
+        margin-top: 30px;
+        p{
+        font: normal normal 300 16px/24px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #E0E0E0;
+        opacity: 1;
+        } 
+    }
+}
+
+.cloud_with_uvation{
+    background-color: #f2f4f8;
+    padding-top:72px;
+    .cloud_with_uvation_heading{
+        h1{
+            text-align: center;
+            font: normal normal 300 48px/65px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #010101;
+            opacity: 1;
+        }
+        p{
+            text-align: center;
+            font: normal normal 300 16px/24px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #383838;
+            opacity: 1;
+            padding-top: 32px;
+            width: 40%;
+            margin: 0 auto;
+        }
+    }
+
+    .cloud_with_uvation_content{
+
+        .cloud_with_uvation_content_topspace{
+            margin-top:64px;
+        .cloud_with_uvation_content_topspace_heading{
+            h1{
+            padding-top: 180px;
+            font: normal normal 300 40px/65px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #161616;
+            opacity: 1;
+            }
+            p{
+            width: 81%;
+            padding-top: 32px;
+            font: normal normal 300 16px/24px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #161616;
+            opacity: 1;
+            }
+        }
+        .cloud_with_uvation_content_topspace_image{
+            img{
+                object-fit: fill;
+                height:100%;
+                width:100%;
+            }
+        }
+    }
+
+    .cloud_with_uvation_content_section2_image{
+        img{
+            object-fit: fill;
+            height:100%;
+            width:100%;
+        }
+    }
+    .cloud_with_uvation_content_section2_heading{
+        h1{
+            padding-top: 147px;
+            font: normal normal 300 40px/62px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #161616;
+            opacity: 1;
+        }
+
+        p{
+       
+        padding-top: 32px;
+        font: normal normal 300 16px/24px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #383838;
+        opacity: 1;
+        }
+    }
+    }
+}
+
+.cloud_computing_explained{
+    background-color: #010101;
+    padding-bottom:72.46px;
+    h1{
+        font: normal normal 300 48px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        padding-top:72px;
+    }
+    .cloud_computing_explained_sections{
+        padding-top:64px;
+        p{
+            font: normal normal 300 32px/65px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+        }
+        
+            svg {
+                margin-top:24px;
+                margin-left: -0.5rem;
+                width: 80px;
+                height: 80px;
+                stroke: #FFFFFF 
+              }
+
+    .cloud_computing_explained_sections_para{
+        padding-top:32px;
+        p{
+            font: normal normal 300 16px/24px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #E0E0E0;
+            opacity: 1;
+        }
+    }
+        
+    }
+    .cloud_computing_explained_sections_section2{
+        // border:2px solid red;
+        padding-top:64px;
+        padding-left:65px;
+        p{
+            font: normal normal 300 32px/65px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+        }
+        
+            svg {
+                margin-top:24px;
+                margin-left: -0.5rem;
+                width: 80px;
+                height: 80px;
+                stroke: #FFFFFF 
+              }
+
+    .cloud_computing_explained_sections_section2_para{
+        padding-top:32px;
+        p{
+            font: normal normal 300 16px/24px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #E0E0E0;
+            opacity: 1;
+        }
+    }
+    }
+}
+
+.cloud_computing_unique{
+background-color: #f2f4f8;
+padding-top: 72px;
+padding-bottom: 72px;
+h1{
+    font: normal normal 300 48px/65px IBM Plex Sans;
+    letter-spacing: 0px;
+    color: #161616;
+    opacity: 1;
+}
+.cloud_computing_unique_section1{
+   
+    .cloud_computing_unique_section1_index{
+        p{
+            padding-top:64px;
+            // width: 29px;
+            // height: 32px;
+            font: normal normal 500 24px/32px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #0F61FD;
+            opacity: 1;
+        }
+    }
+    .cloud_computing_unique_section1_left_content{
+        // border:2px solid red;
+        margin-top:13px;
+        p{
+            font: normal normal 500 20px/27px IBM Plex Sans !important;
+            letter-spacing: 0.5px;
+            color: #161616;
+            text-transform: uppercase;
+            opacity: 1;
+        }
+        .cloud_computing_unique_section1_left_content_icon{
+            padding-top:32px;
+            svg {
+                margin-left: -0.5rem;
+                width: 80px;
+                height: 80px;
+                stroke: #FFFFFF 
+              }
+        }
+    }
+    .cloud_computing_unique_section1_right_content{
+        // border:2px solid red;
+        margin-top:13px;
+        p{
+            font: normal normal 300 16px/20px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #383838;
+            opacity: 1;
+        }
+    }
+}
+
+
+}
+
+.cloud_computing_varities{
+        background-color:black;
+        padding-top:72px;
+        padding-bottom:103px;
+
+   .cloud_computing_varities_left_content{
+       h1{
+        font: normal normal 300 48px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+       }
+       .cloud_computing_varities_left_content_heading_para{
+           padding-top:24px;
+           p{
+            font: normal normal 300 16px/20px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #E0E0E0;
+            opacity: 1;
+           }
+       }
+       .cloud_computing_varities_left_content_subheading{
+           padding-top:64px;
+           p{
+        font: normal normal 500 28px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+       }
+    }
+    .cloud_computing_varities_left_content_subheading_para{
+        padding-top:32px;
+        p{
+            font: normal normal 300 16px/20px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: #E0E0E0;
+            opacity: 1;
+        }
+    }
+    .cloud_computing_varities_left_content_circles{
+        display:flex;
+        padding-top:68px;
+      .cloud_computing_varities_left_content_circles_first{
+        background-color: white;
+        border: 3px solid black;
+        border-radius: 18px;
+        box-shadow: 0 0 2px white;
+        height: 16px;
+        width: 16px;
+    
+      }
+      .cloud_computing_varities_left_content_circles_second{
+        margin-left:28px;
+        background-color: white;
+        border: 3px solid black;
+        border-radius: 18px;
+        box-shadow: 0 0 2px white;
+        height: 16px;
+        width: 16px;
+    
+      }
+      .cloud_computing_varities_left_content_circles_third{
+        margin-left:28px;
+        background-color: white;
+        border: 3px solid black;
+        border-radius: 18px;
+        box-shadow: 0 0 2px white;
+        height: 16px;
+        width: 16px;
+    
+      }
+    }
+   }
+}
+
+}

@@ -1,0 +1,559 @@
+@mixin categeryRow {
+}
+
+@mixin industry--banner {
+}
+
+.industries {
+  margin-top: 3.5rem;
+
+  @mixin About($color) {
+    h6 {
+      font-size: 12px;
+      line-height: 15px;
+      font-weight: 500;
+      text-align: left;
+      letter-spacing: 0.32px;
+      text-transform: uppercase;
+      color: $color;
+    }
+    h3 {
+      font-size: 36px;
+      line-height: 47px;
+      font-weight: 400;
+      text-align: left;
+      letter-spacing: 0px;
+      text-transform: capitalize;
+      color: $color;
+    }
+    p {
+      text-align: left;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 18px;
+      letter-spacing: 0.08px;
+      color: $color;
+    }
+  }
+  @mixin AboutBanner($color) {
+    color: $color;
+    h2 {
+      text-align: left;
+      font: normal normal normal 36px/47px IBM Plex Sans;
+      letter-spacing: 0px;
+    }
+
+    h6 {
+      text-align: left;
+      font: normal normal medium 12px/15px IBM Plex Sans;
+      letter-spacing: 0.32px;
+    }
+
+    p {
+      padding-right: 4rem;
+      text-align: left;
+      font: normal normal 300 14px/18px IBM Plex Sans;
+      letter-spacing: 0.08px;
+    }
+  }
+
+  .bx--row {
+    margin: 0;
+  }
+
+  .banner {
+    background-image: linear-gradient(90deg, #010101, #010101e1, #00000000),
+      url('./../../img/Industries/rob.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+  }
+  .left {
+    padding: 301px 0;
+    color: $white-0;
+    .heading h1 {
+      text-align: left;
+      font: normal normal 300 52px/65px IBM Plex Sans;
+      letter-spacing: 0px;
+    }
+    .desc p {
+      text-align: left;
+      font: normal normal 300 16px/20px IBM Plex Sans;
+      letter-spacing: 0px;
+    }
+    .button {
+      padding-top: 72px;
+      .see {
+        width: 178px;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    p {
+      padding-top: 1.5rem;
+      font: normal normal 12px/15px IBM Plex Sans;
+      color: $white-0;
+      font-weight: 500;
+      letter-spacing: 0.66px;
+      text-transform: uppercase;
+    }
+    .banner-btn {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      height: 48px;
+      width: 48px;
+      background: $white-0;
+      border-radius: 50%;
+      border: 4px solid $gray-30;
+      svg {
+        fill: $blue-60;
+      }
+    }
+  }
+  /* 
+  
+  //About Row (Third-row)
+  
+  */
+
+  .about--section {
+    a {
+      text-decoration: none;
+      font: normal normal normal 18px/23px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: $gray-70;
+      text-transform: capitalize;
+      &:hover {
+        text-decoration: none;
+        translate: 0.6 ease-out;
+        text-align: center;
+        font: normal normal 500 18px/23px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+        text-transform: capitalize;
+      }
+      .active {
+        text-decoration: none;
+        translate: 0.6 ease-out;
+        text-align: center;
+        font: normal normal 500 18px/23px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+        text-transform: capitalize;
+        border-bottom: 2px solid $blue-60;
+      }
+    }
+    .section {
+      &:hover {
+        border-bottom: 2px solid $blue-60;
+      }
+      background: $white-0;
+      border: 0.5px solid $gray-30;
+      border-left: 0px solid $gray-30;
+      padding: 29.5px 0 26.5px 0;
+
+      text-align: center;
+      &:active {
+        border-bottom: 2px solid $blue-60;
+      }
+    }
+  }
+  .featured {
+    background: $gray-100;
+    padding: 6rem 0 5rem 0;
+    .about--our {
+      padding-right: 1rem;
+      @include About($white-0);
+    }
+    .cards {
+      .card {
+        min-height: 196px;
+        background: $gray-80;
+        margin-bottom: 1rem;
+        &:hover {
+          background-color: $blue-60;
+        }
+        .content {
+          padding: 1rem;
+          padding-right: 12px;
+          .pictoicon {
+            margin-left: -1rem;
+            margin-top: -1rem;
+            svg {
+              height: 104px;
+              width: 104px;
+              stroke: $white-0;
+              path {
+                stroke-width: 1;
+              }
+            }
+          }
+          .title {
+            margin-top: 88px;
+            h4 {
+              text-align: left;
+              font: normal normal 300 16px/20px IBM Plex Sans;
+              letter-spacing: 0px;
+              color: $white-0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 
+
+Future Section
+
+*/
+  .future {
+    background: $gray-10;
+    .about {
+      padding-top: 6rem;
+
+      @include AboutBanner($gray-100);
+    }
+
+    .cards {
+      padding: 3rem 0;
+
+      .card--left {
+        margin-bottom: 1rem;
+        background: $white-0;
+        padding: 1.5rem;
+        padding-right: 10px;
+        position: relative;
+        &:hover {
+          background-color: $black-100;
+          background-image: linear-gradient(
+              180deg,
+              #010101,
+              #010101e1,
+              #00000000
+            ),
+            url('./../../img/Homepage/rob.png');
+          background-size: bottom cover;
+          background-repeat: no-repeat;
+          background-position: 50% 100%;
+
+          .content {
+            h3,
+            h6,
+            p {
+              color: $white-0;
+            }
+          }
+          .pictogram {
+            svg {
+              stroke: $white-0;
+            }
+          }
+        }
+        .pictogram {
+          svg {
+            width: 96px;
+            height: 96px;
+            stroke: $blue-60;
+            margin-left: -24px;
+            margin-top: -24px;
+          }
+        }
+        .content {
+          min-height: 424px;
+
+          h6 {
+            font: normal normal normal 12px/15px IBM Plex Sans;
+            letter-spacing: 0.66px;
+            color: $gray-100;
+            text-transform: uppercase;
+          }
+          h3 {
+            color: $gray-100;
+            text-align: left;
+            font: normal normal normal 28px/37px IBM Plex Sans;
+            letter-spacing: 0px;
+          }
+          p {
+            color: $gray-100;
+            text-align: left;
+            font: normal normal 300 14px/18px IBM Plex Sans;
+            letter-spacing: 0.08px;
+          }
+        }
+        .button {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          background: $blue-60;
+          padding: 1rem;
+          height: 96px;
+          width: 240px;
+          padding: 16px;
+          .arrow {
+            text-align: end;
+            margin-top: 16px;
+          }
+          a {
+            text-decoration: none;
+            text-align: left;
+            font: normal normal 300 14px/18px IBM Plex Sans;
+            letter-spacing: 0.08px;
+            color: $white-0;
+          }
+        }
+      }
+    }
+    .future-dots {
+      padding-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .dots {
+        display: flex;
+        grid-gap: 1rem;
+        .dot {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .dot__inside {
+            width: 8px;
+            height: 8px;
+            background: $gray-30;
+            border-radius: 50%;
+          }
+        }
+        .dot__active {
+          border: 1px solid $blue-60;
+          .dot__inside {
+            background: $blue-60;
+          }
+        }
+      }
+      .btns {
+        width: 72px;
+      }
+    }
+  }
+
+  /*
+  
+  We work with
+  
+  */
+  @mixin BgImg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 315px;
+  }
+
+  .we-work {
+    background-image: linear-gradient(90deg, #010101, #000000c5, #00000000),
+      url('./../../img/Industries/wework.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 50%;
+
+    .we-banner {
+      padding-top: 60px;
+      padding-bottom: 4.5rem;
+      @include AboutBanner($white-0);
+      p {
+        padding: 0;
+      }
+    }
+    .car {
+      background-image: url('../../img/Industries/car.png');
+      @include BgImg;
+    }
+    .led {
+      background-image: url('../../img/Industries/led.png');
+      @include BgImg;
+    }
+    .tracker {
+      background-image: url('../../img/Industries/tracker.png');
+      @include BgImg;
+    }
+    .graph {
+      background-image: url('../../img/Industries/graph.png');
+      @include BgImg;
+    }
+  }
+  .we-work-cards {
+    background: $gray-10;
+    .card {
+      background: $white-0;
+
+      padding: 2rem 0 2rem 1rem;
+
+      .heading h5 {
+        padding-top: 2rem;
+        text-align: left;
+        font: normal normal medium 16px/20px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+      }
+      .desc p {
+        text-align: left;
+        color: $gray-100;
+        font: normal normal 300 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        padding-bottom: 36px;
+      }
+
+      .video-btn {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-left: 1rem;
+          font: normal normal 12px/15px IBM Plex Sans;
+          color: $gray-100;
+          font-weight: 500;
+          letter-spacing: 0.66px;
+          text-transform: uppercase;
+        }
+        .play-btn {
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          height: 36px;
+          width: 36px;
+          background: $white-0;
+          border-radius: 50%;
+          border: 4px solid $gray-10;
+          svg {
+            fill: $blue-60;
+          }
+        }
+      }
+    }
+  }
+
+  /*
+  
+  Insight and Resources
+  
+  
+  */
+  .insight {
+    background: $gray-10;
+    .about {
+      padding-top: 6rem;
+      @include AboutBanner($gray-100);
+    }
+    .img-cards {
+      padding-top: 3rem;
+      padding-bottom: 6rem;
+
+      .img-card {
+        margin-right: 16px;
+
+        .img-bg1 {
+          background-image: url('./../../img/Industries/cancer.png');
+          min-height: 256px;
+        }
+        .img-bg2 {
+          background-image: url('./../../img/Industries/rob.png');
+          min-height: 256px;
+        }
+        .img-bg3 {
+          background-image: url('./../../img/Industries/stock.png');
+          min-height: 256px;
+        }
+        .img-bg4 {
+          background-image: url('./../../img/Industries/gal.png');
+          min-height: 256px;
+        }
+      }
+      .content {
+        background-color: $white-0;
+        padding: 2rem 1rem;
+        position: relative;
+        .title {
+          display: flex;
+          text-align: center;
+          svg {
+            fill: $blue-60;
+          }
+          h6 {
+            text-align: left;
+            font: normal normal 12px/15px IBM Plex Sans;
+            letter-spacing: 0.3px;
+            color: $gray-70;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-left: 0.5rem;
+          }
+        }
+        .heading {
+          padding-top: 1rem;
+          h4 {
+            text-align: left;
+            font: normal normal medium 16px/20px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: $gray-100;
+          }
+        }
+        .desc {
+          height: 124px;
+          p {
+            text-align: left;
+            font: normal normal 300 14px/18px IBM Plex Sans;
+            letter-spacing: 0.08px;
+            color: $gray-100;
+          }
+        }
+        .arrow {
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+        }
+      }
+    }
+  }
+  .footer {
+    background-image: linear-gradient(90deg, #010101, #010101e1, #00000000),
+      url('./../../img/Industries/indusFooter.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    .fot-banner {
+      padding: 183px 0;
+      color: $white-0;
+
+      .heading h2 {
+        padding-right: 1rem;
+        text-align: left;
+        font: normal normal 300 42px/55px IBM Plex Sans;
+        letter-spacing: 0px;
+      }
+      .sub-heading {
+        padding-top: 1.5rem;
+        h5 {
+          text-align: left;
+          font: normal normal 300 20px/27px IBM Plex Sans;
+          letter-spacing: 0px;
+        }
+      }
+      .access {
+        padding-top: 5rem;
+      }
+    }
+    .btns {
+      @include LargeButton($blue-70);
+    }
+  }
+}

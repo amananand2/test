@@ -1,0 +1,148 @@
+.contact-us {
+  background: $gray-10;
+  // margin-top: 3.5rem;
+
+  .contact__top {
+    background-color: $white-0;
+    // padding-top: 3rem;
+
+    h1 {
+      text-align: left;
+      font: normal normal 300 52px/65px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: $gray-100;
+      padding-bottom: 1rem;
+    }
+    .see__more {
+      .more-contact {
+        position: fixed;
+        z-index: 8;
+        right: 2rem;
+        cursor: pointer;
+        p {
+          display: flex;
+          align-items: center;
+          text-align: left;
+          font: normal normal 600 14px/65px IBM Plex Sans;
+          letter-spacing: 0px;
+          svg {
+            fill: $gray-100;
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .bx--tab-content {
+    background-color: $gray-10;
+  }
+  .contact__tabs {
+    max-width: 99rem;
+    margin: auto;
+    padding: 0 0.5rem;
+
+    ul {
+      position: fixed;
+      top: 9.6rem;
+      z-index: 8;
+    }
+  }
+  .info__col {
+    .line {
+      margin-right: 4rem;
+      border-bottom: 2px solid $carbon--gray-20;
+    }
+    padding-bottom: 4rem;
+    .heading {
+      padding-top: 4rem;
+
+      padding-bottom: 1.5rem;
+
+      svg {
+        fill: $gray-100;
+      }
+
+      h3 {
+        width: 75%;
+        text-align: left;
+        font: normal normal 600 20px/27px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #161616;
+      }
+      h2 {
+        text-align: left;
+        font: normal normal normal 32px/61px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+      }
+      h4 {
+        text-align: left;
+        font: normal normal 300 52px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #161616;
+      }
+    }
+    .desc {
+      padding-top: 1.5rem;
+      width: 70%;
+      p {
+        text-align: left;
+        font: normal normal 300 20px/27px IBM Plex Sans;
+        letter-spacing: 0px;
+        columns: $gray-100;
+      }
+    }
+
+    .info--cards {
+      padding-top: 1.5rem;
+      padding-right: 1.5rem;
+      h6 {
+        text-align: left;
+        font: normal normal 500 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        color: #161616;
+      }
+      h5 {
+        width: 85%;
+        text-align: left;
+        font: normal normal normal 14px/18px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #525252;
+        padding: 12px 0;
+      }
+      .details {
+        display: flex;
+        padding-top: 12px;
+        svg {
+          fill: $blue-60;
+          margin-right: 8px;
+        }
+        p {
+          text-align: left;
+          font: normal normal 300 14px/18px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #525252;
+        }
+      }
+    }
+
+    .help-center {
+      padding-top: 1.5rem;
+      padding-right: 1.5rem;
+      p {
+        text-align: left;
+        font: normal normal normal 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        color: #161616;
+      }
+      .help-btn {
+        padding: 1.5rem 0;
+      }
+    }
+  }
+  .bx--tabs--scrollable .bx--tabs--scrollable__nav-link {
+    width: unset;
+    outline: none;
+  }
+}

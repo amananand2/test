@@ -1,0 +1,188 @@
+.footermain {
+  background-image: linear-gradient(90deg, #010101, #010101e1, #00000000),
+    url('./../../../img/Homepage/Footer/scienceHd.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  .bx--row {
+    margin: 0;
+  }
+  .content {
+    padding-top: 11rem;
+    color: $white-0;
+
+    .heading h2 {
+      text-align: left;
+      font: normal normal 300 42px/55px IBM Plex Sans;
+      letter-spacing: 0px;
+    }
+    .sub-heading p {
+      font: normal normal 200 16px/20px IBM Plex Sans;
+      letter-spacing: 0.09px;
+    }
+    .about {
+      padding-top: 2rem;
+      width: 90%;
+      h6 {
+        text-align: left;
+        font: normal normal 300 20px/27px IBM Plex Sans;
+        letter-spacing: 0px;
+      }
+    }
+    .call-btn {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 4rem;
+      padding-bottom: 5rem;
+      .call {
+        width: 178px;
+        margin-right: 1rem;
+      }
+    }
+  }
+  .btns {
+    @include LargeButton($blue-70);
+  }
+}
+.footer-bottom {
+  background-color: $carbon--blue-60;
+  img {
+    filter: invert(1);
+  }
+}
+
+.footer-bottem--toprow {
+  padding-top: 64px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.footer--list {
+  border-right: 1px solid rgba($color: $white-0, $alpha: 0.2);
+
+  color: $white-0;
+  p {
+    width: 100%;
+    max-width: 85%;
+    text-align: left;
+    font: normal normal 400 13px/16px IBM Plex Sans;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 0.8;
+  }
+  h5 {
+    text-align: left;
+    font: normal normal normal 16px/30px IBM Plex Sans;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 1;
+    padding-bottom: 1rem;
+  }
+  li {
+    list-style: none;
+    a {
+      text-decoration: none;
+      text-align: left;
+      font: normal normal 300 14px/28px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: $white-0;
+      opacity: 0.8;
+    }
+  }
+}
+.footer--icons--row {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.1px solid rgba($color: $white-0, $alpha: 0.2);
+  border-top: 0.1px solid rgba($color: $white-0, $alpha: 0.2);
+  .seprt {
+    font-size: 20px;
+    font-weight: 100;
+    color: $white-0;
+    margin: 0 1rem;
+  }
+}
+.footer--icons {
+  display: flex;
+  align-items: center;
+  a {
+    color: $white-0;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0px;
+    margin-left: 10px;
+    text-decoration: none;
+  }
+
+  .footer--icons--text {
+    text-decoration: none;
+    text-align: left;
+    font: normal normal 300 14px/28px IBM Plex Sans;
+    letter-spacing: 0px;
+    color: $white-0;
+    padding-left: 0.5rem;
+  }
+}
+
+.no--border {
+  border: none;
+}
+.footer-bottem--bottemrow {
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .footer__terms {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer__term {
+    display: flex;
+    align-items: center;
+
+    p,
+    a {
+      text-align: left;
+      font: normal normal 300 14px/26px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    span {
+      font: normal normal 300 14px/26px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      margin: 0 0.5rem;
+    }
+  }
+}
+.footer--img {
+  right: 0;
+  position: absolute;
+  .logo-img {
+    display: block;
+    width: auto !important;
+  }
+}
+
+.bx-arrowright-gutter a.send-meeting {
+  bottom: 0;
+  display: inline-block;
+  font-size: 14px;
+  background: #044ada;
+  text-align: left;
+  letter-spacing: 0.08px;
+  color: $white-0;
+  text-decoration: none;
+  line-height: 18px;
+  width: 200px;
+  padding: 15px 0 0px 15px;
+}
+.btn--chat {
+  margin-left: 10px;
+}

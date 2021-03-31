@@ -1,0 +1,173 @@
+@mixin CardDetail {
+  .icon {
+    padding-bottom: 1rem;
+    svg {
+      margin-left: -1rem;
+      width: 72px;
+      height: 72px;
+      stroke: $blue-60;
+    }
+  }
+  .title {
+    h6 {
+      text-align: left;
+      font: normal normal normal 12px/15px IBM Plex Sans;
+      letter-spacing: 0.66px;
+      text-transform: uppercase;
+    }
+  }
+  .heading h3 {
+    text-align: left;
+    font: normal normal normal 28px/37px IBM Plex Sans;
+    letter-spacing: 0px;
+    color: #161616;
+    text-transform: capitalize;
+  }
+
+  .about {
+    padding-bottom: 6rem;
+    p {
+      width: 42%;
+      text-align: left;
+      font: normal normal 300 14px/18px IBM Plex Sans;
+      letter-spacing: 0.08px;
+      color: #161616;
+    }
+  }
+  .card-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @include LargeButton($blue-60);
+  }
+}
+.casestudy {
+  background-color: $gray-10;
+  padding-bottom: 6rem;
+  .bx--row {
+    margin: 0;
+  }
+  .section_header {
+    color: $gray-100;
+    padding-top: 6rem;
+    .title {
+      h6 {
+        text-align: left;
+        font: normal normal normal 12px/15px IBM Plex Sans;
+        letter-spacing: 0.32px;
+        color: #161616;
+      }
+    }
+
+    .heading {
+      h3 {
+        text-align: left;
+        font: normal normal 300 36px/47px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #161616;
+      }
+    }
+    .about {
+      width: 70%;
+      p {
+        text-align: left;
+        font: normal normal normal 14px/18px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        color: #161616;
+      }
+    }
+  }
+
+  .card-row {
+    padding-top: 4rem;
+  }
+}
+.tab {
+  position: relative;
+  margin-bottom: 1rem;
+
+  .cardsm {
+    background-color: $white-0;
+    min-height: 335.5px;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    color: $gray-100;
+    svg {
+      fill: $gray-100;
+    }
+    &:hover {
+      background-color: $blue-60;
+      color: $white-0;
+      svg {
+        fill: $white-0;
+      }
+    }
+    .heading h4 {
+      text-align: left;
+      font: normal normal normal 20px/27px IBM Plex Sans;
+      letter-spacing: 0px;
+      text-transform: capitalize;
+    }
+    .about p {
+      padding-right: 4rem;
+      text-align: left;
+      font: normal normal 300 14px/18px IBM Plex Sans;
+      letter-spacing: 0.08px;
+    }
+    .icon {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.5rem;
+    }
+  }
+  .cardbot {
+    background-color: $white-0;
+    min-height: 343.5px;
+    padding: 1.5rem;
+    color: $gray-100;
+    @include CardDetail;
+    &:hover {
+      background-image: linear-gradient(90deg, #010101, #010101e1, #00000000),
+        url('./../../../img/Homepage/cancer.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: bottom;
+      color: $white-0;
+      h3,
+      p {
+        color: $white-0;
+      }
+      svg {
+        stroke: $white-0;
+      }
+    }
+  }
+
+  .cards {
+    background-color: $white-0;
+    min-height: 695px;
+    color: $gray-100;
+    padding: 1rem 1.5rem;
+    @include CardDetail;
+    &:hover {
+      background-color: $black-100;
+      background-image: linear-gradient(180deg, #010101, #010101e1, #00000000),
+        url('./../../../img/Homepage/rob.png');
+      background-size: 100% 50%;
+      background-repeat: no-repeat;
+      background-position: bottom;
+      color: $white-0;
+      h3,
+      p {
+        color: $white-0;
+      }
+      svg {
+        stroke: $white-0;
+      }
+    }
+    .about p {
+      width: 70%;
+    }
+  }
+}

@@ -1,0 +1,399 @@
+.career {
+  padding-top: 3.5rem;
+  .banner {
+    background-image: linear-gradient(90deg, #044ada, #044adacb, #044ada00),
+      url("./../../img/Career/career.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    padding-top: 180px;
+    .content {
+      .heading {
+        h1 {
+          text-align: left;
+          font: normal normal 300 84px/106px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: $white-0;
+        }
+      }
+      .searchbar {
+        padding-top: 2rem;
+        display: flex;
+        .searchbtn {
+          margin-left: 2rem;
+        }
+      }
+      .featured {
+        padding-top: 117px;
+        h5 {
+          text-align: left;
+          font: normal normal normal 20px/116px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: $white-0;
+        }
+      }
+    }
+
+    .cards {
+      padding-left: 1rem;
+      .bx--col-lg-2 {
+        padding-left: 0;
+      }
+      .card {
+        background: $white-0;
+
+        padding: 12px;
+        h4 {
+          text-align: left;
+          font: normal normal normal 12px/16px IBM Plex Sans;
+          letter-spacing: 0.66px;
+          color: #8d8d8d;
+          text-transform: uppercase;
+        }
+        p {
+          text-align: left;
+          font: normal normal normal 14px/16px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #010101;
+        }
+        .card--content {
+          min-height: 93.5px;
+        }
+      }
+    }
+
+    .see-all {
+      padding-left: 1rem;
+      padding-top: 50px;
+      padding-bottom: 66px;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      font: normal normal normal 16px/16px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      p {
+        margin-right: 14px;
+      }
+      a {
+        text-decoration: none;
+        font: normal normal normal 16px/16px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #ffffff;
+      }
+    }
+  }
+
+  //Join Uvation
+
+  @mixin Headers {
+    h6 {
+      text-align: left;
+      font: normal normal medium 12px/15px IBM Plex Sans;
+      letter-spacing: 0.32px;
+      color: #161616;
+      text-transform: uppercase;
+    }
+    h3 {
+      text-align: left;
+      font: normal normal 300 36px/47px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #161616;
+    }
+  }
+  .join--banner {
+    background-image: url("./../../img/Career/Join.png");
+    background-size: 45% 100%;
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-top: 97px;
+    .content {
+      .title h6 {
+        text-align: left;
+        font: normal normal 600 12px/15px IBM Plex Sans;
+        letter-spacing: 0.32px;
+        color: $gray-100;
+        text-transform: uppercase;
+      }
+      .heading h3 {
+        text-align: left;
+        font: normal normal 300 36px/47px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+      }
+
+      .testimonial {
+        padding-top: 122px;
+        .review p {
+          padding-right: 1rem;
+          text-align: left;
+          font: normal normal normal 32px/46px IBM Plex Serif;
+          letter-spacing: 0px;
+          color: $gray-100;
+        }
+
+        .name p {
+          text-align: left;
+          font: normal normal 600 18px/23px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: $gray-100;
+        }
+        .sep-line {
+          margin: 25px 0;
+          height: 2px;
+          background: $gray-20;
+        }
+        .position {
+          p {
+            text-align: left;
+            font: normal normal normal 14px/18px IBM Plex Sans;
+            letter-spacing: 0px;
+            color: $gray-70;
+          }
+        }
+      }
+      .lines {
+        padding-top: 220px;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+        .line {
+          width: 10%;
+          height: 4px;
+          background: $gray-20;
+          margin-right: 1rem;
+          &:active {
+            background: $blue-60;
+          }
+        }
+      }
+    }
+  }
+
+  //Application Process
+
+  .application--process {
+    .content {
+      padding-top: 96px;
+      padding-bottom: 98px;
+      .title h6 {
+        text-align: left;
+        font: normal normal 600 12px/15px IBM Plex Sans;
+        letter-spacing: 0.32px;
+        color: $gray-100;
+        text-transform: uppercase;
+      }
+      .heading h4 {
+        text-align: left;
+        font: normal normal 300 36px/47px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+      }
+    }
+
+    .stages {
+      padding-bottom: 88px;
+      .left {
+        .num {
+          p {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 600;
+            text-align: left;
+            letter-spacing: 0px;
+            color: $blue-60;
+          }
+        }
+        h4 {
+          font-size: 20px;
+          line-height: 27px;
+          text-align: left;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          color: $gray-100;
+          text-transform: uppercase;
+        }
+        .titlepict {
+          padding-top: 20px;
+          svg {
+            margin-left: -25px;
+            width: 100px;
+            height: 100px;
+            stroke: $blue-60;
+            center path {
+              stroke-width: 1px;
+            }
+          }
+        }
+      }
+      .details {
+        padding-top: 25px;
+        p {
+          text-align: left;
+          font-size: 28px;
+          line-height: 37px;
+          text-align: left;
+          font-weight: 300;
+          letter-spacing: 0px;
+          color: $gray-70;
+        }
+      }
+    }
+  }
+
+  //Job optn
+
+  .job--optn {
+    background: $gray-10;
+    padding-bottom: 80px;
+    .bx--row {
+      margin: 0;
+    }
+    .header {
+      padding-bottom: 27px;
+      padding-top: 97px;
+      @include Headers;
+    }
+
+    .filter--row {
+      padding-bottom: 73px;
+      .select {
+        margin-right: 16px;
+        .bx--select {
+          width: 100%;
+        }
+        .bx--select-input__wrapper {
+          width: 100%;
+        }
+        .bx--select--light .bx--select-input {
+          width: 100%;
+        }
+      }
+      .searchcol {
+        margin-right: 1rem;
+        padding-top: 1.5rem;
+      }
+      .filter-btn {
+        padding-top: 2rem;
+      }
+    }
+    .cards {
+      .bx--col-lg-4 {
+        padding-left: 0;
+      }
+    }
+    .job--card {
+      background: #ffffff;
+      padding: 24px 16px 16px 16px;
+      // margin-right: 1rem;
+      margin-bottom: 1rem;
+
+      .location {
+        h6 {
+          text-align: left;
+          font: normal normal 300 16px/20px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #525252;
+        }
+      }
+      .job-title {
+        margin-left: -16px;
+
+        padding-top: 48px;
+        padding-bottom: 72px;
+        h4 {
+          text-align: left;
+          font: normal normal normal 28px/37px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #0f61fd;
+        }
+      }
+      .exp {
+        h6 {
+          text-align: left;
+          font: normal normal normal 12px/15px IBM Plex Sans;
+          letter-spacing: 0.3px;
+          color: #525252;
+          text-transform: uppercase;
+        }
+      }
+      .department {
+        display: flex;
+        justify-content: space-between;
+        h6 {
+          text-align: left;
+          font: normal normal normal 16px/20px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #010101;
+        }
+      }
+    }
+    .paginate {
+      display: flex;
+      justify-content: space-between;
+    }
+    .bx--pagination__right {
+      display: none;
+    }
+  }
+
+  //Career Footer
+
+  .footer {
+    background-image: linear-gradient(90deg, #010101, #010101e1, #00000000),
+      url("./../../img/Career/footer.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+
+    .bx--row {
+      margin: 0;
+    }
+    .footer--content {
+      padding-top: 179px;
+      h2 {
+        text-align: left;
+        font: normal normal 300 42px/55px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #ffffff;
+      }
+
+      p {
+        text-align: left;
+        font: normal normal 200 16px/20px IBM Plex Sans;
+        letter-spacing: 0.09px;
+        color: #ffffff;
+      }
+      .sub-heading {
+        padding-top: 32px;
+        h4 {
+          font-size: 20px;
+          line-height: 27px;
+          font-weight: 300;
+          text-align: left;
+          letter-spacing: 0.09px;
+          color: #ffffff;
+        }
+      }
+    }
+    .button {
+      padding-top: 64px;
+      padding-bottom: 178px;
+
+      .btn {
+        margin-right: 16px;
+        width: 200px;
+      }
+    }
+    .btns {
+      @include LargeButton($blue-70);
+    }
+  }
+}
+@media only screen and (max-width: "1050px") {
+  .career .join--banner {
+    background-image: none;
+  }
+}

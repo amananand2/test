@@ -1,0 +1,609 @@
+@mixin BannerCard($bg) {
+  background: $bg;
+  height: 352px;
+  padding: 2rem;
+
+  .num {
+    p {
+      text-align: left;
+      font: normal normal normal 20px/27px IBM Plex Mono;
+      letter-spacing: 0.7px;
+      color: $white-0;
+    }
+  }
+  .card--heading {
+    padding-top: 64px;
+    padding-bottom: 122px;
+    h4 {
+      text-align: left;
+      font: normal normal 300 24px/32px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: $white-0;
+    }
+  }
+  .card--pict {
+    margin: -30px 0 -40px -18px;
+    svg {
+      height: 100px;
+      width: 100px;
+      stroke: $white-0;
+      path {
+        stroke-width: 1;
+      }
+    }
+  }
+}
+
+@mixin AboutOur {
+  h6 {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    color: $gray-70;
+  }
+  h3 {
+    font-size: 36px;
+    line-height: 47px;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    color: $gray-100;
+  }
+  p {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0.08px;
+    color: $gray-70;
+  }
+}
+
+@mixin BrandDesc($color) {
+  padding: 3rem 0;
+  p {
+    text-align: left;
+    font: normal normal 300 20px/27px IBM Plex Sans;
+    letter-spacing: 0px;
+    color: $color;
+  }
+}
+
+.aboutpage {
+  margin-top: 3.5rem;
+  .bx--row {
+    margin: 0;
+  }
+  .banner {
+    background-image: url('./../../img/About/mainabout.png');
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-color: $black-100;
+    .header {
+      padding: 11rem 0;
+      .heading {
+        h1 {
+          font-size: 52px;
+          font-weight: 300;
+          line-height: 65px;
+          text-align: left;
+          letter-spacing: 0px;
+          color: $white-0;
+        }
+      }
+      .detail {
+        padding-bottom: 4rem;
+        p {
+          font-size: 16px;
+          font-weight: 300;
+          text-align: left;
+          letter-spacing: 0px;
+          color: $white-0;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  .banner-cards {
+    .card-1 {
+      background-color: $blue-80;
+      height: 352px;
+      padding: 2rem 2rem;
+
+      h6 {
+        text-align: left;
+        font: normal normal 300 16px/20px IBM Plex Sans;
+        letter-spacing: 0.88px;
+        color: $white-0;
+        text-transform: uppercase;
+      }
+      h3 {
+        text-align: left;
+        font: normal normal 300 42px/55px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $white-0;
+      }
+    }
+    .card-2 {
+      @include BannerCard($blue-70);
+    }
+    .card-3 {
+      @include BannerCard($interactive-01);
+    }
+    .card-4 {
+      @include BannerCard($blue-50);
+    }
+  }
+
+  .about--section {
+    a {
+      text-decoration: none;
+      font: normal normal normal 18px/23px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: $gray-60;
+      text-transform: capitalize;
+      &:hover {
+        text-decoration: none;
+        translate: 0.6 ease-out;
+        text-align: center;
+        font: normal normal 500 18px/23px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $gray-100;
+        text-transform: capitalize;
+      }
+    }
+    .section {
+      &:hover {
+        border-bottom: 2px solid $blue-60;
+      }
+      background: $white-0;
+      border: 0.5px solid $gray-30;
+      border-left: 0px solid $gray-30;
+      padding: 29.5px 0 26.5px 0;
+
+      text-align: center;
+      &:active {
+        border-bottom: 2px solid $blue-60;
+      }
+    }
+  }
+
+  //company section
+  .company {
+    background: $gray-10;
+
+    padding-top: 70px;
+    .company--page {
+      padding-bottom: 70px;
+      border-bottom: 1px solid $carbon--gray-20;
+    }
+
+    .about--our {
+      @include AboutOur;
+    }
+    .cards {
+      .card {
+        min-height: 464px;
+        border-top: 2px solid $blue-60;
+        background: $white-0;
+        margin-bottom: 1rem;
+        .content {
+          padding: 1.5rem;
+          padding-right: 2rem;
+          .pictoicon {
+            padding-bottom: 1rem;
+            svg {
+              height: 60px;
+              width: 60px;
+              stroke: $blue-60;
+              path {
+                stroke-width: 1;
+              }
+            }
+          }
+          .title {
+            padding-bottom: 1rem;
+            h4 {
+              text-align: left;
+              font: normal normal medium 20px/27px IBM Plex Sans;
+              letter-spacing: 0px;
+              font-weight: 600;
+              color: $gray-100;
+            }
+          }
+          .desc {
+            p {
+              text-align: left;
+              font: normal normal 300 14px/18px IBM Plex Sans;
+              letter-spacing: 0.08px;
+              color: $gray-70;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //   brands
+  .brands {
+    background: $gray-10;
+    .bx--row {
+      margin: 0;
+    }
+    .about--our {
+      @include AboutOur;
+      padding: 3rem 0;
+    }
+    .brands--desc {
+      @include BrandDesc($gray-70);
+    }
+    .brands--tiles {
+      background: $white-0;
+      padding: 136.5px 0;
+      .heading {
+        h3 {
+          text-align: left;
+          font: normal normal medium 28px/37px IBM Plex Sans;
+          letter-spacing: 0.15px;
+          color: $gray-100;
+        }
+        .desc {
+          p {
+            text-align: left;
+            font: normal normal 300 18px/23px IBM Plex Sans;
+            letter-spacing: 0.1px;
+            color: $gray-100;
+          }
+        }
+      }
+      .learn {
+        a {
+          display: flex;
+          align-items: center;
+          font: normal normal normal 16px/20px IBM Plex Sans;
+          letter-spacing: 0.09px;
+          color: $blue-60;
+          text-decoration: none;
+          svg {
+            fill: $blue-60;
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+    .brands--tile--row1 {
+      background-image: url('./../../img/About/row1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100%;
+    }
+    .brands--tile--row2 {
+      background-image: url('./../../img/About/row2.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100%;
+    }
+    .brands--tile--row3 {
+      background-image: url('./../../img/About/row3.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100%;
+    }
+  }
+
+  //peole section
+  .about-people {
+    background: $gray-10;
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+    .about--our {
+      @include AboutOur;
+    }
+    .people--desc {
+      @include BrandDesc($gray-70);
+    }
+
+    .people--tabs {
+      width: 100%;
+      a.bx--tabs__nav-link {
+        outline: none;
+      }
+      .bx--tabs {
+        border-bottom: 2px solid $gray-20;
+      }
+      .bx--tab-content {
+        padding: 0;
+        padding-top: 3rem;
+      }
+      .people-image-card {
+        background: $white-0;
+        border-bottom: 1px solid $gray-20;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+      }
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+    .image--card--detail {
+      border-bottom: 2px solid $carbon--blue-60;
+      background: $white-0;
+      padding-bottom: 1rem;
+      text-align: center;
+      padding: 24px;
+
+      p {
+        text-align: left;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 300;
+
+        letter-spacing: 0.09px;
+        color: $gray-100;
+      }
+      h4 {
+        text-align: left;
+        font: normal normal normal 28px/37px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: $blue-60;
+      }
+      .icon {
+        text-align: right;
+        svg {
+          fill: $blue-60;
+        }
+      }
+    }
+  }
+
+  //history
+  .history {
+    background: $black-100;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: $white-0;
+    .history--banner {
+      .about--our {
+        padding: 3rem 0 1rem;
+        h6 {
+          font-size: 12px;
+          line-height: 15px;
+          font-weight: 600;
+          text-align: left;
+          letter-spacing: 0.32px;
+          text-transform: uppercase;
+          color: $white-0;
+        }
+        h3 {
+          font-size: 36px;
+          line-height: 47px;
+          font-weight: 400;
+          text-align: left;
+          letter-spacing: 0px;
+          text-transform: capitalize;
+          color: $white-0;
+        }
+        p {
+          text-align: left;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 18px;
+          letter-spacing: 0.08px;
+          color: $white-0;
+        }
+      }
+    }
+    .history--desc {
+      @include BrandDesc($white-0);
+    }
+
+    .circles {
+      display: flex;
+      //   flex-wrap: wrap-reverse;
+      .circle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .dot {
+        height: 12px;
+        width: 12px;
+        background: $gray-80;
+        border-radius: 50%;
+
+        &:active {
+          background: $white-0;
+          transform: scale(1.5);
+        }
+      }
+      .years {
+        padding: 1rem 0;
+        p {
+          text-align: center;
+          font: normal normal normal 14px/18px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: $gray-40;
+        }
+      }
+      .line {
+        width: 100%;
+        height: 1px;
+        background: $gray-80;
+        margin: 8px 0;
+      }
+    }
+    .banner {
+      margin-top: 5rem;
+      .about--history {
+        background: $gray-100;
+        min-height: 513px;
+        margin-right: -1rem;
+        padding-right: 8px;
+        padding-left: 8px;
+        .about--our {
+          h6 {
+            font-size: 12px;
+            line-height: 15px;
+            font-weight: 600;
+            text-align: left;
+            letter-spacing: 0.32px;
+            text-transform: uppercase;
+            color: $white-0;
+          }
+          h3 {
+            font-size: 36px;
+            line-height: 47px;
+            font-weight: 400;
+            text-align: left;
+            letter-spacing: 0px;
+            text-transform: capitalize;
+            color: $white-0;
+          }
+          p {
+            text-align: left;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 18px;
+            letter-spacing: 0.08px;
+            color: $white-0;
+          }
+        }
+      }
+      .banner-img {
+        position: relative;
+        //   background-image: url("./../../img/Brand/historySlide.png");
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: right center;
+        height: 100%;
+        .btn {
+          position: absolute;
+
+          right: 0;
+          bottom: 0;
+          svg {
+            margin-right: 1rem;
+          }
+          .btn-right {
+            background: $blue-80;
+          }
+        }
+      }
+    }
+  }
+}
+
+.about--history {
+  background: #010101;
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  .history--page {
+    background: #010101;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0px;
+    color: $white-0;
+  }
+}
+
+.history--card--left {
+  background: #010101;
+  h6 {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    color: $white-0;
+  }
+  h3 {
+    font-size: 36px;
+    line-height: 47px;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    color: $white-0;
+  }
+  p {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0.08px;
+    color: $white-0;
+  }
+}
+
+.history--slide--img {
+  background-image: url('./../../img/About/historySlide.png');
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: right center;
+  height: 100%;
+
+  .history--slide--card {
+    background: #161616;
+    padding-top: 70px;
+
+    .card {
+      padding: 48px;
+      padding-right: 0;
+      h6 {
+        font-size: 12px;
+        line-height: 15px;
+        font-weight: 600;
+        text-align: left;
+        letter-spacing: 0.32px;
+        text-transform: uppercase;
+        color: $white-0;
+      }
+      h3 {
+        font-size: 36px;
+        line-height: 47px;
+        font-weight: 400;
+        text-align: left;
+        letter-spacing: 0px;
+        text-transform: capitalize;
+        color: $white-0;
+      }
+      p {
+        text-align: left;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 18px;
+        letter-spacing: 0.08px;
+        color: $white-0;
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+.section-active {
+  background: $white-0;
+  border: 0.5px solid $gray-30;
+  border-left: 0px solid $gray-30;
+  padding: 29.5px 0 26.5px 0;
+  text-align: center;
+  border-bottom: 2px solid $blue-60;
+  text-decoration: none;
+  translate: 0.6 ease-out;
+  font: normal normal 500 18px/23px IBM Plex Sans;
+  letter-spacing: 0px;
+  color: $gray-100;
+  text-transform: capitalize;
+}
