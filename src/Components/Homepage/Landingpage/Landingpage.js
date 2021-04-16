@@ -2,28 +2,37 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight16 } from '@carbon/icons-react';
 import { Button } from 'carbon-components-react';
 import { BannerCard } from './BannerCards';
+import axios from "axios";
+import {connect} from 'react-redux';
+import {backgroundImage} from "../../../img/Homepage/Landingpage/banner.jpg"
+
+import {landingPageDataStart} from "../../../actions/index";
 
 
-const Landingpage = ({landingData}) => {
-  // const [pageData, setpageData] = useState('');
+
+const Landingpage = ({landingPageDataStart,landingData}) => {
+  const [apiCall, setApiCall] = useState(true);
 
   // const Apicall = async () => {
   //   const response = await axios.get(
-  //     'http://192.168.101.110/wordpress-uvation/all-apis/?method=home_page'
+  //     'https://testurls.net/uvation/all-apis/?method=home_page&section_name=section1'
   //   );
   //   const data = await response.data;
-  //   setpageData(data);
+  //   setlandingData(data);
   // };
 
-  // useEffect(() => {
-  //   landingPageDataStart();
-  // }, []);
+  useEffect(() => {
+    landingPageDataStart();    
+  }, []);
 
-  // console.log(landingData,"count");
+// Apicall()
 
+
+  // console.log(pageData,"pageData");
+  // landingPageDataStart();
   return (
     <div className='bx--grid--full-width homepage'>
-      <div className='bx--row banner' style={{ backgroundImage: "url('')" }}>
+      <div className='bx--row banner' style={{ backgroundImage:{backgroundImage} }}>
         <div className='bx--grid ' style={{ width: '-webkit-fill-available' }}>
           <div className='bx--col-lg-8 bx--no-gutter a'>
             <p>
@@ -38,7 +47,7 @@ const Landingpage = ({landingData}) => {
           <div className='bx--col-lg-5 bx--no-gutter learn-more'>
             <Button renderIcon={ArrowRight16}>{landingData && landingData.learn_more_button_text}</Button>
             <Button renderIcon={ArrowRight16} kind='secondary'>
-              Contact us
+            {landingData && landingData.contact_button_text}
             </Button>
           </div>
         </div>
@@ -50,7 +59,15 @@ const Landingpage = ({landingData}) => {
   );
 };
 
+const mapStateToProps = state => ({
+  landingData: state.landingPageReducer.landingData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  landingPageDataStart: () => dispatch(landingPageDataStart())
+});
 
 
-export default Landingpage;
+export default connect(mapStateToProps,mapDispatchToProps)(Landingpage);
+
 

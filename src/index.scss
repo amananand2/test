@@ -9,3 +9,7 @@ $feature-flags: (
   ui-shell: true,
   grid-columns-16: true,
 );
+
+.bx--loading-overlay{ 
+background-color: rgba(22, 22, 22, 0.8);
+}

@@ -1,9 +1,17 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import MainHeader from '../Mainheader/MainHeader';
 import { Button } from 'carbon-components-react';
 import { ArrowRight16, Chat20, Phone20 } from '@carbon/icons-react';
 import FooterBotm from './FooterBotm';
-const Footer = () => {
+import {connect} from 'react-redux';
+import {getInTouchPageDataStart} from "../../../actions/index";
+
+const Footer = ({getInTouchPageDataStart,getInTouchData}) => {
+  useEffect(() => {
+     getInTouchPageDataStart();
+  }, []);
+
+//  console.log(getInTouchData && getInTouchData.get_top_heading ,"getInTouchData");
   return (
     <>
       <MainHeader />
@@ -12,15 +20,14 @@ const Footer = () => {
           <div className='bx--row'>
             <div className='bx--col-lg-5 content'>
               <div className='heading'>
-                <h2>Get in touch with us</h2>
+                <h2>{getInTouchData && getInTouchData.get_top_heading}</h2>
               </div>
               <div className='sub-heading'>
-                <p>Threats never sleep. Neither do we.</p>
+                <p>{getInTouchData && getInTouchData.get_heading}</p>
               </div>
               <div className='about'>
                 <h6>
-                  Get in touch for a consultation call or answer to any
-                  questions you might have.
+                {getInTouchData && getInTouchData.get_description}
                 </h6>
               </div>
               <div className='call-btn'>
@@ -52,4 +59,13 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+const mapStateToProps = state => ({
+  getInTouchData: state.landingPageReducer.getInTouchData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getInTouchPageDataStart: () => dispatch(getInTouchPageDataStart())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Footer);

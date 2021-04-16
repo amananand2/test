@@ -3,6 +3,9 @@ import { Robotics } from '@carbon/pictograms-react';
 import { Button } from 'carbon-components-react';
 import { useSelector } from 'react-redux';
 import React,{useState,useEffect} from 'react';
+import {connect} from 'react-redux';
+
+import {caseStudiesPageDataStart} from "../../../actions/index";
 
 const HeaderVal = {
   title: 'CASE STUDIES',
@@ -87,17 +90,18 @@ const SectionHeader = () => {
 //   );
 // };
 const Cardbot = (props) => {
+  // console.log(props,"props");
   return (
     <div className='bx--col cardbot'>
       <div className='icon'>{CardVal[0].icon}</div>
       <div className='title'>
-        <h6>{CardVal[0].title}</h6>
+        <h6>{props.title}</h6>
       </div>
       <div className='heading'>
-        <h3>{CardVal[0].heading}</h3>
+        <h3>{props.heading}</h3>
       </div>
       <div className='about'>
-        <p>{CardVal[0].about}</p>
+        <p>{props.about}</p>
       </div>
       <div className='card-btn'>
         <div className='learnmore '>
@@ -126,16 +130,17 @@ const Cardsm = (props) => {
   );
 };
 
-const CaseStudy = ({landingData}) => {
+const CaseStudy = ({caseStudiesPageDataStart,caseStudiesData}) => {
   // const landingData = useSelector(state => state.landingPageReducer.landingData);
-  console.log(landingData,"landingData...")
+  // console.log(landingData,"landingData...")
 
   // const[data,setData]=useState();
 
-  // useEffect(()=>{
-  //   setData(landingData);
-  // },[landingData])
+  useEffect(()=>{
+    caseStudiesPageDataStart()
+  },[])
 
+  console.log(caseStudiesData,"caseStudiesData");
   // const Card = (props) => {
     
   //   return (
@@ -167,26 +172,42 @@ const CaseStudy = ({landingData}) => {
   //   value
   // ),"data...")
 
-console.log(landingData && landingData.tabthird[0].industries_data_description,"landingData.tabthird[0].industries_data_description");
+// console.log(landingData && landingData.tabthird[0].industries_data_description,"landingData.tabthird[0].industries_data_description");
   return (
     <div className='casestudy'>
       <div className='bx--grid'>
         <div className='bx--row'>
-          <SectionHeader />
+        <div className='bx--col-lg-6 section_header'>
+      <div className='title'>
+        <h6>{caseStudiesData && caseStudiesData.case_top_heading}</h6>
+      </div>
+      <div className='heading'>
+        <h3></h3>
+      </div>
+      <div className='subheading'>
+        <h4>{caseStudiesData && caseStudiesData.case_heading}</h4>
+      </div>
+      <div className='about'>
+        <p>{caseStudiesData && caseStudiesData.case_description}</p>
+      </div>
+    </div>
+
+{/* <SectionHeader/> */}
+
         </div>
         <div className='bx--row  card-row'>
           <div className='bx--col bx--no-gutter tab '>
-            {landingData &&
+            {caseStudiesData &&
               <div className='bx--col cards'>
               <div className='icon'>{<Robotics/>}</div>
               <div className='title'>
-                <h6>{landingData.tabthird[0].industries_data_sub_heading}</h6>
+                <h6>{caseStudiesData && caseStudiesData.manu_case_heading}</h6>
               </div>
               <div className='heading'>
-                <h3>{landingData.tabthird[0].industries_data_heading}</h3>
+                <h3>{caseStudiesData && caseStudiesData.manu_heading}</h3>
               </div>
               <div className='about'>
-                <p>{landingData.tabthird[0].industries_data_description}</p>
+                <p>{caseStudiesData && caseStudiesData.manu_description}</p>
               </div>
               <div className='card-btn'>
                 <div className='learnmore '>
@@ -196,33 +217,34 @@ console.log(landingData && landingData.tabthird[0].industries_data_description,"
                   </Button>
                 </div>
               </div>
-            </div> }
+            </div>
+              } 
           </div>
           <div className='bx--col-lg-10 bx--no-gutter tab '>
             <div className='bx--row bx--no-gutter--right'>
               <div className='bx--col-lg-8'>
-                {landingData && 
+                {caseStudiesData &&
                  <div className='bx--col cardsm'>
                     <div className='heading'>
-                      <h4>{landingData.tabthird[1].industries_data_heading}</h4>
+                      <h4>{caseStudiesData && caseStudiesData.supportive1_heading}</h4>
                     </div>
                     <div className='about'>
-                      <p>{landingData.tabthird[1].industries_data_description}</p>
+                      <p>{caseStudiesData && caseStudiesData.supportive1_description}</p>
                     </div>
                     <div className='icon'>
                       <ArrowRight16 />
                     </div>
                 </div>
-                }
+                 }
               </div>
               <div className='bx--col-lg-8 '>
-              {landingData && 
+              {caseStudiesData && 
                  <div className='bx--col cardsm'>
                     <div className='heading'>
-                      <h4>{landingData.tabthird[2].industries_data_heading}</h4>
+                      <h4>{caseStudiesData && caseStudiesData.supportive2_heading}</h4>
                     </div>
                     <div className='about'>
-                      <p>{landingData.tabthird[2].industries_data_description}</p>
+                      <p>{caseStudiesData && caseStudiesData.supportive2_description}</p>
                     </div>
                     <div className='icon'>
                       <ArrowRight16 />
@@ -233,9 +255,9 @@ console.log(landingData && landingData.tabthird[0].industries_data_description,"
               <div className='bx--col '>
                 <Cardbot
                   icon={CardVal[3].icon}
-                  title={CardVal[3].title}
-                  heading={CardVal[3].heading}
-                  about={CardVal[3].about}
+                  title={caseStudiesData && caseStudiesData.health_top_heading}
+                  heading={caseStudiesData && caseStudiesData.health_heading}
+                  about={caseStudiesData && caseStudiesData.health_description}
                 />
               </div>
             </div>
@@ -246,4 +268,14 @@ console.log(landingData && landingData.tabthird[0].industries_data_description,"
   );
 };
 
-export default CaseStudy;
+const mapStateToProps = state => ({
+  caseStudiesData: state.landingPageReducer.caseStudiesData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  caseStudiesPageDataStart: () => dispatch(caseStudiesPageDataStart())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(CaseStudy);
+

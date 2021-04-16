@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Search,
   Button,
   Select,
   SelectItem,
   SelectItemGroup,
+  Loading,
 } from 'carbon-components-react';
 
 import { Code16, ArrowDown16, Chat16, ArrowRight16 } from '@carbon/icons-react';
@@ -13,55 +14,55 @@ import { RichTextFormat } from '@carbon/pictograms-react';
 
 import FooterBotm from '../Homepage/Footer/FooterBotm';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
+import {connect} from 'react-redux';
+import {careerPageDataStart,careerUvationDataStart,applyingPageDataStart,jobPageDataStart,questionsPageDataStart} from "../../actions/index";
 
 const CareerCard = ({
-  heading = 'development',
+  title,
   posticon,
-  postname = 'Front-end Developer',
+  desc,
 }) => (
   <div className='bx--col-lg-2 bx--col-md-2 bx--col-sm-2'>
     <div className='card'>
-      <h4>{heading}</h4>
+      <h4>{title}</h4>
       <div className='card--content'></div>
       <div>
         <Code16 fill='#0F61FD' /> {posticon}
       </div>
       <div>
-        <p>{postname}</p>
+        <p>{desc}</p>
       </div>
     </div>
   </div>
 );
 
-const Testimonial = ({ reviews, name, position }) => (
+const Testimonial = ({ heading,subHeading,desc }) => (
   <div className='bx--col-lg-6 bx--no-gutter--left testimonial'>
     <div className='review'>
       <p>
-        {reviews}
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus
-        quam eu porta molestie. Fusce et vulputate metus, ac sagittis risus."
+        {desc}
       </p>
     </div>
     <div className='bx--col-lg-2 bx--no-gutter sep-line'> </div>
     <div className='name'>
-      <p>Johanna Doe {name}</p>
+      <p>{heading}</p>
     </div>
 
     <div className='position'>
-      <p>Software Engineer {position}</p>
+      <p>{subHeading}</p>
     </div>
   </div>
 );
 
-const ProcessCard = ({ num, pctitle, titlepict, prodetails }) => (
+const ProcessCard = ({ num, title, titlepict, prodetails }) => (
   <div className='bx--row stages'>
     <div className='bx--col-lg-5 bx--no-gutter--left'>
       <div className='bx--col left'>
         <div className='num'>
-          <p>{num}01</p>
+          <p>{num}</p>
         </div>
         <div>
-          <h4>{pctitle}Apply to desired position</h4>
+          <h4>{title}</h4>
         </div>
         <div className='titlepict'>
           {titlepict}
@@ -72,11 +73,7 @@ const ProcessCard = ({ num, pctitle, titlepict, prodetails }) => (
     <div className='bx--col'>
       <div className='details'>
         <p>
-          {prodetails}Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Fusce cursus elementum justo. Morbi congue sit amet massa et mollis.
-          Proin sit amet elit mi. Nunc ante sem, aliquam a erat ac, tincidunt
-          condimentum nisl. Proin eros urna, imperdiet eget condimentum at,
-          dictum id nisl.
+          {prodetails}
         </p>
       </div>
     </div>
@@ -87,16 +84,16 @@ const JobCard = ({ location, jobtitle, exp, department }) => (
   <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4'>
     <div className='job--card'>
       <div className='location'>
-        <h6>United States | Los Angeles{location}</h6>
+        <h6>{location}</h6>
       </div>
       <div className='bx--col-lg-12 job-title'>
-        <h4>Back-end Software Engineer{jobtitle}</h4>
+        <h4>{jobtitle}</h4>
       </div>
       <div className='exp'>
-        <h6>senior, +5 years of exp.{exp}</h6>
+        <h6>{exp}</h6>
       </div>
       <div className='department'>
-        <h6>senior, +5 years of exp.{department}</h6>
+        <h6>{department}</h6>
         <span>
           <Link to='/'>
             <ArrowRight16 />
@@ -115,11 +112,41 @@ const scrollToRef = (ref) =>
     behavior: 'smooth',
   });
 
-const Career = () => {
+const Career = ({careerPageDataStart,careerData,careerUvationDataStart,careerUvationData,applyingPageDataStart,applyingData,jobPageDataStart,jobData,questionsPageDataStart,questionsData}) => {
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
+
+  const [activeSlide,setActiveSlide]=useState(1);
+  const [filterData,setFilterData]=useState("");
+  const [updatedJob,setUpdatedJob]=useState(jobData && jobData.job_content);
+
+
+  useEffect(()=>{
+    careerPageDataStart();
+    careerUvationDataStart();
+    applyingPageDataStart();
+    jobPageDataStart();
+    questionsPageDataStart();
+    // setUpdatedJob(jobData && jobData.job_content)
+  },[])
+
+
+  useEffect(()=>{
+    setUpdatedJob(jobData && jobData.job_content && jobData.job_content.filter(value => {
+      return value.job_content_heading.toLowerCase().includes(filterData.toLowerCase()) || value.job_content_top_heading.toLowerCase().includes(filterData.toLowerCase())
+     }))
+   
+  },[filterData])
+
+  
+
+
+
+  // console.log(questionsData,"questionsData");
+
   return (
     <>
+    <Loading active={careerData.careerPageLoader}/>
       <MainHeader />
       <div className='bx--grid--full-width career'>
         <div className='banner'>
@@ -128,7 +155,7 @@ const Career = () => {
               <div className='bx--col-lg-7'>
                 <div className='content'>
                   <div className='heading'>
-                    <h1>Grow your career with Uvation</h1>
+                    <h1>{careerData && careerData.careers_heading}</h1>
                   </div>
                   <div className='searchbar'>
                     <Search
@@ -147,14 +174,11 @@ const Career = () => {
               </div>
             </div>
             <div className='bx--row cards'>
-              <CareerCard />
-              <CareerCard />
-              <CareerCard />
-              <CareerCard />
-              <CareerCard />
-              <CareerCard />
-              <CareerCard />
-              <CareerCard />
+            {careerData && careerData.featured_content && careerData.featured_content.map(value=>{
+                return(
+              <CareerCard title={value.featured_content_heading} desc={value.featured_content_description} />
+                )
+              }) }
             </div>
             <div className='bx--row see-all' onClick={executeScroll}>
               <p style={{ cursor: 'pointer' }}>See all available jobs </p>
@@ -171,20 +195,28 @@ const Career = () => {
               <div className='bx--col'>
                 <div className='content'>
                   <div className='title'>
-                    <h6>CAREERS</h6>
+                    <h6>{careerUvationData && careerUvationData.uvation_heading}</h6>
                   </div>
 
                   <div className='heading'>
-                    <h3>Why to join Uvation</h3>
+                    <h3>{careerUvationData && careerUvationData.uvation_description}</h3>
                   </div>
+                  {
+              careerUvationData && careerUvationData.uvation_content && careerUvationData.uvation_content.slice(activeSlide-1,activeSlide).map((value,index)=>{
+                return (
+              <Testimonial  heading={value.uvation_content_top_heading} subHeading={value.uvation_content_heading} desc={value.uvation_content_description} />
+                );
 
-                  <Testimonial />
+              })
+            }
+            
+                  {/* <Testimonial /> */}
 
                   <div className='lines'>
-                    <div className=' line'></div>
-                    <div className=' line'></div>
-                    <div className=' line'></div>
-                    <div className=' line'></div>
+                    <div className={activeSlide === 1 ? 'line-active' : "line"} onClick={()=>{setActiveSlide(1)}}></div>
+                    <div className={activeSlide === 2 ? 'line-active' : "line"} onClick={()=>{setActiveSlide(2)}}></div>
+                    <div className={activeSlide === 3 ? 'line-active' : "line"} onClick={()=>{setActiveSlide(3)}}></div>
+                    <div className={activeSlide === 4 ? 'line-active' : "line"} onClick={()=>{setActiveSlide(4)}}></div>
                   </div>
                 </div>
               </div>
@@ -198,21 +230,21 @@ const Career = () => {
               <div className='bx--col'>
                 <div className='content'>
                   <div className='title'>
-                    <h6>APPLYING</h6>
+                    <h6>{applyingData && applyingData.applying_top_heading}</h6>
                   </div>
 
                   <div className='heading'>
-                    <h4>Application process</h4>
+                    <h4>{applyingData && applyingData.applying_heading}</h4>
                   </div>
                 </div>
               </div>
             </div>
-            <ProcessCard />
-            <ProcessCard />
-            <ProcessCard />
-            <ProcessCard />
-            <ProcessCard />
-            <ProcessCard />
+            {applyingData && applyingData.applying_content && applyingData.applying_content.map(value=>{
+                return(
+              <ProcessCard num={value.applying_content_top_heading} title={value.applying_content_heading} prodetails={value.applying_content_description} />
+                )
+              }) }
+  
           </div>
         </div>
 
@@ -221,8 +253,8 @@ const Career = () => {
             <div className='bx--row'>
               <div className='bx--col '>
                 <div className='header'>
-                  <h6>CAREERS</h6>
-                  <h3>Why to join Uvation</h3>
+                  <h6>{jobData && jobData.job_top_heading}</h6>
+                  <h3>{jobData && jobData.job_heading}</h3>
                 </div>
               </div>
             </div>
@@ -236,7 +268,9 @@ const Career = () => {
                       size='lg'
                       light
                       id='search-1'
+                      value={filterData}
                       placeHolderText='Enter the job title, skill or location'
+                      onChange={(e)=>{setFilterData(e.target.value)}}
                     />
                   </div>
                 </div>
@@ -306,25 +340,29 @@ const Career = () => {
               </div>
 
               <div className='filter-btn'>
-                <Button size='field'>Reset all filters</Button>
+                <Button size='field' onClick={()=>{setFilterData("")}}>Reset all filters</Button>
               </div>
             </div>
 
             <div className='bx--row cards'>
-              <JobCard />
-              <JobCard />
-              <JobCard />
-              <JobCard />
+            {
+             filterData.length >= 1 && updatedJob && updatedJob.map((value,index)=>{
+                return (
+              <JobCard  location={value.job_content_top_heading} jobtitle={value.job_content_heading} exp={value.job_content_exp} department={value.job_content_description} />
+                );
 
-              <JobCard />
-              <JobCard />
-              <JobCard />
-              <JobCard />
+              })
+            }
 
-              <JobCard />
-              <JobCard />
-              <JobCard />
-              <JobCard />
+{
+             filterData.length === 0 && jobData && jobData.job_content && jobData.job_content.map((value,index)=>{
+                return (
+              <JobCard  location={value.job_content_top_heading} jobtitle={value.job_content_heading} exp={value.job_content_exp} department={value.job_content_description} />
+                );
+
+              })
+            }
+          
             </div>
           </div>
         </div>
@@ -335,13 +373,12 @@ const Career = () => {
               <div className='bx--row'>
                 <div className='bx--col-lg-4 footer--content'>
                   <div className='bx--col bx--no-gutter heading'>
-                    <h2>Any questions?</h2>
-                    <p>Feel free to message us</p>
+                    <h2>{questionsData && questionsData.questions_top_heading}</h2>
+                    <p>{questionsData && questionsData.questions_heading}</p>
                   </div>
                   <div className='bx--col-lg-12 bx--no-gutter sub-heading'>
                     <h4>
-                      Get in touch for a call or answer to any questions you
-                      might have.
+                    {questionsData && questionsData.questions_description}
                     </h4>
                   </div>
                 </div>
@@ -377,4 +414,25 @@ const Career = () => {
   );
 };
 
-export default Career;
+
+const mapStateToProps = state => ({
+
+  careerData: state.careerPageReducer.careerData,
+  careerUvationData:state.careerPageReducer.careerUvationData,
+  applyingData:state.careerPageReducer.applyingData,
+  jobData:state.careerPageReducer.jobData,
+  questionsData:state.careerPageReducer.questionsData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  careerPageDataStart: () => dispatch(careerPageDataStart()),
+  careerUvationDataStart: () => dispatch(careerUvationDataStart()),
+  applyingPageDataStart: () => dispatch(applyingPageDataStart()),
+  jobPageDataStart: () => dispatch(jobPageDataStart()),
+  questionsPageDataStart: () => dispatch(questionsPageDataStart()),
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Career);
+

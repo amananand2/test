@@ -421,10 +421,19 @@
         background: $gray-80;
         border-radius: 50%;
 
-        &:active {
-          background: $white-0;
-          transform: scale(1.5);
-        }
+       
+
+        // &:active {
+        //   background: $white-0;
+        //   transform: scale(1.5);
+        // }
+      }
+
+      .dot-active{
+        height: 18px;
+        width: 18px;
+        background: white;
+        border-radius: 50%;
       }
       .years {
         padding: 1rem 0;

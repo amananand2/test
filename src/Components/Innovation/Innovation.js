@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Button } from 'carbon-components-react';
+import { Button, Loading } from 'carbon-components-react';
 import {
   ArrowDown16,
   Chat16,
@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 
 import FooterBotm from '../Homepage/Footer/FooterBotm';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
+import {connect} from 'react-redux';
+import {innovationPageDataStart,featuredInnovationPageDataStart,recommendedPageDataStart,contentPageDataStart,innovationExplorePageDataStart} from "../../actions/index";
 
 export const FeatureCard = ({ titleIcon, title, content }) => (
   <div>
@@ -44,15 +46,17 @@ export const ArticleCard = ({ heading, content }) => (
   </>
 );
 
-export const ArticleCards = ({ titleIcon, title, heading }) => (
+export const ArticleCards = ({ titleIcon, title, heading }) => {
+  console.log(heading,"heading");
+  return(
   <div className='article--cards'>
     <div className='content'>
       <div className='title'>
         {titleIcon} <Chat16 />
-        <h6>{title}ARTICLE CAPTIONs</h6>
+        <h6>{title}</h6>
       </div>
       <div className='bx--col-lg-10 heading'>
-        <h4>{heading}Lorem ipsum dolor sit amet</h4>
+        <h4>{heading}</h4>
       </div>
 
       <div className='arrow'>
@@ -62,7 +66,8 @@ export const ArticleCards = ({ titleIcon, title, heading }) => (
       </div>
     </div>
   </div>
-);
+  )
+};
 
 const RecommendCard = ({ title, desc }) => (
   <div className='bx--col-lg-5 bx--col-sm-4'>
@@ -70,14 +75,11 @@ const RecommendCard = ({ title, desc }) => (
       <div className='title'>
         <h3>
           {title}
-          Featured articles
         </h3>
       </div>
       <div className='bx--col-lg-12  desc'>
         <p>
-          {desc}Discover how Uvation’s breakthrough technologies are
-          transforming industries with smarter ways to do business, new growth
-          opportunities and strategies to compete and win.
+          {desc}
         </p>
       </div>
 
@@ -107,7 +109,8 @@ const scrollToRef2 = (ref) =>
   });
 const scrollToRef3 = () => window.scrollTo(0, 0);
 
-const Innovation = () => {
+const Innovation = ({innovationPageDataStart,innovationData,featuredInnovationPageDataStart,featuredInnovationData,recommendedPageDataStart,
+                     recommendedData,contentPageDataStart,contentData,innovationExplorePageDataStart,innovationExploreData}) => {
   const myRef = useRef(null);
   const myRef1 = useRef(null);
   const myRef2 = useRef(null);
@@ -145,10 +148,18 @@ const Innovation = () => {
 
   useEffect(() => {
     executeScroll3();
+    innovationPageDataStart();
+    featuredInnovationPageDataStart();
+    recommendedPageDataStart();
+    contentPageDataStart();
+    innovationExplorePageDataStart();
   }, []);
+
+  // console.log(featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[0].featured_content_description,"innovationExploreData");
 
   return (
     <>
+    <Loading active={innovationData.innovationPageLoader}/>
       <MainHeader />
       <div className='bx--grid--full-width innovation'>
         <div className='bx--grid--full-width bannerpage' ref={myRef3}>
@@ -156,14 +167,11 @@ const Innovation = () => {
             <div className='bx--col-lg-7 bx--offset-lg-1'>
               <div className=' bx--col-lg-10 bx--offset-lg-1 left'>
                 <div className='heading'>
-                  <h1>Innovation</h1>
+                  <h1>{innovationData && innovationData.innovation_heading}</h1>
                 </div>
                 <div className='desc'>
                   <p>
-                    We’re committed to utilizing a delivery approach that puts
-                    our client’s specific requirements first.Lorem ipsum dolor
-                    sit amet, consectetur adipiscing elit. Fusce quis urna
-                    congue est. Lorem ipsum dolor sit amet.
+                   {innovationData && innovationData.innovation_description}
                   </p>
                 </div>
                 <div className='button'>
@@ -219,8 +227,8 @@ const Innovation = () => {
             <div className='bx--row bx--no-gutter'>
               <div className='bx--col-lg-4 bx--no-gutter'>
                 <div className=' bx--col-lg-14 left'>
-                  <h6>INNOVATION</h6>
-                  <h2>Featured articles</h2>
+                  <h6>{featuredInnovationData && featuredInnovationData.featured_top_heading}</h6>
+                  <h2>{featuredInnovationData && featuredInnovationData.featured_heading}</h2>
                   <p>
                     Discover how Uvation’s breakthrough technologies are
                     transforming industries with smarter ways to do business,
@@ -228,14 +236,18 @@ const Innovation = () => {
                   </p>
                 </div>
               </div>
+          
               <div className='bx--col bx--offset-lg-8 '>
-                <ArticleCards />
+                <ArticleCards title={featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[0].featured_content_heading} 
+                heading={featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[0].featured_content_description} />
               </div>
               <div className='bx--col bx--offset-lg-8 '>
-                <ArticleCards />
+              <ArticleCards title={featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[1].featured_content_heading} 
+                heading={featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[1].featured_content_description} />
               </div>
               <div className='bx--col'>
-                <ArticleCards />
+              <ArticleCards title={featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[2].featured_content_heading} 
+                heading={featuredInnovationData && featuredInnovationData.featured_description && featuredInnovationData.featured_description[2].featured_content_description} />
               </div>
             </div>
           </div>
@@ -246,33 +258,35 @@ const Innovation = () => {
             <div className='bx--row bx--no-gutter'>
               <div className='bx--col-lg-4'>
                 <div className='bx--col-lg-14 bx--no-gutter left'>
-                  <h6>INNOVATION</h6>
-                  <h4>Recommended for you</h4>
+                  <h6>{recommendedData && recommendedData.recommended_heading }</h6>
+                  <h4>{recommendedData && recommendedData.recommended_description }</h4>
                 </div>
               </div>
               <div className='bx--col'>
                 <div className='bx--grid bx--no-gutter '>
                   <div className='bx--row bx--no-gutter'>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
+                  {
+             recommendedData && recommendedData.recommended_content && recommendedData.recommended_content.slice(0,3).map((value,index)=>{
+                return (
+                  <div className='bx--col bx--col-md-4 bx--col-sm-4'>
+                      <ArticleCards title={value.recommended_content_heading} heading={value.recommended_content_description} />
                     </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4 '>
-                      <ArticleCards />
-                    </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
-                    </div>
+                );
+              })
+            }
                   </div>
                   <div className='bx--row bx--no-gutter'>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
+                  <div className='bx--row bx--no-gutter'>
+                  {
+             recommendedData && recommendedData.recommended_content && recommendedData.recommended_content.slice(3,7).map((value,index)=>{
+                return (
+                  <div className='bx--col bx--col-md-4 bx--col-sm-4'>
+                      <ArticleCards title={value.recommended_content_heading} heading={value.recommended_content_description} />
                     </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4 '>
-                      <ArticleCards />
-                    </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
-                    </div>
+                );
+              })
+            }
+                  </div>
                   </div>
                 </div>
               </div>
@@ -285,15 +299,18 @@ const Innovation = () => {
             <div className='bx--row bx--no-gutter'>
               <div className='bx--col-lg-4'>
                 <div className='banner'>
-                  <h6>INNOVATION</h6>
-                  <h2>Lorem ipsum dolor est</h2>
+                  <h6>{contentData && contentData.lorem_heading}</h6>
+                  <h2>{contentData && contentData.lorem_description}</h2>
                 </div>
               </div>
             </div>
             <div className='bx--row bx--row--condensed card-row'>
-              <RecommendCard />
-              <RecommendCard />
-              <RecommendCard />
+              {contentData && contentData.lorem_content && contentData.lorem_content.map(value=>{
+                return(
+              <RecommendCard title={value.lorem_content_heading} desc={value.lorem_content_description} />
+                )
+              }) }
+      
             </div>
           </div>
         </div>
@@ -304,14 +321,12 @@ const Innovation = () => {
               <div className='bx--col-lg-9 fot-banner'>
                 <div className='heading'>
                   <h2>
-                    Explore enterprise and business solutions for your industry
-                    on the Uvation Marketplace
+                  {innovationExploreData && innovationExploreData.explore_heading}
                   </h2>
                 </div>
                 <div className='sub-heading'>
                   <h5>
-                    Transform your business with infrastructure, services and
-                    tools for integrated cloud computing.
+                  {innovationExploreData && innovationExploreData.explore_description}      
                   </h5>
                 </div>
                 <div className='access'>
@@ -339,4 +354,27 @@ const Innovation = () => {
   );
 };
 
-export default Innovation;
+const mapStateToProps = state => ({
+  innovationData: state.landingPageReducer.innovationData,
+  featuredInnovationData: state.landingPageReducer.featuredInnovationData,
+  recommendedData:state.landingPageReducer.recommendedData,
+  contentData:state.landingPageReducer.contentData,
+  innovationExploreData:state.landingPageReducer.innovationExploreData,
+  //innovationData
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  innovationPageDataStart: () => dispatch(innovationPageDataStart()),
+  featuredInnovationPageDataStart: () => dispatch(featuredInnovationPageDataStart()),
+  recommendedPageDataStart: () => dispatch(recommendedPageDataStart()),
+  contentPageDataStart: () => dispatch(contentPageDataStart()),
+  innovationExplorePageDataStart: () => dispatch(innovationExplorePageDataStart()),
+
+  //innovationExplorePageDataStart
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Innovation);
+

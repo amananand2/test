@@ -9,6 +9,11 @@
         background-repeat: no-repeat;
         background-position: center center;
        
+    .businessresiliency__banner_img {
+        background-image: url(./../../img/managedit/headerimg.png);
+        background-size: 50% 100%;
+        background-repeat: no-repeat;
+        background-position: 100% 0;
 
     .businessresiliency__banner__content{
         padding-top:220px;
@@ -51,7 +56,7 @@
 
     .businessresiliency__header_content_downbutton{
         display:flex;
-        margin-top:235px;
+        margin-top:194px;
         align-items: center;
         grid-gap: 3rem;
         flex-wrap:wrap;
@@ -79,6 +84,7 @@
     }
 
     }
+}
     }
 
     .businessresiliency__difference{
@@ -217,6 +223,48 @@
                  margin-top:68px;
                  margin-left:10px;
                  
+                 //1
+                 .improve_section_box_progressbar_active_1{
+                    color:white;
+                    list-style: none;
+                 display: inline-block;
+                 width:33.33%;
+                 position: relative;
+                 // text-align: center;
+                 cursor: pointer;
+                 letter-spacing: 0.36px;
+                 color: #FFFFFF;
+                 text-transform: uppercase;
+                 opacity: 1;
+                     
+                 }
+                 .improve_section_box_progressbar_active_1:before {
+                     content: counter(step);
+                     counter-increment: step;
+                     width: 30px;
+                     height: 30px;
+                     line-height : 30px;
+                    
+                     display: block;
+                     text-align: center;
+                     // margin: 0 auto 10px auto;
+                     margin-bottom:26px;
+                     margin-top:0px;
+                      
+ 
+                     background-color: blue;
+                 //    left:10%;
+                   }
+                   .improve_section_box_progressbar_active_1:after {
+                     content: "";
+                     position: absolute;
+                     width: 128%;
+                     height: 1px;
+                     background-color: #ddd;
+                     top: 15px;
+                     // left: -50%;
+                     // z-index : -1;
+                   }
                 .improve_section_box_progressbar_1{
                    color:white;
                    list-style: none;
@@ -245,7 +293,7 @@
                     margin-top:0px;
                      
 
-                    background-color: blue;
+                    background-color: #383838;
                 //    left:10%;
                   }
                   .improve_section_box_progressbar_1:after {
@@ -260,6 +308,48 @@
                   }
                   color:white;
                   list-style: none;
+
+                  //2
+
+                  .improve_section_box_progressbar_active_2{
+                    display: inline-block;
+                 //    left:48%;
+                    position: relative;
+                    text-align: center;
+                    cursor: pointer;
+                    width:33.33%;
+                  
+                 letter-spacing: 0.36px;
+                 color: #FFFFFF;
+                 text-transform: uppercase;
+                 opacity: 1;
+                     
+                 }
+                 .improve_section_box_progressbar_active_2:before {
+                     content: counter(step);
+                     counter-increment: step;
+                     width: 30px;
+                     height: 30px;
+                     line-height : 30px;
+                    
+                     display: block;
+                     text-align: center;
+                     margin: 0 auto 26px auto;
+                     background-color: blue;
+                    left:10%;
+                   }
+ 
+                   .improve_section_box_progressbar_active_2:after {
+                     content: "";
+                     position: absolute;
+                     width: 105%;
+                     height: 1px;
+                     background-color: #ddd;
+                     top: 15px;
+                     right: -63%;
+                     // z-index : -1;
+                   }  
+
                   .improve_section_box_progressbar_2{
                    display: inline-block;
                 //    left:48%;
@@ -287,6 +377,7 @@
                     background-color: #383838;
                    left:10%;
                   }
+
                   .improve_section_box_progressbar_2:after {
                     content: "";
                     position: absolute;
@@ -296,8 +387,11 @@
                     top: 15px;
                     right: -63%;
                     // z-index : -1;
-                  }                  
-                .improve_section_box_progressbar_3{
+                  }  
+                  
+                  
+                  //3
+                .improve_section_box_progressbar_active_3{
                    color:white;
                    list-style: none;
                    display: inline-block;
@@ -313,7 +407,7 @@
                        
                    cursor: pointer;
                 }
-                .improve_section_box_progressbar_3:before {
+                .improve_section_box_progressbar_active_3:before {
                     content: counter(step);
                     counter-increment: step;
                     width: 30px;
@@ -322,9 +416,38 @@
                     display: block;
                     text-align: center;
                     margin: 0 auto 26px auto;
-                    background-color: #383838;
+                    background-color: blue;
                    left:10%;
                   }
+
+                  .improve_section_box_progressbar_3{
+                    color:white;
+                    list-style: none;
+                    display: inline-block;
+                 //    left:88%;
+                 // width:33.33%;
+                    left:19%;
+                    position: relative;
+                    text-align: center;
+                    letter-spacing: 0.36px;
+                    color: #FFFFFF;
+                    text-transform: uppercase;
+                    opacity: 1;
+                        
+                    cursor: pointer;
+                 }
+                 .improve_section_box_progressbar_3:before {
+                     content: counter(step);
+                     counter-increment: step;
+                     width: 30px;
+                     height: 30px;
+                     line-height : 30px;
+                     display: block;
+                     text-align: center;
+                     margin: 0 auto 26px auto;
+                     background-color: #383838;
+                    left:10%;
+                   }
             }
         }
 

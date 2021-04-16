@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { Button, ModalWrapper } from 'carbon-components-react';
+import { Button, ModalWrapper, Loading } from 'carbon-components-react';
 import { ArrowDown20, CaretRight16, Document32 } from '@carbon/icons-react';
 import Footer from '../Homepage/Footer/Footer';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
+import {connect} from 'react-redux';
+import {investorHeadingDataStart} from "../../actions/index";
+
 
 // import Footer from "../Homepage/Footer/Footer";
 
@@ -19,7 +22,7 @@ const TermsCard = ({
           {icon} {<Document32 />}
         </div>
         <div className='card--heading'>
-          <h4>{heading} Acceptance of Terms</h4>
+          <h4>{heading}</h4>
         </div>
       </div>
 
@@ -96,7 +99,7 @@ const scrollToRef1 = (ref) =>
     behavior: 'smooth',
   });
 
-const InvestersSla = () => {
+const InvestersSla = ({investorHeadingDataStart,investorHeadingData}) => {
   const myRef = useRef(null);
   const myRef1 = useRef(null);
 
@@ -105,10 +108,14 @@ const InvestersSla = () => {
 
   useEffect(() => {
     executeScroll();
+    investorHeadingDataStart();
   }, []);
+
+  console.log(investorHeadingData,"investorHeadingData")
 
   return (
     <>
+    <Loading active={investorHeadingData.investorSlaPageLoader}/>
       <MainHeader />
       <div className='investersSla'>
         <div className='bx--grid--full-width banner'>
@@ -116,10 +123,10 @@ const InvestersSla = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-12 content'>
                 <div className='heading'>
-                  <h1>Uvation SLAs & Terms of Use</h1>
+                  <h1>{investorHeadingData && investorHeadingData.uvation_heading}</h1>
                 </div>
                 <div className='sub-heading'>
-                  <h3>Last Updated: June 24, 2015</h3>
+                  <h3>{investorHeadingData && investorHeadingData.uvation_description}</h3>
                 </div>
                 <Button
                   className='see-more'
@@ -135,25 +142,12 @@ const InvestersSla = () => {
         <div className='bx--grid--full-width cards'>
           <div className='bx--grid '>
             <div className='bx--row' ref={myRef1}>
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
-              <TermsCard />
+            {investorHeadingData && investorHeadingData.uvation_content && investorHeadingData.uvation_content.map(value=>{
+                return(
+              <TermsCard heading={value.uvation_content_heading}/>
+                )
+              }) }
+ 
             </div>
           </div>
         </div>
@@ -163,4 +157,17 @@ const InvestersSla = () => {
   );
 };
 
-export default InvestersSla;
+const mapStateToProps = state => ({
+
+  investorHeadingData: state.InvestorRelationPageReducer.investorHeadingData,
+
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  investorHeadingDataStart: () => dispatch(investorHeadingDataStart()),
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(InvestersSla);
+

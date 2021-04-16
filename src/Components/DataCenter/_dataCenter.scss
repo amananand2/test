@@ -9,6 +9,12 @@
         background-position: center center;
         padding-bottom:64px;
 
+        .datacenter__banner_img{
+            background-image: url(./../../img/datacenter/headerimg.svg);
+            background-size: 50% 100%;
+            background-repeat: no-repeat;
+            background-position: 100% 0;
+
         .datacenter__banner__content{
             padding-top:220px;
 
@@ -49,7 +55,7 @@
 
             .datacenter__header_content_downbutton{
                 display:flex;
-                margin-top:235px;
+                margin-top:194px;
                 align-items: center;
                 grid-gap: 3rem;
                 flex-wrap:wrap;
@@ -81,6 +87,8 @@
         
     
         }
+
+    }
 }
 
 .datacenter_benefits{
@@ -284,6 +292,7 @@
             letter-spacing: 0px;
             color: #FFFFFF;
             opacity: 1;
+            margin-top: 24px;
               }
           }
           .datacenter_services_content_para{
@@ -316,6 +325,7 @@
             letter-spacing: 0px;
             color: #FFFFFF;
             opacity: 1;
+            margin-top: 24px;
               }
           }
           .datacenter_services_content_second_para{
@@ -347,6 +357,7 @@
             letter-spacing: 0px;
             color: #FFFFFF;
             opacity: 1;
+            margin-top: 24px;
               }
           }
           .datacenter_services_content_third_para{
@@ -381,6 +392,7 @@
             letter-spacing: 0px;
             color: #FFFFFF;
             opacity: 1;
+            margin-top: 24px;
               }
           }
           .datacenter_services_content_fourth_para{

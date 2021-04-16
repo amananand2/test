@@ -3,7 +3,7 @@
     $url,
     $linearGradient: (90deg, #010101, #010101e1, #00000000)
   ) {
-    padding-left: 4.5rem;
+    padding-left: 2.5rem;
     width: 100%;
     background-color: $black-100;
     background-image: linear-gradient($linearGradient), url($url);
@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    border-left:1px solid #383838;
     .banner {
       padding-top: 86px;
       color: $white-0;
@@ -63,11 +64,13 @@
         letter-spacing: 0.32px;
       }
       h3 {
+        margin-top:6px;
         text-align: left;
         font: normal normal 300 36px/47px IBM Plex Sans;
         letter-spacing: 0px;
       }
       p {
+        margin-top:12px;
         text-align: left;
         font: normal normal 300 14px/18px IBM Plex Sans;
         letter-spacing: 0.08px;
@@ -117,5 +120,45 @@
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
+  }
+  .mission-row{
+  .mission-border{
+  .mission{
+     h6 {
+    
+  }
+}
+}
+}
+}
+
+@media only screen and (max-width: 600px) {
+  .aboutpage {
+    .banner {
+      background-image: none;
+      .header {
+        padding: 3rem 0;
+      }
+    }
+    .company {
+      .about--our {
+        padding-bottom: 2rem;
+      }
+      .bx--col {
+        padding: 0;
+      }
+    }
+    .brands .brands--tiles {
+      padding: 3rem 0 !important;
+    }
+
+    .people-image-card {
+      margin-right: 0 !important;
+    }
+    .about--history {
+      .about--our {
+        padding-bottom: 4rem;
+      }
+    }
   }
 }

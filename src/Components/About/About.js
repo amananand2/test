@@ -5,7 +5,7 @@ import {
   PartnerRelationship,
   Growth,
   Advocate,
-} from '@carbon/pictograms-react';
+} from "@carbon/pictograms-react";
 
 import { Link } from 'react-router-dom';
 
@@ -15,6 +15,10 @@ import Footer from './../Homepage/Footer/Footer';
 import AboutPeople from './AboutPeople';
 import History from './History';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
+import {connect} from 'react-redux';
+import {uvationPageDataStart} from "../../actions/index";
+import { Loading } from "carbon-components-react";
+
 
 const BannerCard = ({ num, heading, picto }) => (
   <>
@@ -49,7 +53,7 @@ const scrollToRef3 = (ref) =>
   });
 const scrollToRef4 = () => window.scrollTo(0, 0);
 
-const About = () => {
+const About = ({uvationData,uvationPageDataStart}) => {
   const myRef = useRef(null);
   const myRef1 = useRef(null);
   const myRef2 = useRef(null);
@@ -100,24 +104,27 @@ const About = () => {
 
   useEffect(() => {
     executeScroll4();
+    uvationPageDataStart();
   }, []);
+
+//  console.log(uvationData && uvationData.card && uvationData.card[0].card_heading  ,"uvationData")
+//  console.log(uvationData && uvationData.card ,"uvationData")
+
 
   return (
     <>
+      <Loading active={uvationData.aboutPageLoader}/>
       <MainHeader />
       <div className='aboutpage'>
         <div className='bx--grid--full-width banner'>
           <div className='bx--col-lg-6 bx--offset-lg-2 '>
             <div className='bx--col-lg-13 header'>
               <div className='heading'>
-                <h1>Inside Uvation</h1>
+                <h1>{uvationData && uvationData.inside_heading}</h1>
               </div>
               <div className='detail'>
                 <p>
-                  Our vision is to be a global end-to-end Information
-                  Technology, Aerospace, Defense and Consulting Company
-                  providing services, innovating products and pioneering
-                  technologies to create prosperity and a better world.
+                {uvationData && uvationData.inside_description}
                 </p>
               </div>
               <div>
@@ -131,15 +138,15 @@ const About = () => {
           <div className='bx--row bx--no-gutter'>
             <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4'>
               <div className='card-1'>
-                <h6>Living By</h6>
-                <h3>Our Values</h3>
+                <h6>{uvationData && uvationData.value_heading}</h6>
+                <h3>{uvationData && uvationData.value_description}</h3>
               </div>
             </div>
             <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4'>
               <div className='card-2'>
                 <BannerCard
-                  num='01.'
-                  heading='Dedication to the client'
+                  num={uvationData && uvationData.card && uvationData.card[0].card_heading}
+                  heading={uvationData && uvationData.card && uvationData.card[0].card_description}
                   picto={<Advocate />}
                 />
               </div>
@@ -147,8 +154,8 @@ const About = () => {
             <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4'>
               <div className='card-3'>
                 <BannerCard
-                  num='02.'
-                  heading='Innovation that matters'
+                  num={uvationData && uvationData.card && uvationData.card[1].card_heading}
+                  heading={uvationData && uvationData.card && uvationData.card[1].card_description}
                   picto={<Growth />}
                 />
               </div>
@@ -156,8 +163,8 @@ const About = () => {
             <div className='bx--col-lg-4 bx--col-md-4 bx--col--sm-4'>
               <div className='card-4'>
                 <BannerCard
-                  num='03.'
-                  heading='Trust in relationships'
+                  num={uvationData && uvationData.card && uvationData.card[2].card_heading}
+                  heading={uvationData && uvationData.card && uvationData.card[2].card_description}
                   picto={<PartnerRelationship />}
                 />
               </div>
@@ -228,4 +235,13 @@ const About = () => {
   );
 };
 
-export default About;
+const mapStateToProps = state => ({
+  uvationData: state.landingPageReducer.uvationData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  uvationPageDataStart: () => dispatch(uvationPageDataStart())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(About);

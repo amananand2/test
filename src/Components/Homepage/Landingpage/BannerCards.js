@@ -39,16 +39,20 @@ import { useSelector } from 'react-redux';
 export const BannerCard = () => {
   const landingData = useSelector(state => state.landingPageReducer.landingData);
 
+  // console.log(landingData && landingData.services && landingData.services[0].services_heading ,"landingData")
+  // console.log(landingData && landingData.services && landingData.services[0].services_description ,"landingData")
+
+
 return (
   <>
   <div className="bx--col-lg-4 ">
   <div className="bannercard">
     <div className="icon">{<IbmSecurity24 />}</div>
     <div className="heading">
-      <h4>{landingData && landingData.box_one_heading}</h4>
+      <h4>{landingData && landingData.services && landingData.services[0].services_heading}</h4>
     </div>
     <div className="descp">
-      <p>{landingData && landingData.box_one_description}</p>
+      <p>{landingData && landingData.services && landingData.services[0].services_description}</p>
     </div>
     <div className="arrow">
       <ArrowRight16 />
@@ -61,10 +65,10 @@ return (
   <div className="bannercard">
     <div className="icon">{<Terminal24 />}</div>
     <div className="heading">
-      <h4>{landingData && landingData.box_two_heading}</h4>
+    <h4>{landingData && landingData.services && landingData.services[1].services_heading}</h4>
     </div>
     <div className="descp">
-      <p>{landingData && landingData.box_two_description}</p>
+    <p>{landingData && landingData.services && landingData.services[1].services_description}</p>
     </div>
     <div className="arrow">
       <ArrowRight16 />
@@ -76,10 +80,10 @@ return (
   <div className="bannercard">
     <div className="icon">{<Code24 />}</div>
     <div className="heading">
-      <h4>{landingData && landingData.box_three_heading}</h4>
+      <h4>{landingData && landingData.services && landingData.services[2].services_heading}</h4>
     </div>
     <div className="descp">
-      <p>{landingData && landingData.box_three_description}</p>
+      <p>{landingData && landingData.services && landingData.services[2].services_description}</p>
     </div>
     <div className="arrow">
       <ArrowRight16 />
@@ -92,10 +96,10 @@ return (
   <div className="bannercard">
     <div className="icon">{<Development24 />}</div>
     <div className="heading">
-      <h4>{landingData && landingData.box_four_heading}</h4>
+      <h4>{landingData && landingData.services && landingData.services[3].services_heading}</h4>
     </div>
     <div className="descp">
-      <p>{landingData && landingData.box_four_description}</p>
+      <p>{landingData && landingData.services && landingData.services[3].services_description}</p>
     </div>
     <div className="arrow">
       <ArrowRight16 />

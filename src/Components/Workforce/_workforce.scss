@@ -1,0 +1,447 @@
+.workforce {
+  margin-top: 3.5rem;
+  background: transparent linear-gradient(180deg, #010101 0%, #161616 100%);
+
+  //   section1
+  .workforce__banner {
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    color: #ffffff;
+    img {
+      object-fit: contain;
+      max-width: 100%;
+    }
+
+    &__content {
+      padding-bottom: 3rem;
+      padding-top: 4rem;
+      .pictoIcon {
+        padding-top: 6rem;
+        padding-bottom: 1.5rem;
+
+        svg {
+          border: 1px;
+          width: 80px;
+          height: 80px;
+        }
+        fill: #ffffff;
+        stroke-width: 1px;
+      }
+      .heading {
+        h1 {
+          text-align: left;
+          font: normal normal 300 72px/65px IBM Plex Sans;
+          letter-spacing: -0.79px;
+          color: #ffffff;
+          opacity: 1;
+        }
+      }
+      .subheading {
+        padding-top: 3rem;
+        p {
+          text-align: left;
+          font: normal normal 300 16px/24px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #e0e0e0;
+          opacity: 1;
+        }
+      }
+    }
+    .learn__more {
+      padding-top: 3rem;
+    }
+    .bottom__arrows {
+      padding-top: 195px;
+
+      display: flex;
+      grid-gap: 1.5rem;
+      p {
+        text-align: left;
+        font: normal normal 300 14px/65px IBM Plex Sans;
+        letter-spacing: 0.32px;
+        color: #ffffff;
+        text-transform: uppercase;
+        opacity: 1;
+
+        display: inline-flex;
+        align-items: center;
+        grid-gap: 1rem;
+        span {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  //   section2
+  .workforce__benifits {
+    background: linear-gradient(180deg, #010101 0%, #161616 100%);
+
+    h2 {
+      padding-top: 4.5rem;
+      text-align: left;
+      font: normal normal 300 48px/65px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+    }
+    h4 {
+      color: #ffffff;
+    }
+    p {
+      text-align: left;
+      font: normal normal 300 16px/24px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #e0e0e0;
+      opacity: 1;
+      max-width: 100%;
+    }
+    &__box {
+      padding-top: 4rem;
+      padding-bottom: 4.5rem;
+      .bx--col {
+        margin-right: 4rem;
+        &:nth-child(3) {
+          margin: 0;
+        }
+      }
+      .heading {
+        display: flex;
+        align-items: center;
+        .number__box {
+          width: 32px;
+          height: 32px;
+          background: #0353e9;
+          color: #ffffff;
+          margin-right: 1.5rem;
+          font: normal normal 600 18px/32px IBM Plex Mono;
+          letter-spacing: -0.2px;
+          color: #ffffff;
+          opacity: 1;
+          display: grid;
+          place-items: center;
+        }
+        h4 {
+          text-align: left;
+          font: normal normal normal 24px/32px IBM Plex Sans;
+          letter-spacing: 0.77px;
+          color: #ffffff;
+          text-transform: uppercase;
+          opacity: 1;
+        }
+      }
+      .border__line {
+        margin: 1.5rem 0;
+        height: 1px;
+        background-color: $gray-80;
+      }
+    }
+  }
+
+  //   section3
+  .workforce__approach {
+    background-color: #ffffff;
+    .heading {
+      padding-top: 4.5rem;
+      h2 {
+        text-align: left;
+        font: normal normal 300 48px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #161616;
+        opacity: 19;
+      }
+    }
+    .subheading {
+      padding-top: 1.5rem;
+      h6 {
+        text-align: left;
+        font: normal normal 300 16px/22px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #383838;
+        opacity: 1;
+      }
+    }
+    .pictoIcon {
+      padding: 1.1rem 0;
+      svg {
+        border: 1px;
+        width: 72px;
+        height: 72px;
+        fill: #010101;
+      }
+      // stroke-width: 1px;
+    }
+    .approch__box {
+      padding-top: 4rem;
+      padding-bottom: 4.5rem;
+      .bx--col {
+        margin-right: 4rem;
+        &:nth-child(4) {
+          margin: 0;
+        }
+      }
+      &__name {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+        h4 {
+          text-align: left;
+          font: normal normal normal 20px/27px IBM Plex Sans;
+          letter-spacing: 0.46px;
+          color: #383838;
+          text-transform: uppercase;
+          opacity: 1;
+        }
+      }
+      &__desc {
+        p {
+          text-align: left;
+          font: normal normal 300 16px/22px IBM Plex Sans;
+          letter-spacing: 0.09px;
+          color: #383838;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  //   section4
+  .workforce__reach {
+    background-color: $blue-60;
+
+    &__heading {
+      padding-top: 4.5rem;
+      padding-bottom: 292px;
+      h2 {
+        text-align: left;
+        font: normal normal 300 64px/80px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #ffffff;
+        opacity: 1;
+        padding-right: 3rem;
+      }
+    }
+    img {
+      object-fit: contain;
+      max-width: 100%;
+    }
+    .bookCons {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 156px;
+      max-width: 380px;
+      width: 100%;
+      background-color: $blue-60;
+      p {
+        padding-left: 1rem;
+        text-align: left;
+        font: normal normal normal 24px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #ffffff;
+        opacity: 1;
+      }
+    }
+  }
+
+  //   section5
+  .workforce__drive {
+    background-color: #f2f4f8;
+    .heading {
+      padding-top: 4.5rem;
+      padding-bottom: 2rem;
+      width: 100%;
+      h2 {
+        text-align: left;
+        font: normal normal 300 48px/65px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #161616;
+        opacity: 1;
+      }
+    }
+    .subheading {
+      padding-bottom: 4rem;
+      p {
+        text-align: left;
+        font: normal normal 300 16px/22px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #383838;
+        opacity: 1;
+      }
+    }
+    .card-col {
+      column-count: 3;
+      column-gap: 4.5rem;
+      // column-rule: ;
+
+      div {
+        border-top: 6px solid $blue-60;
+        padding: 1.5rem;
+        background-color: #ffffff;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 4rem;
+        h3 {
+          text-align: left;
+          font: normal normal normal 26px/34px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #010101;
+          opacity: 1;
+          padding-bottom: 2rem;
+        }
+        p {
+          text-align: left;
+          font: normal normal 300 16px/22px IBM Plex Sans;
+          letter-spacing: 0.09px;
+          color: #383838;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+//   section6
+.workforce__sourcing {
+  background-color: #161616;
+  &__heading {
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
+    h2 {
+      text-align: left;
+      font: normal normal 300 48px/65px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+    }
+  }
+  &__subheading {
+    p {
+      text-align: left;
+      font: normal normal 300 16px/22px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+    }
+  }
+  .bx--col-lg-8 {
+    min-height: 570px;
+  }
+
+  &__boxrow {
+    padding: 4.5rem 0;
+  }
+
+  &__imgBox {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    img {
+      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  &__card {
+    height: 100%;
+    padding: 2rem;
+    background-color: #ffffff;
+    .heading {
+      padding-bottom: 1rem;
+    }
+    h3 {
+      text-align: left;
+      font: normal normal normal 24px/32px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #161616;
+      opacity: 1;
+    }
+    p {
+      text-align: left;
+      font: normal normal 300 14px/20px IBM Plex Sans;
+      letter-spacing: 0.08px;
+      color: #383838;
+      opacity: 1;
+    }
+  }
+}
+//   section7
+.workforce__chat {
+  background-color: #010101;
+
+  .heading {
+    padding: 0 1rem;
+    padding-top: 3.5rem;
+    h3 {
+      text-align: left;
+      font: normal normal 300 60px/78px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+    }
+  }
+  .subheading {
+    padding-top: 2rem;
+    padding-bottom: 313px;
+    // padding-left: 0.5rem;
+    p {
+      text-align: left;
+      font: normal normal 300 20px/27px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #e0e0e0;
+      opacity: 1;
+    }
+  }
+  .imgbox {
+    width: 100%;
+    height: 100%;
+
+    img {
+      object-fit: fill;
+      opacity: 0.9;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .bookCons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 156px;
+    max-width: 380px;
+    width: 100%;
+    background-color: $blue-60;
+    p {
+      padding-left: 1rem;
+      text-align: left;
+      font: normal normal normal 24px/65px IBM Plex Sans;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .workforce .workforce__drive .card-col {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .workforce .workforce__drive .card-col {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .workforce .workforce__drive .card-col {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}

@@ -1,6 +1,9 @@
 import { ArrowRight16 } from '@carbon/icons-react';
 import { Button } from 'carbon-components-react';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import {connect} from 'react-redux';
+
+import {expertisePageDataStart} from "../../../actions/index";
 
 import {
   Robotics,
@@ -22,27 +25,28 @@ const HeaderVal = {
 //     icon: <Robotics />,
 //     title: 'Manufacturing',
 //     about:
+// 
 //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis urna congue est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis urna congue est.',
 //   },
 // ];
 
-const SectionTitle = () => {
-  return (
-    <div className='bx--col-lg-5 bx--no-gutter--right '>
-      <div className='header'>
-        <div className='title'>
-          <h6>{HeaderVal.title}</h6>
-        </div>
-        <div className='heading'>
-          <h4>{HeaderVal.heading}</h4>
-        </div>
-        <div className='about'>
-          <p>{HeaderVal.about}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+// const SectionTitle = () => {
+//   return (
+//     <div className='bx--col-lg-5 bx--no-gutter--right '>
+//       <div className='header'>
+//         <div className='title'>
+//           <h6>{expertiseData.expertise_top_heading}</h6>
+//         </div>
+//         <div className='heading'>
+//           <h4>{HeaderVal.heading}</h4>
+//         </div>
+//         <div className='about'>
+//           <p>{HeaderVal.about}</p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 // const MapCards = (props) => {
 //   return (
@@ -68,7 +72,7 @@ const SectionTitle = () => {
 
 // const Card = () => MapVal.map(MapCard);
 
-const MapSection = () => {
+const MapSection = ({expertisePageDataStart,expertiseData}) => {
   const [manufacture, setmanufacture] = useState(true);
   const [health, sethealth] = useState(false);
   const [education, seteducation] = useState(false);
@@ -99,6 +103,11 @@ const MapSection = () => {
     setaerospace(true);
   };
 
+  useEffect(() => {
+    expertisePageDataStart();
+  }, []);
+
+  // console.log(expertiseData && expertiseData.expertise_service ,"expertiseData");
   return (
     <div className='mappage'>
       <div
@@ -132,7 +141,19 @@ const MapSection = () => {
       <div className='map'>
         <div className='bx--grid'>
           <div className='bx--row bx--no-gutter'>
-            <SectionTitle />
+          <div className='bx--col-lg-5 bx--no-gutter--right '>
+      <div className='header'>
+        <div className='title'>
+          <h6>{expertiseData && expertiseData.expertise_top_heading}</h6>
+        </div>
+        <div className='heading'>
+          <h4>{expertiseData && expertiseData.expertise_heading}</h4>
+        </div>
+        <div className='about'>
+          <p>{expertiseData && expertiseData.expertise_description}</p>
+        </div>
+      </div>
+    </div>
           </div>
           <div className='bx--row  card'>
             <div className='bx--col-lg-5 bx--col-sm-4 bx--no-gutter'>
@@ -143,13 +164,11 @@ const MapSection = () => {
                       <Robotics />
                     </div>
                     <div className='title'>
-                      <h5>Manufacturing</h5>
+                      <h5>{expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[0].expertise_service_heading}</h5>
                     </div>
                     <div className='about'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Fusce quis urna congue est.
+                    {expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[0].expertise_service_description}
                       </p>
                     </div>
                   </div>
@@ -163,13 +182,11 @@ const MapSection = () => {
                       <Medical />
                     </div>
                     <div className='title'>
-                      <h5>Healthcare</h5>
+                      <h5>{expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[1].expertise_service_heading}</h5>
                     </div>
                     <div className='about'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Fusce quis urna congue est.
+                      {expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[1].expertise_service_description}
                       </p>
                     </div>
                   </div>
@@ -183,13 +200,11 @@ const MapSection = () => {
                       <University />
                     </div>
                     <div className='title'>
-                      <h5>Education</h5>
+                      <h5>{expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[2].expertise_service_heading}</h5>
                     </div>
                     <div className='about'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Fusce quis urna congue est.
+                      {expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[2].expertise_service_description}
                       </p>
                     </div>
                   </div>
@@ -203,13 +218,11 @@ const MapSection = () => {
                       <Satellite />
                     </div>
                     <div className='title'>
-                      <h5>Aerospace & Defence</h5>
+                      <h5>{expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[3].expertise_service_heading}</h5>
                     </div>
                     <div className='about'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Fusce quis urna congue est.
+                      {expertiseData && expertiseData.expertise_service && expertiseData.expertise_service[3].expertise_service_description}
                       </p>
                     </div>
                   </div>
@@ -220,7 +233,7 @@ const MapSection = () => {
         </div>
       </div>
       <div className='bx--grid '>
-        <ul className='bx--col-lg-10 bx--col-sm-2 bx--no-gutter--left map-list'>
+        <ul className='bx--col-lg-10  bx--no-gutter--left map-list'>
           <li>
             <h3>20</h3> <p>Maret</p>
           </li>
@@ -258,4 +271,13 @@ const MapSection = () => {
   );
 };
 
-export default MapSection;
+const mapStateToProps = state => ({
+  expertiseData: state.landingPageReducer.expertiseData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  expertisePageDataStart: () => dispatch(expertisePageDataStart())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(MapSection);

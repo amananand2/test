@@ -17,6 +17,11 @@ import {
 import MoreContactUs from './MoreContactUs';
 import Footer from '../Homepage/Footer/Footer';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
+// import { useSelector } from 'react-redux';
+import {connect} from 'react-redux';
+import { Loading } from "carbon-components-react";
+import {reachUsPageDataStart,moreContactUsPageDataStart} from "../../actions/index";
+
 
 export const InfoCard = ({ icon, source }) => (
   <div className='details'>
@@ -36,7 +41,7 @@ const scrollToRef1 = (ref) =>
     behavior: 'smooth',
   });
 
-const ContactUs = () => {
+const ContactUs = ({reachUsPageDataStart,moreContactUsPageDataStart,reachUsData}) => {
   const myRef = useRef(null);
   const myRef1 = useRef(null);
 
@@ -45,7 +50,14 @@ const ContactUs = () => {
 
   useEffect(() => {
     executeScroll();
+    reachUsPageDataStart();
+    moreContactUsPageDataStart();
   }, []);
+
+  // const reachUsData = useSelector(state => state.landingPageReducer.reachUsData);
+
+  // console.log(reachUsData && reachUsData.help_centers && reachUsData.help_centers[0].help_centers_description ,"reachUsData")
+
 
   function TabsContent() {
     return (
@@ -53,16 +65,15 @@ const ContactUs = () => {
         <div className='bx--row'>
           <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4 info__col'>
             <div className='heading'>
-              <h2>How To Reach Us</h2>
-              <h6>we are here to help</h6>
+              <h2>{reachUsData && reachUsData.reach_us_top_heading}</h2>
+              <h6>{reachUsData && reachUsData.reach_us_heading}</h6>
             </div>
 
             <div className='line'></div>
 
             <div className='desc'>
               <p>
-                Contact us to learn more about ourproducts, solutions and
-                services.
+              {reachUsData && reachUsData.reach_us_description}
               </p>
             </div>
           </div>
@@ -70,62 +81,61 @@ const ContactUs = () => {
           <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4 info__col'>
             <div className='heading'>
               <ShoppingCart />
-              <h3>Sales & Client Services</h3>
+              <h3> {reachUsData && reachUsData.clint_heading}</h3>
             </div>
             <div className='line'></div>
 
             <div className='info--cards'>
-              <h6>General Inquiries</h6>
+              <h6>{reachUsData && reachUsData.client_services && reachUsData.client_services[0].general_inquiries[0].genral_heading}</h6>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America)'
+                source={`${reachUsData && reachUsData.client_services && reachUsData.client_services[0].general_inquiries[0].genral_phone} (North America)`}
               />
-              <InfoCard icon={<Email16 />} source='info@uvation.com' />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.client_services && reachUsData.client_services[0].general_inquiries[0].genral_message} />
             </div>
             <div className='info--cards'>
-              <h6>Sales Assistance</h6>
+              <h6>{reachUsData && reachUsData.client_services && reachUsData.client_services[0].sales_assistance[0].sales_heading}</h6>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America)'
+                source={`${reachUsData && reachUsData.client_services && reachUsData.client_services[0].sales_assistance[0].sales_phone} (North America)`}
               />
-              <InfoCard icon={<Email16 />} source='sales@uvation.com' />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.client_services && reachUsData.client_services[0].sales_assistance[0].sales_message} />
             </div>
             <div className='info--cards'>
-              <h6>Billing & Accounts</h6>
+              <h6>{reachUsData && reachUsData.client_services && reachUsData.client_services[0].billing_accounts[0].billing_heading}</h6>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America))'
+                source={`${reachUsData && reachUsData.client_services && reachUsData.client_services[0].billing_accounts[0].billing_phone} (North America)`}
               />
-              <InfoCard icon={<Email16 />} source='billing@uvation.com' />
-              <InfoCard icon={<Email16 />} source='accounts@uvation.com' />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.client_services && reachUsData.client_services[0].billing_accounts[0].billing_message} />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.client_services && reachUsData.client_services[0].billing_accounts[0].billing_email} />
             </div>
             <div className='info--cards'>
-              <h6>Online Store, Shopping & Shipping Assistance</h6>
+              <h6>{reachUsData && reachUsData.client_services && reachUsData.client_services[0].online_store[0].store_heading}</h6>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America)'
+                source={`${reachUsData && reachUsData.client_services && reachUsData.client_services[0].online_store[0].store_phone} (North America)`}
               />
-              <InfoCard icon={<Email16 />} source='store@uvation.com' />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.client_services && reachUsData.client_services[0].online_store[0].store_message}  />
             </div>
           </div>
 
           <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4 info__col'>
             <div className='heading'>
               <CustomerService />
-              <h3>Technical Support</h3>
+              <h3>{reachUsData && reachUsData.technical_heading}</h3>
             </div>
             <div className='line'></div>
             <div className='info--cards'>
-              <h6>Contracts & Services support:</h6>
+              <h6>{reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].services_support[0].services_heading}</h6>
               <h5>
-                Electronic service requests can be submitted for hardware or
-                software under warranty or with a support contract.
+              {reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].services_support[0].services_description}
               </h5>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America)'
+                source={ `${ reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].services_support[0].services_phone} (North America)`} 
               />
-              <InfoCard icon={<Email16 />} source='support@uvation.com' />
+              <InfoCard icon={<Email16 />} source={ reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].services_support[0].services_email} />
               <InfoCard
                 icon={<Settings16 />}
                 source={<Link to='#'>Open a Service Request</Link>}
@@ -133,16 +143,15 @@ const ContactUs = () => {
             </div>
 
             <div className='info--cards'>
-              <h6>SOC Incident Request:</h6>
+              <h6>{reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].incident[0].incident_heading}</h6>
               <h5>
-                Electronic service requests can be submitted for hardware or
-                software under warranty or with a support contract.
+              {reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].incident[0].incident_description}     
               </h5>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America)'
+                source={`${reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].incident[0].incident_phone} (North America)`}
               />
-              <InfoCard icon={<Email16 />} source='soc@uvation.com' />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].incident[0].incident_email} />
               <InfoCard
                 icon={<Settings16 />}
                 source={<Link to='#'>Submit a SOCIncident Request</Link>}
@@ -150,16 +159,15 @@ const ContactUs = () => {
             </div>
 
             <div className='info--cards'>
-              <h6>Contracts & Services support:</h6>
+              <h6>{reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].contracts_services[0].contracts_services_heading}</h6>
               <h5>
-                Electronic service requests can be submitted for hardware or
-                software under warranty or with a support contract.
+                {reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].contracts_services[0].contracts_services_description}
               </h5>
               <InfoCard
                 icon={<Phone16 />}
-                source='+1 855-721-1155 (North America)'
+                source={`${reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].contracts_services[0].contracts_services_phone}(North America)`}
               />
-              <InfoCard icon={<Email16 />} source='support@xonode.com' />
+              <InfoCard icon={<Email16 />} source={reachUsData && reachUsData.technical_support && reachUsData.technical_support[0].contracts_services[0].contracts_services_email} />
               <InfoCard
                 icon={<Settings16 />}
                 source={
@@ -174,14 +182,13 @@ const ContactUs = () => {
           <div className='bx--col-lg-4 bx--col-md-4 bx--col-sm-4 info__col'>
             <div className='heading'>
               <Advocate />
-              <h3>Help Centers</h3>
+              <h3>{reachUsData && reachUsData.help_centers && reachUsData.help_centers[0].help_heading}</h3>
             </div>
             <div className='line'></div>
 
             <div className='help-center'>
               <p>
-                Customer Service, Accounts & Billing, Ecommerce and General
-                Support Requests, please use our Central Help Center:
+                {reachUsData && reachUsData.help_centers && reachUsData.help_centers[0].help_centers_description}
               </p>
               <div className='help-btn'>
                 <Button kind='secondary' size='small' renderIcon={ArrowRight16}>
@@ -192,8 +199,8 @@ const ContactUs = () => {
 
             <div className='help-center'>
               <p>
-                Customer Service, Accounts & Billing, Ecommerce and General
-                Support Requests, please use our Central Help Center:
+              {reachUsData && reachUsData.help_centers && reachUsData.help_centers[0].help_centers_description}
+               
               </p>
               <div className='help-btn'>
                 <Button kind='secondary' size='small' renderIcon={ArrowRight16}>
@@ -209,6 +216,7 @@ const ContactUs = () => {
 
   return (
     <>
+      <Loading active={reachUsData.contactPageLoader}/>
       <MainHeader />
       <div
         className='bx--grid--full-width '
@@ -254,7 +262,7 @@ const ContactUs = () => {
             >
               <Tab label='How To Reach Us'>
                 <div className='contact__tabs'>
-                  <TabsContent />
+                  <TabsContent heading={reachUsData && reachUsData.reach_us_top_heading} subHeading={reachUsData && reachUsData.reach_us_heading} desc={reachUsData && reachUsData.reach_us_description} />
                 </div>
               </Tab>
 
@@ -311,4 +319,19 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+const mapStateToProps = state => ({
+  reachUsData: state.landingPageReducer.reachUsData,
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  reachUsPageDataStart: () => dispatch(reachUsPageDataStart()),
+  moreContactUsPageDataStart: () => dispatch(moreContactUsPageDataStart()),
+ 
+  //moreContactUsPageDataStart
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(ContactUs);
+

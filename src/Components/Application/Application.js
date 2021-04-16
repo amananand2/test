@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import MainHeader from "../Homepage/Mainheader/MainHeader";
-import { Grid, Row, Button } from "carbon-components-react";
+import { Grid, Row, Button, Loading } from "carbon-components-react";
 import { SystemsDevopsCode,CodeSyntax } from "@carbon/pictograms-react";
 // import { ArrowDown20, ArrowRight20 } from "@carbon/icons-react";
 import { ArrowDown20, ArrowRight16, ArrowLeft16 } from "@carbon/icons-react";
@@ -8,32 +8,84 @@ import { Chat32 } from '@carbon/icons-react';
 import bg1 from "./../../img/technologyservices/bg1.png";
 import Footer from './../Homepage/Footer/Footer';
 import FooterBotm from '../Homepage/Footer/FooterBotm';
+import {connect} from 'react-redux';
+import {applicationPageDataStart,benefitsPageDataStart,developPageDataStart,businessPageDataStart,applicationTabsPageDataStart,applicationChatPageDataStart} from "../../actions/index";
+ import {Link} from "react-router-dom";
 
 
 
+const Content1 = ({num,heading,desc}) =>{
+return(
+    <>
+        <div className="bx--col-lg-7 ">
+            <div className="application__benifts__content__first__heading">
+                <div className="box">
+                            {num}
+                     </div>
+                        <p>{heading}</p>
+                    </div>
+                    <div className="application__benifts__content__first__content">
+                    <p>{desc}</p>
+            </div>
+                 </div>
 
+             
+    </>
+)
+}
 
+const Content2 = ({num,heading,desc}) =>{
+    return(
+        <>
+            <div className="bx--col-lg-7 bx--offset-lg-1 ">
+                    <div className="application__benifts__content__first__heading">
+                        <div className="box">
+                            {num}
+                        </div>
+                        <p>{heading}</p>
+                    </div>
+                    <div className="application__benifts__content__first__content">
+                    <p>{desc}</p>
+                    </div>
+                    </div>
+                  
+        </>
+    )
+    }
 
+const Application = ({applicationPageDataStart,applicationData,benefitsPageDataStart,benefitsData,developPageDataStart,developData,
+                      businessPageDataStart,businessData,applicationTabsPageDataStart,applicationTabsData,applicationChatPageDataStart,applicationChatData}) => {
 
-const Application = () => {
+    useEffect(()=>{
+        applicationPageDataStart();
+        benefitsPageDataStart();
+        developPageDataStart();
+        businessPageDataStart();
+        applicationTabsPageDataStart();
+        applicationChatPageDataStart();
+    },[])
+     
+    const [active,setActive] = useState(1);
+    // console.log(applicationChatData,"applicationChatData");
+
     return (
+        <>
+        <Loading active = {applicationData.applicationPageLoader} />
         <div className="application">
             <MainHeader/>
             <Grid className="bx--no-gutter" fullWidth>
             <div className="application__banner">
+            <Row className="application__banner_img" >
             <Grid>
-                  <Row>
               <div className="bx--col-lg-7 application__banner__content">
                         <div className="application__header_content_icon">
                          <SystemsDevopsCode stroke="#f4f4f4" />
                          </div>
                          <div className="application__header_content_heading">
-                         <h1>Application</h1>
+                         <h1>{applicationData && applicationData.application_heading}</h1>
                          </div>
                          <div className="application__header_content_para">
-                         <p>Custom applications can give you automation, enhanced functionality, and customer connection you need to propel your business to the next level.
-                            By going with a customized solution, you avoid settling for an off-the-shelf solution that ends up forcing you to “put a round peg in a square hole.” 
-                            With Uvation, you can have your app designed to your specifications, from scratch, and in-line with your most important objectives.</p>
+                         <p>{applicationData && applicationData.application_description}</p>
                          </div>
                          <div className="application__header_content_button">
                             <Button renderIcon={ArrowDown20}>Learn more</Button>
@@ -43,93 +95,47 @@ const Application = () => {
                          <div className="arrow-left">
                                  <ArrowLeft16/>
                                 </div>
-                            
+                                <Link style={{color:"none",textDecoration:"none"}} to ="/technologyservices">
                                 <p>Technology Services</p>
+                                </Link>
                                 <div className="border"></div>
+                                <Link style={{color:"none",textDecoration:"none"}} to ="/businessresiliency">
                                 <p className="sec-button">Next Up: Business Resiliency</p>
+                                </Link>
                                 <div className="arrow-right">
                                  <ArrowRight16/>
                                 </div>
                          </div>
+
                         </div> 
-                  </Row>
                   </Grid>
+                  </Row>
                 </div>
                     {/* section 2 */}
                    
                     <div className="application_benifit">
                     <Grid>
                 <div className="bx--col-lg-8 bx--no-gutter  application__benifts__heading">
-                  <h1>Benefits of Custom Application Development</h1>
+                  <h1>{benefitsData && benefitsData.benefits_heading}</h1>
                 </div>
                 </Grid>
  
                  {/* first row */}
                 <Grid>
                     <Row>
-                    <div className="bx--col-lg-7 ">
-                    <div className="application__benifts__content__first__heading">
-                        <div className="box">
-                            1
-                        </div>
-                        <p>AUTOMATION</p>
-                    </div>
-                    <div className="application__benifts__content__first__content">
-                    <p>There are likely several time-consuming, repetitive tasks you or your employees execute on a daily or weekly basis. 
-                    One of the benefits of a more digital business landscape is many repetitive or mundane tasks can be automated using a custom application. 
-                    This can save valuable time, reduce frustration, and significantly cut down on human error.</p>
-                    </div>
-                    </div>
-
-                    <div className="bx--col-lg-7 bx--offset-lg-1 ">
-                    <div className="application__benifts__content__first__heading">
-                        <div className="box">
-                            2
-                        </div>
-                        <p>Facilitate collaboration</p>
-                    </div>
-                    <div className="application__benifts__content__first__content">
-                    <p>Because an application can serve as a central digital workspace, it can help people from different teams come together. 
-                        Using an application that encourages collaboration, team members can combine forces to tackle current obstacles and design ways to help your business grow.</p>
-                    </div>
-                    </div>
+                    {benefitsData && benefitsData.benefits_content && benefitsData.benefits_content.map((value,index)=> index % 2==0 ? 
+              <Content1 num={value.sr_no} heading={value.benefits_content_heading} desc={value.benefits_content_description}/> : 
+              <Content2 num={value.sr_no} heading={value.benefits_content_heading} desc={value.benefits_content_description}/>          
+              ) }
+                   
+                     
                     </Row>
                 </Grid>
 
                 {/* first row ends */}
 
                 {/* second row starts */}
-                <Grid>
-                    <Row>
-                    <div className="bx--col-lg-7 ">
-                    <div className="application__benifts__content__first__heading">
-                        <div className="box">
-                            3
-                        </div>
-                        <p>Unify your business’ data</p>
-                    </div>
-                    <div className="application__benifts__content__first__content">
-                    <p>There are likely several time-consuming, repetitive tasks you or your employees execute on a daily or weekly basis. 
-                        One of the benefits of a more digital business landscape is many repetitive or mundane tasks can be automated using a custom application. 
-                        This can save valuable time, reduce frustration, and significantly cut down on human error.</p>
-                    </div>
-                    </div>
-
-                    <div className="bx--col-lg-7 bx--offset-lg-1 ">
-                    <div className="application__benifts__content__first__heading">
-                        <div className="box">
-                            4
-                        </div>
-                        <p>Enhance security</p>
-                    </div>
-                    <div className="application__benifts__content__first__content">
-                    <p>When you buy an application off-the-shelf, you inherit a host of security issues. 
-                        Many off-the-shelf apps have long been targets of hackers and other cyber criminals because they know if they find a vulnerability, they can gain access to the data of large groups of users—and, potentially, the app’s entire customer roster. By opting for custom-design services, your app is a much smaller target. 
-                        Cyber criminals would have to commit their time and energy to devising attack strategies for your app specifically.</p>
-                    </div>
-                    </div>
-                    </Row>
-                </Grid>
+              
 
                 {/* second row ends */}
                 </div>
@@ -142,11 +148,10 @@ const Application = () => {
                                 {/* left content  starts*/} 
                             <div className="bx--col-lg-8">
                              <div className="develop__application__heading ">
-                                 <p>Develop Your Customized Application with Uvation</p>
+                                 <p>{developData && developData.develop_heading}</p>
                              </div>
                              <div className="develop__application__content">
-                                 <p>Uvation’s data center experts are prepared to help you develop your data center strategy and choose an optimal deployment model, both for growth and your immediate business needs. We can help you find an ideal solution by conducting an audit of your current deployment, then working with top providers to find a data center solution that drives your business forward. 
-                                    Contact Uvation today to start developing your data center strategy and a roadmap for the future.</p>
+                                 <p>{developData && developData.develop_description}</p>
                              </div>
                             </div>
                                 {/* left content ends*/}
@@ -172,29 +177,21 @@ const Application = () => {
                     <div className="work__application">
                         <Grid>
                           <div className="bx--col-lg-7 work__application__heading">
-                          <p>How Does Business Application Design Work?</p>
+                          <p>{businessData && businessData.business_heading}</p>
                           </div>
 
                           <div>
                           <Row>
-                            <div className="bx--col bx--col-sm-4 work__application__content ">
-                                <p>
-                                While many organizations know they need an application, most don’t understand the process that goes into creating one. However, it’s important to know the basics of how your business app will be produced. Understanding how an application is designed is a lot like having a basic understanding of how your car is designed.
-                                </p>
-                            </div>
-
-                            <div className="bx--col bx--col-sm-4 work__application__content ">
-                                <p>
-                                While many organizations know they need an application, most don’t understand the process that goes into creating one. However, it’s important to know the basics of how your business app will be produced. Understanding how an application is designed is a lot like having a basic understanding of how your car is designed.
-                                </p>
-                            </div>
-
-                            <div className="bx--col bx--col-sm-4 work__application__content ">
-                                <p>
-                                While many organizations know they need an application, most don’t understand the process that goes into creating one. However, it’s important to know the basics of how your business app will be produced. Understanding how an application is designed is a lot like having a basic understanding of how your car is designed.
-                                </p>
-                            </div>
-
+                               {businessData && businessData.business_description && businessData.business_description.map(value=>{
+                return(
+                    <div className="bx--col bx--col-sm-4 work__application__content ">
+                    <p>
+                      {value.description}
+                    </p>
+                </div>
+                )
+              }) }
+                            
                           </Row>
                           </div>
 
@@ -203,33 +200,45 @@ const Application = () => {
                           <Row>
                             <div className="bx--col-lg-5 work_application_menu_content">
                                 
-                               <div className="work_application_menu_content_item_first">
-                                   <div className="work_application_menu_content_item_first_border"></div>
-                                   <p>Understanding the Business’ Requirements</p>
+                               <div className={active === 1 ? "work_application_menu_content_item_start_active" : "work_application_menu_content_item_start_notactive"}>
+                                   <div className={active === 1 ? "work_application_menu_content_item_start_active_border" : "work_application_menu_content_item_start_notactive_border"}></div>
+                                   <p onClick={()=>{
+                                       setActive(1)
+                                   }}>{applicationTabsData && applicationTabsData.tab_first }</p>
                                    </div>
 
-                               <div className="work_application_menu_content_item_second">
-                               <div className="work_application_menu_content_item_second_border"></div>
-                                   <p>Generating Wireframes</p>
+                               <div className={active === 2 ? "work_application_menu_content_item_start_active" : "work_application_menu_content_item_start_notactive"}>
+                               <div className={active === 2 ? "work_application_menu_content_item_start_active_border" : "work_application_menu_content_item_start_notactive_border"}></div>
+                                   <p onClick={()=>{
+                                       setActive(2)
+                                   }}>{applicationTabsData && applicationTabsData.tab_second}</p>
                                </div>
                              
-                               <div className="work_application_menu_content_item_third">
-                               <div className="work_application_menu_content_item_third_border"></div>
-                                   <p>Designing composites</p>
+                               <div className={active === 3 ? "work_application_menu_content_item_start_active" : "work_application_menu_content_item_start_notactive"}>
+                               <div className={active === 3 ? "work_application_menu_content_item_start_active_border" : "work_application_menu_content_item_start_notactive_border"}></div>
+                                   <p onClick={()=>{
+                                       setActive(3)
+                                   }}>{applicationTabsData && applicationTabsData.tab_third}</p>
                                 </div>
                              
-                               <div className="work_application_menu_content_item_fourth">
-                               <div className="work_application_menu_content_item_fourth_border"></div>
-                                   <p>Exporting design composites</p>
+                               <div className={active === 4 ? "work_application_menu_content_item_start_active" : "work_application_menu_content_item_start_notactive"}>
+                               <div className={active === 4 ? "work_application_menu_content_item_start_active_border" : "work_application_menu_content_item_start_notactive_border"}></div>
+                                   <p onClick={()=>{
+                                       setActive(4)
+                                   }}>{applicationTabsData && applicationTabsData.tab_fourth}</p>
                                    </div>
                                 </div>
+
+                                
 
                             <div className=" bx--col work_application_menu_content_container ">
                                <div className="bx--col-lg-16 work_application_menu_content_heading__second">
-                                   <h3>Understanding the Business’ Requirements</h3>
+                                   <h3>{active === 1 ? applicationTabsData.tab_heading : active === 2 ? applicationTabsData.tab_second_heading
+                                        :active === 3 ? applicationTabsData.tab_third_heading : applicationTabsData.tab_fourth_heading }</h3>
                                 </div> 
                                 <div className="bx--col-lg-16 work_application_menu_content_content__second">
-                                   <p>During this step, you get to decide what your app will do. Specificity is important. You can’t simply say, “I want to build an employee management system.” That’s too broad. You want to spend time thinking about what the core features of your app will be.</p>
+                                   <p>{active === 1 ? applicationTabsData.tab_description : active === 2 ? applicationTabsData.tab_second_description
+                                        :active === 3 ? applicationTabsData.tab_third_description : applicationTabsData.tab_fourth_description }</p>
                                    
                                 </div>  
 
@@ -240,11 +249,12 @@ const Application = () => {
                                       <CodeSyntax/>
                                       </div>
                                       <div className="work_application_menu_content_corefeatures_heading">
-                                      <p>Core Features</p>
+                                      <p>{active === 1 ? applicationTabsData.description && applicationTabsData.description[0].heading : active === 2 ? applicationTabsData.second_description && applicationTabsData.second_description[0].heading
+                                        : active === 3 ? applicationTabsData && applicationTabsData.third_description && applicationTabsData.third_description[0].heading : applicationTabsData && applicationTabsData.fourth_description && applicationTabsData.fourth_description[0].heading }</p>
                                       </div>
                                       <div className="work_application_menu_content_corefeatures_para">
-                                      <p>The core features are the essential functions the app will perform to help you accomplish your business’ objectives. For example, you may want the app to track employee performance using sales metrics for teams or individuals. You may also want to gather data that may show correlations between hours worked and sales success. The sky is the limit, so during this step, you can feel free to outline a core wish list of your app’s essential features.
-                                      Uvation can be a powerful ally while choosing your app’s core features. After an in-depth consultation, Uvation can help you select and prioritize the aspects of your app that will have the most immediate—and long-term—payoff. Uvation can also help you narrow down your list of features according to which ones align best with your business’ objectives. This way, you can shed unnecessary, and potentially expensive, functions in favor of those that more directly impact your bottom line.
+                                      <p>{active === 1 ? applicationTabsData.description && applicationTabsData.description[0].description : active === 2 ? applicationTabsData.second_description && applicationTabsData.second_description[0].description
+                                        : active === 3 ? applicationTabsData && applicationTabsData.third_description && applicationTabsData.third_description[0].description : applicationTabsData && applicationTabsData.fourth_description && applicationTabsData.fourth_description[0].description }
                                       </p>
 
                                       </div>
@@ -256,10 +266,12 @@ const Application = () => {
                                       <CodeSyntax/>
                                       </div>
                                       <div className="work_application_menu_content_supportfeatures_heading">
-                                      <p>Supporting Features</p>
+                                      <p>{active === 1 ? applicationTabsData.description && applicationTabsData.description[1].heading : active === 2 ? applicationTabsData.second_description && applicationTabsData.second_description[1].heading
+                                        : active === 3 ? applicationTabsData && applicationTabsData.third_description && applicationTabsData.third_description[1].heading : applicationTabsData && applicationTabsData.fourth_description && applicationTabsData.fourth_description[1].heading }</p>
                                       </div>
                                       <div className="work_application_menu_content_supportfeatures_para">
-                                      <p>The supporting features are those that help make the core features happen but they may not be absolutely essential to the app’s success. Using the employee performance example, a supporting feature may include one that allows employees to enter the results of sales efforts using quantifiable metrics, such as how much the customer spent on a purchase, how long it took them to commit to the sale, and the number of conversations that needed to happen before the sale was finalized.The supporting features are those that help make the core features happen but they may not be absolutely essential to the app’s success. Using the employee performance example, a supporting feature may include one that allows employees to enter the results of sales efforts using quantifiable metrics, such as how much the customer spent on a purchase, how long it took them to commit to the sale, and the number of conversations that needed to happen before the sale was finalized.The supporting features are those that help make the core features happen but they may not be absolutely essential to the app’s success. Using the employee performance example, a supporting feature may include one that allows employees to enter the results of sales efforts using quantifiable metrics, such as how much the customer spent on a purchase, how long it took them to commit to the sale, and the number of conversations that needed to happen before the sale was finalized.
+                                      <p>{active === 1 ? applicationTabsData.description && applicationTabsData.description[1].description : active === 2 ? applicationTabsData.second_description && applicationTabsData.second_description[1].description
+                                        : active === 3 ? applicationTabsData && applicationTabsData.third_description && applicationTabsData.third_description[1].description : applicationTabsData && applicationTabsData.fourth_description && applicationTabsData.fourth_description[1].description }
                                       </p>
 
                                       </div>
@@ -285,10 +297,10 @@ const Application = () => {
                                 {/* left content  starts*/} 
                             <div className="bx--col-lg-7">
                              <div className="chat__application__heading">
-                                 <p>Chat with an Uvation expert for a 30-minute strategy session at no cost</p>
+                                 <p>{applicationChatData && applicationChatData.chat_heading}</p>
                              </div>
                              <div className="chat__application__content">
-                                 <p>Get in touch for a consultation call or answer to any questions you might have.</p>
+                                 <p>{applicationChatData && applicationChatData.chat_description}</p>
                              </div>
                             </div>
                                 {/* left content ends*/}
@@ -320,8 +332,34 @@ const Application = () => {
       </div>
             </Grid>            
         </div>
+        </>
     )
 }
 
-export default Application
+const mapStateToProps = state => ({
+
+    applicationData: state.applicationPageReducer.applicationData,
+    benefitsData: state.applicationPageReducer.benefitsData,
+    developData: state.applicationPageReducer.developData,
+    businessData: state.applicationPageReducer.businessData,
+    applicationTabsData: state.applicationPageReducer.applicationTabsData,
+    applicationChatData: state.applicationPageReducer.applicationChatData,
+
+    //applicationChatData
+
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+    applicationPageDataStart: () => dispatch(applicationPageDataStart()),
+    benefitsPageDataStart: () => dispatch(benefitsPageDataStart()),
+    developPageDataStart: () => dispatch(developPageDataStart()),
+    businessPageDataStart: () => dispatch(businessPageDataStart()),
+    applicationTabsPageDataStart: () => dispatch(applicationTabsPageDataStart()),
+    applicationChatPageDataStart: () => dispatch(applicationChatPageDataStart()),
+
+    //ApplicationChatPageDataStart
+  });
+  
+  
+export default connect(mapStateToProps,mapDispatchToProps)(Application);
 

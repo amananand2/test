@@ -6,3 +6,121 @@
 @import './Contentdriven/ContentTop';
 @import './Ourhistory/OurHistoryPage';
 @import './Ourhistory/imslider';
+
+@media only screen and (max-width: 600px) {
+    //Landing page
+    .homepage .banner {
+      background-image: none;
+      .a {
+        padding-top: 0;
+      }
+      .a > p {
+        font-size: 2rem;
+        line-height: 2.5rem;
+      }
+    }
+  
+    //MapPage
+  
+    .mappage {
+      .map {
+        background-image: none !important;
+      }
+      .dots,
+      .dots1,
+      .dots2,
+      .dots3 {
+        display: none;
+      }
+  
+      .map-list {
+        padding-top: 5rem !important;
+        padding-bottom: 2rem !important;
+        width: 90% !important;
+        h3 {
+          font-size: 24px !important;
+          line-height: 30px !important;
+        }
+        .list-sep {
+          display: none;
+        }
+      }
+    }
+  
+    //Deploy page
+  
+    .deploy {
+      .bx--grid {
+        padding: 0;
+      }
+      .sectionTitle {
+        padding: 6rem 1rem 4rem 1rem !important;
+      }
+      .product-cards {
+        margin-left: 0 !important;
+      }
+    }
+  
+    .lrg-btn,
+    .lrg-btn-right,
+    .contentTop .banner .button {
+      display: inline-block;
+      height: 3.5rem !important;
+      width: 10rem !important;
+      .arrow {
+        margin-top: -16px !important;
+      }
+    }
+  
+    //CaseStudy page
+  
+    .casestudy {
+      .bx--grid {
+        padding: 0;
+      }
+      .about {
+        width: auto !important;
+      }
+      .tab .cards {
+        min-height: auto;
+      }
+      .card-row {
+        .bx--col-lg-8,
+        .bx--col-lg-16 {
+          padding-left: 0 !important;
+        }
+      }
+    }
+  
+    //Content Top
+  
+    .contentTop {
+      .about {
+        padding-right: 1.5rem;
+        min-height: 300px !important;
+      }
+      .sub--section {
+        border-top: 1px solid #c6c6c6;
+        p {
+          padding-bottom: 3rem;
+        }
+      }
+      .card .img {
+        img {
+          width: 100% !important;
+        }
+      }
+    }
+  
+    //Content Bottom
+  
+    .bottom {
+      .bx--col-lg-8,
+      .bx--col-lg-11 {
+        padding-right: 0 !important;
+      }
+    }
+    .home__slider {
+      display: none;
+    }
+  }

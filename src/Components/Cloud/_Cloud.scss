@@ -9,6 +9,13 @@
         background-repeat: no-repeat;
         background-position: center center;
         padding-bottom:64px;
+        
+        .cloud__banner_img{
+        background-image: url(./../../img/cloud/headerimg.svg);
+        background-size: 50% 100%;
+        background-repeat: no-repeat;
+        background-position: 100% 0;
+        
 
         .cloud__banner__content{
             padding-top:220px;
@@ -50,7 +57,7 @@
 
             .cloud__header_content_downbutton{
                 display:flex;
-                margin-top:235px;
+                margin-top:194px;
                 align-items: center;
                 grid-gap: 3rem;
                 flex-wrap:wrap;
@@ -79,6 +86,7 @@
         
     
         }
+    }
 }
 
 .cloud_benefits{
@@ -256,7 +264,9 @@
     .cloud_computing_explained_sections_section2{
         // border:2px solid red;
         padding-top:64px;
-        padding-left:65px;
+        &:nth-child(2) {
+            margin: 0 auto;
+          }
         p{
             font: normal normal 300 32px/65px IBM Plex Sans;
             letter-spacing: 0px;
@@ -348,21 +358,28 @@ h1{
         padding-bottom:103px;
 
    .cloud_computing_varities_left_content{
+       margin: 0 auto;
        h1{
         font: normal normal 300 48px/65px IBM Plex Sans;
         letter-spacing: 0px;
         color: #FFFFFF;
         opacity: 1;
+        text-align:center;
+
        }
-       .cloud_computing_varities_left_content_heading_para{
-           padding-top:24px;
+      
+
            p{
             font: normal normal 300 16px/20px IBM Plex Sans;
             letter-spacing: 0px;
             color: #E0E0E0;
             opacity: 1;
+            /* text-align: center; */
+            margin: 0 auto;
+            width: 43%;
+            padding-top: 24px;
            }
-       }
+       
        .cloud_computing_varities_left_content_subheading{
            padding-top:64px;
            p{
@@ -372,49 +389,100 @@ h1{
         opacity: 1;
        }
     }
-    .cloud_computing_varities_left_content_subheading_para{
-        padding-top:32px;
-        p{
-            font: normal normal 300 16px/20px IBM Plex Sans;
-            letter-spacing: 0px;
-            color: #E0E0E0;
-            opacity: 1;
-        }
-    }
-    .cloud_computing_varities_left_content_circles{
-        display:flex;
-        padding-top:68px;
-      .cloud_computing_varities_left_content_circles_first{
-        background-color: white;
-        border: 3px solid black;
-        border-radius: 18px;
-        box-shadow: 0 0 2px white;
-        height: 16px;
-        width: 16px;
-    
-      }
-      .cloud_computing_varities_left_content_circles_second{
-        margin-left:28px;
-        background-color: white;
-        border: 3px solid black;
-        border-radius: 18px;
-        box-shadow: 0 0 2px white;
-        height: 16px;
-        width: 16px;
-    
-      }
-      .cloud_computing_varities_left_content_circles_third{
-        margin-left:28px;
-        background-color: white;
-        border: 3px solid black;
-        border-radius: 18px;
-        box-shadow: 0 0 2px white;
-        height: 16px;
-        width: 16px;
-    
-      }
-    }
+  
    }
+   .different_kinds{
+       border-top:2px solid #0F61FD;
+       margin-top:64px;
+       margin-bottom: 72px;
+       border-left:1px solid #383838;
+       border-right:1px solid #383838;
+       border-bottom:1px solid #383838;
+
+       &:nth-child(2) {
+        margin-left:16px;
+        margin-right:16px;
+      }
+       .icon{
+           padding-top:28px;
+       }
+
+       p{
+        padding-top:32px;
+    
+       text-align: left;
+        font: normal normal 300 20px/27px IBM Plex Sans;
+        letter-spacing: 0.46px;
+        color: #FFFFFF;
+        // text-transform: uppercase;
+        opacity: 1;
+       }
+
+       .para{
+           p{
+        padding-top:24px;
+        text-align: left;
+        font: normal normal 300 14px/20px IBM Plex Sans;
+        letter-spacing: 0.08px;
+        color: #E0E0E0;
+        opacity: 1;
+        padding-bottom:39px;
+           }
+       }
+   }
+}
+.chat__application{
+    background-color: black;
+    .chat__application__heading {
+        margin-top:56px;
+        p{
+     font: normal normal 300 60px/78px IBM Plex Sans;
+     letter-spacing: 0px;
+     color: white;
+     opacity: 1;
+        }
+      
+    }
+    .chat__application__content{
+        margin-top:32px;
+        padding-bottom:313px;
+     p{  
+         width:57%;
+         font: normal normal 300 20px/27px IBM Plex Sans;
+         letter-spacing: 0px;
+         color: white;
+         opacity: 1;
+     }
+           
+ } 
+    .chat__application__image{
+
+     position:relative;
+
+     img{
+         object-fit: fill;
+         height:100%;
+         width:100%;
+     }
+     .book_consultation{
+      // position: relative;
+      // top: -21%;
+      // left: 46%;
+      position:absolute;
+      bottom:0;
+      right: 16px;
+      width:100%;
+      max-width: 380px;
+      height: 156px;
+      background: #0F61FD 0% 0% no-repeat padding-box;
+      opacity: 1;
+      p{
+          color:white;
+          padding:16px;
+      }
+    }
+
+    }
 }
 
 }

@@ -1,0 +1,219 @@
+@mixin LargeButtonSet {
+  .largeBtnSet {
+    position: absolute;
+    display: inline-flex;
+    align-items: flex-end;
+    right: 0;
+    bottom: 0;
+    flex-wrap: wrap;
+    .left,
+    .right {
+      min-height: 6rem;
+      width: 15rem;
+      max-width: 15rem;
+      svg {
+        bottom: 1rem;
+      }
+    }
+    .right {
+      background-color: #044ada;
+      &:active {
+        background-color: $blue-80;
+      }
+      &:hover {
+        background-color: $blue-80;
+      }
+    }
+  }
+}
+
+//
+.cybersecurity {
+  margin-top: 3.5rem;
+
+  .bx--row {
+    margin: 0;
+  }
+  // banner section
+
+  .cybersecurity__banner {
+    padding: 182px 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    .heading {
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+      h1 {
+        text-align: center;
+        font: normal normal normal 96px/100px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #ffffff;
+        opacity: 1;
+      }
+    }
+    .subheading {
+      p {
+        text-align: center;
+        font: normal normal 300 22px/34px IBM Plex Sans;
+        letter-spacing: 0px;
+        color: #e0e0e0;
+        opacity: 1;
+      }
+    }
+
+    h3 {
+      color: white;
+    }
+
+    .title {
+      padding: 1.5rem 0;
+      p {
+        // text-align: center;
+        font: normal normal normal 24px/65px IBM Plex Sans;
+        letter-spacing: 2.19px;
+        color: #ffffff;
+        text-transform: uppercase;
+        opacity: 1;
+      }
+    }
+    .learnmore {
+      margin-top: 4rem;
+      .bx--btn {
+        width: 11rem;
+      }
+      .bx--btn--ghost {
+        margin-left: 1rem;
+        color: white;
+        background-color: transparent;
+        border-color: white;
+        border-style: solid;
+        // border-width: 1px;
+        padding: calc(0.75rem - 3px) 16px;
+        &:hover {
+          color: #e0e0e0;
+        }
+        &:focus {
+          border-color: none;
+          box-shadow: inset 0 0 0 1px #0f62fe, inset 0 0 0 2px #ffffff;
+        }
+      }
+    }
+  }
+  // image section
+  .cybersecurity__cardbox {
+    background-color: #010101;
+    padding: 0;
+    .bx--row {
+      margin: 0;
+    }
+    .cardbox__img {
+      width: 100%;
+      height: 100%;
+      // img {
+      //   width: 100%;
+      //   height: max-content;
+      // }
+    }
+
+    .card {
+      padding: 218px 1.5rem;
+
+      &__heading {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+        h3 {
+          text-align: left;
+          font: normal normal 300 48px/65px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #ffffff;
+          opacity: 1;
+        }
+      }
+      &__para {
+        p {
+          text-align: left;
+          font: normal normal 300 16px/24px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #e0e0e0;
+          opacity: 1;
+        }
+      }
+      &__button {
+        padding-top: 3rem;
+      }
+    }
+  }
+
+  //get in touch
+  .cybersecurity__getinTouch {
+    padding: 0;
+    .bx--row {
+      margin: 0;
+    }
+    &__content {
+      padding: 9.25rem 1rem;
+      .heading {
+        h2 {
+          text-align: left;
+          font: normal normal 300 72px/94px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #ffffff;
+          opacity: 1;
+        }
+      }
+      .slogenLine {
+        padding: 2rem 0;
+        p {
+          text-align: left;
+          font: normal normal 200 16px/20px IBM Plex Sans;
+          letter-spacing: 0.09px;
+          color: #e0e0e0;
+          opacity: 1;
+        }
+      }
+      .subheading {
+        padding-bottom: 4rem;
+
+        p {
+          text-align: left;
+          font: normal normal 300 20px/27px IBM Plex Sans;
+          letter-spacing: 0px;
+          color: #e0e0e0;
+          opacity: 1;
+        }
+      }
+      .getInbutton {
+        margin-top: 4rem;
+        .bx--btn {
+          width: 11rem;
+        }
+        .bx--btn--ghost {
+          margin-left: 1rem;
+          color: white;
+          background-color: transparent;
+          border-color: white;
+          border-style: solid;
+          // border-width: 1px;
+
+          padding: calc(0.875rem - 3px) 16px;
+          &:hover {
+            color: #e0e0e0;
+          }
+          &:focus {
+            border-color: none;
+            box-shadow: inset 0 0 0 1px #0f62fe, inset 0 0 0 2px #ffffff;
+          }
+        }
+      }
+    }
+    .sendus {
+      @include LargeButtonSet;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+  }
+}
+
+//Global css for large btn set

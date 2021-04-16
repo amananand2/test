@@ -1,6 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import { CaretRight16, WordCloud32 } from '@carbon/icons-react';
 import { useSelector } from 'react-redux';
+import {connect} from 'react-redux';
+import {deployPageDataStart,clearAddCreditCard} from "../../../actions/index";
+import { createStructuredSelector } from "reselect";
+import {selectDeployData} from '../../../selector';
+
+
 // import { NavLink } from "react-router-dom";
 
 const HeaderVal = {
@@ -77,12 +83,12 @@ const ProductCard = (val, index) => {
 const Card = () => CardVal.map(ProductCard);
 
 
-const Deploy = ({landingData}) => {
+const Deploy = ({deployPageDataStart,deployData}) => {
 
   const [activeMenu,setActiveMenu] = useState({business:true,develop:false,feature:false})
   const [data,setData] = useState()
 
-  // const landingData = useSelector(state => state.landingPageReducer.landingData);
+  // const landingData = useSelector(state => state.landingPageReducer.loading);
   
   // useEffect(()=>{
 
@@ -102,13 +108,18 @@ const Deploy = ({landingData}) => {
     } 
   }
 
-  // console.log(landingData && landingData.tab_data_first,"landingData...");
+
+  useEffect(() => {
+    deployPageDataStart();
+  }, []);
+
+  // console.log(deployData && deployData.tab_data_first && deployData.tab_data_first[0],"deploydata...");
   
-  // console.log(landingData,"data...");
+  // console.log(deployData,"data...");
 
  
 
-  //  const Card = () => landingData && landingData.tab_data_first.map(ProductCard);
+  //  const Card = () => deployData && deployData.tab_data_first && deployData.tab_data_first(ProductCard);
 
 
 
@@ -121,12 +132,15 @@ const Deploy = ({landingData}) => {
         <div className='bx--row '>
           <div className='bx--col bx--no-gutter product-tab'>
             <div className='product-tab'>
-              <li onClick={()=>menuChange("business")} className={activeMenu.business ? 'actives' : ''}>
+              <li onClick={()=>{menuChange("business")
+            // deployPageDataStart()
+            // clearAddCreditCard()
+            }} className={activeMenu.business ? 'actives' : ''}>
                 <p>
                   <span>01</span>For Businesses
                 </p>
               </li>
-              <li onClick={()=>menuChange("develop")} className={activeMenu.develop ? 'actives' : ''}>
+              <li onClick={()=>{menuChange("develop")}} className={activeMenu.develop ? 'actives' : ''}>
                 <p>
                   <span>02</span>For Developers
                 </p>
@@ -143,9 +157,10 @@ const Deploy = ({landingData}) => {
           <div className='bx--row bx--no-gutter'>
 
             {
-              activeMenu.business && landingData && landingData.tab_data_first.map((value,index)=>{
+              activeMenu.business && deployData && deployData.tab_data_first && deployData.tab_data_first.map((value,index)=>{
                 return (
                   <div className='bx--col-lg-5 bx--col-sm-4 '>
+                       <div className={activeMenu.business ? 'business slide' : ''}>
                     <div className='product-cards'>
                       <div className='icon'></div>
                       <div className='title'>
@@ -158,6 +173,7 @@ const Deploy = ({landingData}) => {
                         <div>{<CaretRight16 />}</div>
                       </div>
                     </div>
+                    </div>
                   </div>
                 );
               })
@@ -165,18 +181,20 @@ const Deploy = ({landingData}) => {
             {/* {activeMenu.business ? (
               <div className={activeMenu.business ? 'business slide' : ''}>
                 <div className='bx--row bx--no-gutter'>
-                 <Card />
+                <Card/>
                 </div>
                 <div className='bx--row bx--no-gutter'>
-                <Card />
+                <Card/>
                 </div>
               </div>
             ) : null} */}
 
             {
-              activeMenu.develop && landingData && landingData.tab_data_second.map((value,index)=>{
+              activeMenu.develop && deployData && deployData.tab_data_second && deployData.tab_data_second.map((value,index)=>{
                 return (
                   <div className='bx--col-lg-5 bx--col-sm-4 '>
+                  <div className={activeMenu.develop ? 'business slide' : ''}>
+
                     <div className='product-cards'>
                       <div className='icon'></div>
                       <div className='title'>
@@ -190,6 +208,8 @@ const Deploy = ({landingData}) => {
                       </div>
                     </div>
                   </div>
+
+                  </div>
                 );
 
               })
@@ -200,17 +220,19 @@ const Deploy = ({landingData}) => {
             {/* {activeMenu.develop ? (
               <div className={activeMenu.develop ? 'business slide' : ''}>
                 <div className='bx--row bx--no-gutter'>
-                   <Card /> 
+                  <Card/>
                 </div>
                 <div className='bx--row bx--no-gutter'>
-                  <Card />
+                <Card/>
+
                 </div>
               </div>
             ) : null} */}
    {
-              activeMenu.feature && landingData && landingData.tab_data_third.map((value,index)=>{
+              activeMenu.feature && deployData && deployData.tab_data_third && deployData.tab_data_third.map((value,index)=>{
                 return (
                   <div className='bx--col-lg-5 bx--col-sm-4 '>
+                     <div className={activeMenu.feature ? 'business slide' : ''}>
                     <div className='product-cards'>
                       <div className='icon'></div>
                       <div className='title'>
@@ -222,6 +244,7 @@ const Deploy = ({landingData}) => {
                       <div className='icon-bott'>
                         <div>{<CaretRight16 />}</div>
                       </div>
+                    </div>
                     </div>
                   </div>
                 );
@@ -247,4 +270,27 @@ const Deploy = ({landingData}) => {
   );
 };
 
-export default Deploy;
+// const mapStateToProps = createStructuredSelector({
+// 	user: selectUser,
+// 	userDetails: selectUserDetails,
+// 	categories: selectCategories,
+// 	categoryJobs: selectCategoryJobs,
+// 	categoryPopularServices: selectCategoryPopularServices,
+// 	categorySpecialityServices: selectCategorySpecialityServices,
+// 	isGuestUser: selectIsGuestUser,
+// });
+
+const mapStateToProps = (state)=>({
+  
+  deployData:state.landingPageReducer.deployData
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  deployPageDataStart: () => dispatch(deployPageDataStart()),
+  // clearAddCreditCard: () => dispatch(clearAddCreditCard())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Deploy);
+

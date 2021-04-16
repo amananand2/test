@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'carbon-components-react';
+import { Loading } from "carbon-components-react";
+
 
 import {
   ArrowRight16,
@@ -28,6 +30,11 @@ import Volvo from './../../img/Industries/volvo.png';
 
 import FooterBotm from '../Homepage/Footer/FooterBotm';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
+import { useSelector } from 'react-redux';
+import {connect} from 'react-redux';
+import {industriesPageDataStart,featuredPageDataStart,
+  futureIndustriesPageDataStart,workWithPageDataStart,resourcesPageDataStart,explorePageDataStart} from "../../actions/index";
+
 
 const FeaturedCard = ({ pictoIcon, title }) => (
   <div className='bx--col bx--col-md-8 bx--col-sm-4'>
@@ -42,19 +49,17 @@ const FeaturedCard = ({ pictoIcon, title }) => (
   </div>
 );
 
-const FutureCard = () => (
+const FutureCard = (props) => (
   <div className='bx--col'>
     <div className='card--left'>
       <div className='pictogram'>
         <Robotics />
       </div>
       <div className='content'>
-        <h6>CASE STUDY</h6>
-        <h3>Manufacturing</h3>
+        <h6>{props.heading}</h6>
+        <h3>{props.subHeading}</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis
-          urna congue est. Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit. Fusce quis urna congue est.
+         {props.desc}
         </p>
       </div>
       <div className='button'>
@@ -91,7 +96,8 @@ const scrollToRef3 = (ref) =>
   });
 const scrollToRef4 = () => window.scrollTo(0, 0);
 
-const Industries = () => {
+const Industries = ({industriesPageDataStart,featuredPageDataStart,
+  futureIndustriesPageDataStart,workWithPageDataStart,resourcesPageDataStart,explorePageDataStart}) => {
   const myRef = useRef(null);
   const myRef1 = useRef(null);
   const myRef2 = useRef(null);
@@ -108,6 +114,8 @@ const Industries = () => {
   const [future, setfuture] = useState();
   const [work, setwork] = useState();
   const [insights, setinsights] = useState();
+  const [activeSlide, setActiveSlide] = useState(1);
+
 
   function Industry() {
     setindustries(true);
@@ -142,6 +150,12 @@ const Industries = () => {
 
   useEffect(() => {
     executeScroll4();
+    industriesPageDataStart();
+    featuredPageDataStart();
+    futureIndustriesPageDataStart();
+    workWithPageDataStart();
+    resourcesPageDataStart();
+    explorePageDataStart();
   }, []);
 
   const [ActiveDot, setActiveDot] = useState(true);
@@ -150,8 +164,27 @@ const Industries = () => {
     setActiveDot(!ActiveDot);
   };
 
+  const industriesData = useSelector(state => state.landingPageReducer.industriesData);
+
+  const featuredData = useSelector(state => state.landingPageReducer.featuredData);
+
+  const futureIndustriesData = useSelector(state => state.landingPageReducer.futureIndustriesData);
+
+  const workWithData = useSelector(state => state.landingPageReducer.workWithData);
+
+  const resourcesData = useSelector(state => state.landingPageReducer.resourcesData);
+
+  const exploreData = useSelector(state => state.landingPageReducer.exploreData);
+
+
+  // console.log(featuredData && featuredData.featured_contact && featuredData.featured_contact[0].featured_contact_heading ,"featuredData")
+
+  // console.log(resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[0].resources_contact_top_heading  ,"resourcesData")
+// console.log(exploreData,"exploreData")
+
   return (
     <>
+      <Loading active={industriesData.industriesPageLoader}/>
       <MainHeader />
       <div className='bx--grid--full-width industries'>
         <div className='bx--grid--full-width banner'>
@@ -159,14 +192,11 @@ const Industries = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-6 left'>
                 <div className='heading'>
-                  <h1>Industries</h1>
+                  <h1>{industriesData && industriesData.industries_heading}</h1>
                 </div>
                 <div className='desc'>
                   <p>
-                    Leverage agile frameworks to provide a robust synopsis for
-                    high level overviews Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Fusce quis urna congue est. Lorem ipsum
-                    dolor sit amet.
+                  {industriesData && industriesData.industries_description}
                   </p>
                 </div>
                 <div className='button'>
@@ -244,12 +274,10 @@ const Industries = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-4 '>
                 <div className='about--our'>
-                  <h6>INDUSTRIES</h6>
-                  <h3>Featured</h3>
+                  <h6>{featuredData && featuredData.featured_top_heading}</h6>
+                  <h3>{featuredData && featuredData.featured_heading}</h3>
                   <p>
-                    Discover how Uvation’s breakthrough technologies are
-                    transforming industries with smarter ways to do business,
-                    new growth opportunities and strategies to compete and win.
+                  {featuredData && featuredData.featured_description}
                   </p>
                 </div>
               </div>
@@ -258,40 +286,40 @@ const Industries = () => {
                   <div className='bx--row bx--no-gutter--left'>
                     <FeaturedCard
                       pictoIcon={<Satellite />}
-                      title='Aerospace & Defense'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[0].featured_contact_heading}
                     />
                     <FeaturedCard
                       pictoIcon={<GlobalCurrency />}
-                      title='Banking & Finance'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[1].featured_contact_heading}
                     />
                     <FeaturedCard
                       pictoIcon={<University />}
-                      title='Education'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[2].featured_contact_heading}
                     />
                   </div>
                   <div className='bx--row bx--no-gutter--left'>
                     <FeaturedCard
                       pictoIcon={<ChipCircuit />}
-                      title='Electronics'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[3].featured_contact_heading}
                     />
                     <FeaturedCard
                       pictoIcon={<WindPower />}
-                      title='Energy & Utilites'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[4].featured_contact_heading}
                     />
                     <FeaturedCard pictoIcon={<Medical />} title='Healthcare' />
                   </div>
                   <div className='bx--row bx--no-gutter--left'>
                     <FeaturedCard
                       pictoIcon={<Robotics />}
-                      title='Manufacturing'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[5].featured_contact_heading}
                     />
                     <FeaturedCard
                       pictoIcon={<Shop />}
-                      title='Retail & ConsumerProducts'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[6].featured_contact_heading}
                     />
                     <FeaturedCard
                       pictoIcon={<SatelliteDish />}
-                      title='Telecommunications, Media & Entertainment'
+                      title={featuredData && featuredData.featured_contact && featuredData.featured_contact[7].featured_contact_heading}
                     />
                   </div>
                 </div>
@@ -305,32 +333,43 @@ const Industries = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-7 bx--no-gutter'>
                 <div className='about'>
-                  <h6>INDUSTRIES</h6>
-                  <h2>The Future of Industries</h2>
+                  <h6>{futureIndustriesData && futureIndustriesData.future_industries_top_heading}</h6>
+                  <h2>{futureIndustriesData && futureIndustriesData.future_industries_heading}</h2>
                   <p>
-                    Discover how Uvation’s breakthrough technologies are
-                    transforming industries with smarter ways to do business,
-                    new growth opportunities and strategies to compete and win.
+                   {futureIndustriesData && futureIndustriesData.future_industries_description}
                   </p>
                 </div>
               </div>
             </div>
             <div className='bx--row bx--no-gutter--left cards'>
-              <FutureCard />
-              <FutureCard />
-              <FutureCard />
-              <FutureCard />
+            {activeSlide === 1 &&
+              futureIndustriesData && futureIndustriesData.future_industries_contact && futureIndustriesData.future_industries_contact.slice(0,4).map((value,index)=>{
+                return (
+              <FutureCard heading={value.future_industries_contact_top_heading} subHeading={value.future_industries_contact_heading} desc={value.future_industries_contact_description} />
+                );
+
+              })
+            }
+
+            {activeSlide === 2 &&
+              futureIndustriesData && futureIndustriesData.future_industries_contact && futureIndustriesData.future_industries_contact.slice(4,8).map((value,index)=>{
+                return (
+              <FutureCard  heading={value.future_industries_contact_top_heading} subHeading={value.future_industries_contact_heading} desc={value.future_industries_contact_description} />
+                );
+
+              })
+            }
+            
             </div>
             <div className='bx--row bx--no-gutter--left'>
               <div className='bx--col future-dots '>
                 <div className='dots'>
                   <div
-                    className={ActiveDot ? 'dot dot__active' : 'dot'}
-                    onClick={ActiveDotHandler}
+                    className={activeSlide === 1 ? 'dot dot__active' : 'dot'}
                   >
                     <div className='dot__inside'></div>
                   </div>
-                  <div className='dot'>
+                  <div className={activeSlide === 2 ? 'dot dot__active' : 'dot'}>
                     <div className='dot__inside'></div>
                   </div>
                   <div className='dot'>
@@ -353,21 +392,21 @@ const Industries = () => {
                   </div>
                 </div>
                 <div>
-                  <Link to='#'>
-                    <Button
+                 
+                    <Button onClick={()=>{activeSlide !==1  && setActiveSlide(activeSlide - 1)}}
                       className='btns'
                       kind='ghost'
                       renderIcon={ArrowLeft16}
                     />
-                  </Link>
+            
 
-                  <Link to='#'>
-                    <Button
+                 
+                    <Button onClick={()=>{activeSlide !==2 && setActiveSlide(activeSlide + 1)}}
                       className='btns'
                       kind='primary'
                       renderIcon={ArrowRight16}
                     />
-                  </Link>
+                 
                 </div>
               </div>
             </div>
@@ -378,11 +417,10 @@ const Industries = () => {
           <div className='bx--grid '>
             <div className='bx--row bx--no-gutter'>
               <div className='bx--col-lg-4 we-banner'>
-                <h5>CLIENTS</h5>
-                <h2>Who we work with</h2>
+                <h5>{workWithData && workWithData.work_with_top_heading}</h5>
+                <h2>{workWithData && workWithData.work_with_heading}</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                  quis urna congue est. Lorem ipsum dolor sit amet.
+                {workWithData && workWithData.work_with_description}
                 </p>
               </div>
             </div>
@@ -413,13 +451,12 @@ const Industries = () => {
                   </div>
                   <div className='bx--col-lg-13 heading'>
                     <h5>
-                      Volvo transforms processes with predictive maintenance
+                      {workWithData && workWithData.work_with_content && workWithData.work_with_content[0].work_heading}
                     </h5>
                   </div>
                   <div className='desc'>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Fusce quis urna congue est. Lorem ipsum dolor sit amet...
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[0].work_description}
                     </p>
                   </div>
                   <div className='video-btn'>
@@ -437,14 +474,13 @@ const Industries = () => {
                   </div>
                   <div className='bx--col-lg-13 heading'>
                     <h5>
-                      Volvo transforms processes with predictive maintenance
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[1].work_heading}
                     </h5>
                   </div>
                   <div className='desc'>
                     <p>
-                      AMC is using Uvation analytical tools to uncover new
-                      insights into audience preferences and viewing patterns,
-                      helping to make smarter scheduling and...
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[1].work_description}
+                    
                     </p>
                   </div>
                   <div className='video-btn'>
@@ -462,14 +498,14 @@ const Industries = () => {
                   </div>
                   <div className='bx--col-lg-13 heading'>
                     <h5>
-                      Volvo transforms processes with predictive maintenance
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[2].work_heading}
+                   
                     </h5>
                   </div>
                   <div className='desc'>
                     <p>
-                      AMC is using Uvation analytical tools to uncover new
-                      insights into audience preferences and viewing patterns,
-                      helping to make smarter scheduling and...
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[2].work_description}
+                      
                     </p>
                   </div>
                   <div className='video-btn'>
@@ -487,14 +523,14 @@ const Industries = () => {
                   </div>
                   <div className='bx--col-lg-13 heading'>
                     <h5>
-                      Volvo transforms processes with predictive maintenance
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[3].work_heading}
+                     
                     </h5>
                   </div>
                   <div className='desc'>
                     <p>
-                      AMC is using Uvation analytical tools to uncover new
-                      insights into audience preferences and viewing patterns,
-                      helping to make smarter scheduling and...
+                    {workWithData && workWithData.work_with_content && workWithData.work_with_content[3].work_description}
+                      
                     </p>
                   </div>
                   <div className='video-btn'>
@@ -514,12 +550,10 @@ const Industries = () => {
             <div className='bx--row bx--no-gutter'>
               <div className='bx--col-lg-7'>
                 <div className='about'>
-                  <h6>INDUSTRIES</h6>
-                  <h2>Insights and resources</h2>
+                  <h6>{resourcesData && resourcesData.resources_top_heading}</h6>
+                  <h2>{resourcesData && resourcesData.resources_heading}</h2>
                   <p>
-                    Discover how Uvation’s breakthrough technologies are
-                    transforming industries with smarter ways to do business,
-                    new growth opportunities and strategies to compete and win.
+                  {resourcesData && resourcesData.resources_description}
                   </p>
                 </div>
               </div>
@@ -531,16 +565,14 @@ const Industries = () => {
                   <div className='content'>
                     <div className='title'>
                       <Chat16 />
-                      <h6>Keynote</h6>
+                      <h6>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[0].resources_contact_top_heading}</h6>
                     </div>
                     <div className='heading'>
-                      <h4>Lorem ipsum dolor sit amet</h4>
+                      <h4>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[0].resources_contact_heading}</h4>
                     </div>
                     <div className='desc'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit
-                        amet...
+                       {resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[0].resources_contact_description}
                       </p>
                     </div>
                     <div className='arrow'>
@@ -557,16 +589,14 @@ const Industries = () => {
                   <div className='content'>
                     <div className='title'>
                       <Video16 />
-                      <h6>video</h6>
+                      <h6>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[1].resources_contact_top_heading}</h6>
                     </div>
                     <div className='heading'>
-                      <h4>Lorem ipsum dolor sit amet</h4>
+                      <h4>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[1].resources_contact_heading}</h4>
                     </div>
                     <div className='desc'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit
-                        amet...
+                       {resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[1].resources_contact_description}
                       </p>
                     </div>
                     <div className='arrow'>
@@ -583,16 +613,15 @@ const Industries = () => {
                   <div className='content'>
                     <div className='title'>
                       <TextLinkAnalysis16 />
-                      <h6>insights</h6>
+                      <h6>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[2].resources_contact_top_heading}</h6>
                     </div>
                     <div className='heading'>
-                      <h4>Lorem ipsum dolor sit amet</h4>
+                      <h4>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[2].resources_contact_heading}</h4>
                     </div>
                     <div className='desc'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit
-                        amet...
+                       {resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[2].resources_contact_description}
+                        
                       </p>
                     </div>
                     <div className='arrow'>
@@ -609,16 +638,15 @@ const Industries = () => {
                   <div className='content'>
                     <div className='title'>
                       <Video16 />
-                      <h6>video</h6>
+                      <h6>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[3].resources_contact_top_heading}</h6>
                     </div>
                     <div className='heading'>
-                      <h4>Lorem ipsum dolor sit amet</h4>
+                      <h4>{resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[3].resources_contact_heading}</h4>
                     </div>
                     <div className='desc'>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce quis urna congue est. Lorem ipsum dolor sit
-                        amet...
+                      {resourcesData && resourcesData.resources_contact && resourcesData.resources_contact[3].resources_contact_description}
+                       
                       </p>
                     </div>
                     <div className='arrow'>
@@ -639,14 +667,12 @@ const Industries = () => {
               <div className='bx--col-lg-9 fot-banner'>
                 <div className='heading'>
                   <h2>
-                    Explore enterprise and business solutions for your industry
-                    on the Uvation Marketplace
+                    {exploreData && exploreData.explore_heading}
                   </h2>
                 </div>
                 <div className='sub-heading'>
                   <h5>
-                    Transform your business with infrastructure, services and
-                    tools for integrated cloud computing.
+                   {exploreData && exploreData.explore_description}
                   </h5>
                 </div>
                 <div className='access'>
@@ -674,4 +700,23 @@ const Industries = () => {
   );
 };
 
-export default Industries;
+const mapStateToProps = state => ({
+  
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  industriesPageDataStart: () => dispatch(industriesPageDataStart()),
+  featuredPageDataStart: () => dispatch(featuredPageDataStart()),  
+  futureIndustriesPageDataStart: () => dispatch(futureIndustriesPageDataStart()),
+  workWithPageDataStart: () => dispatch(workWithPageDataStart()),
+  resourcesPageDataStart: () => dispatch(resourcesPageDataStart()),
+  explorePageDataStart: () => dispatch(explorePageDataStart()),  
+
+ 
+  //moreContactUsPageDataStart
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Industries);
+

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { ArticleCards } from './../Innovation/Innovation';
 import { ArrowRight16, Phone20, Chat20 } from '@carbon/icons-react';
+import {connect} from 'react-redux';
+import {investorInformationPageDataStart,investorNewsPageDataStart,investorUvationDataStart,investorWantDataStart,investorWantData} from "../../actions/index";
 
 import {
   Insights,
@@ -11,6 +13,7 @@ import {
   ChartPie,
   DocumentSecurity,
 } from '@carbon/pictograms-react';
+import { Loading } from "carbon-components-react"
 import { Launch16 } from '@carbon/icons-react';
 import FooterBotm from '../Homepage/Footer/FooterBotm';
 import MainHeader from '../Homepage/Mainheader/MainHeader';
@@ -31,16 +34,24 @@ const RelationCard = ({ cardicon, heading, headingIcon }) => (
 
 const scrollToRef = () => window.scrollTo(0, 0);
 
-const InvestersRelation = () => {
+const InvestersRelation = ({investorInformationPageDataStart,investorInformationData,investorNewsPageDataStart,investorNewsData,investorUvationDataStart,investorUvationData,investorWantDataStart,investorWantData}) => {
   const myRef = useRef(null);
 
   const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
     executeScroll();
+    investorInformationPageDataStart();
+    investorNewsPageDataStart();
+    investorUvationDataStart();
+    investorWantDataStart();
   }, []);
+
+  // console.log(investorWantData,"investorWantData");
+
   return (
     <>
+    <Loading active={investorInformationData.investorRelationsPageLoader}/>
       <MainHeader />
       <div className='investersRelation' ref={myRef}>
         <div className=' banner'>
@@ -48,10 +59,9 @@ const InvestersRelation = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-10'>
                 <div className='content'>
-                  <h1>Investors Relations</h1>
+                  <h1>{investorInformationData && investorInformationData.information_heading}</h1>
                   <p>
-                    If you want to know more about Uvation, the following
-                    materials will help provide an introduction to our business.
+                {investorInformationData && investorInformationData.information_description}
                   </p>
                 </div>
                 <div className='details--list'>
@@ -92,19 +102,19 @@ const InvestersRelation = () => {
                 <div className='bx--row'>
                   <RelationCard
                     cardicon={<DocumentSecurity />}
-                    heading='Financial reporting'
+                    heading={investorInformationData && investorInformationData.investors_content1 && investorInformationData.investors_content1[0].investors_content_heading}
                   />
                   <RelationCard
                     cardicon={<ChartHistogram />}
-                    heading='Latest annual report'
+                    heading={investorInformationData && investorInformationData.investors_content1 && investorInformationData.investors_content1[1].investors_content_heading}
                   />
                   <RelationCard
                     cardicon={<ChartPie />}
-                    heading='Previous years reports'
+                    heading={investorInformationData && investorInformationData.investors_content1 && investorInformationData.investors_content1[2].investors_content_heading}
                   />
                   <RelationCard
                     cardicon={<Insights />}
-                    heading='News and informations'
+                    heading={investorInformationData && investorInformationData.investors_content1 && investorInformationData.investors_content1[3].investors_content_heading}
                   />
                 </div>
               </div>
@@ -117,23 +127,28 @@ const InvestersRelation = () => {
             <div className='bx--row hh'>
               <div className='bx--col-lg-4'>
                 <div className='bx--no-gutter--left left'>
-                  <h6>INNOVATION</h6>
-                  <h2>Featured articles</h2>
+                  <h6>{investorNewsData && investorNewsData.investors_top_heading}</h6>
+                  <h2>{investorNewsData && investorNewsData.investors_heading}</h2>
                   <p>
-                    Discover how Uvation’s breakthrough technologies are
-                    transforming industries with smarter ways to do business,
-                    new growth opportunities and strategies to compete and win.
+                   {investorNewsData && investorNewsData.investors_description}
                   </p>
                 </div>
               </div>
+      
               <div className='bx--col bx--no-gutter bx--offset-lg-8 '>
-                <ArticleCards />
+                <ArticleCards 
+                title={investorNewsData && investorNewsData.investors_content2 && investorNewsData.investors_content2[0].investors_content_heading}
+                 heading={investorNewsData && investorNewsData.investors_content2 && investorNewsData.investors_content2[0].investors_content_description}/>
               </div>
               <div className='bx--col bx--no-gutter bx--offset-lg-8 '>
-                <ArticleCards />
+               <ArticleCards 
+                title={investorNewsData && investorNewsData.investors_content2 && investorNewsData.investors_content2[1].investors_content_heading}
+                 heading={investorNewsData && investorNewsData.investors_content2 && investorNewsData.investors_content2[1].investors_content_description}/>
               </div>
               <div className='bx--col bx--no-gutter'>
-                <ArticleCards />
+               <ArticleCards 
+                title={investorNewsData && investorNewsData.investors_content2 && investorNewsData.investors_content2[2].investors_content_heading}
+                 heading={investorNewsData && investorNewsData.investors_content2 && investorNewsData.investors_content2[2].investors_content_description}/>
               </div>
             </div>
           </div>
@@ -144,33 +159,34 @@ const InvestersRelation = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-4'>
                 <div className='bx--col-lg-14 bx--no-gutter left'>
-                  <h6>INNOVATION</h6>
-                  <h4>Latest Uvation articles</h4>
+                  <h6>{investorUvationData && investorUvationData.uvation_heading}</h6>
+                  <h4>{investorUvationData && investorUvationData.uvation_description}</h4>
                 </div>
               </div>
               <div className='bx--col'>
                 <div className='bx--grid bx--no-gutter '>
                   <div className='bx--row bx--no-gutter'>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
-                    </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4 '>
-                      <ArticleCards />
-                    </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
-                    </div>
+                            {
+                      investorUvationData && investorUvationData.uvation_content && investorUvationData.uvation_content.slice(0,3).map((value,index)=>{
+                          return (
+                            <div className='bx--col bx--col-md-4 bx--col-sm-4'>
+                                <ArticleCards title={value.uvation_content_heading} heading={value.uvation_content_description} />
+                              </div>
+                          );
+                        })
+                      }
                   </div>
                   <div className='bx--row bx--no-gutter'>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
-                    </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4 '>
-                      <ArticleCards />
-                    </div>
-                    <div className='bx--col bx--col-md-4 bx--col-sm-4'>
-                      <ArticleCards />
-                    </div>
+                        {
+                  investorUvationData && investorUvationData.uvation_content && investorUvationData.uvation_content.slice(0,3).map((value,index)=>{
+                      return (
+                        <div className='bx--col bx--col-md-4 bx--col-sm-4'>
+                            <ArticleCards title={value.uvation_content_heading} heading={value.uvation_content_description} />
+                          </div>
+                      );
+                    })
+                  }
+                  
                   </div>
                 </div>
               </div>
@@ -183,12 +199,11 @@ const InvestersRelation = () => {
             <div className='bx--row'>
               <div className='bx--col-lg-6  fot-banner '>
                 <div className='bx--col bx--no-gutter heading'>
-                  <h2>Want to find out more about investing in Uvation?</h2>
+                  <h2>{investorWantData && investorWantData.want_heading}</h2>
                 </div>
                 <div className='bx--col-lg-12 bx--no-gutter--left desc'>
                   <h4>
-                    Get in touch for a consultation call or answer to any
-                    questions you might have.
+                    {investorWantData && investorWantData.want_description}
                   </h4>
                 </div>
                 <div className='call-btn'>
@@ -226,4 +241,23 @@ const InvestersRelation = () => {
   );
 };
 
-export default InvestersRelation;
+const mapStateToProps = state => ({
+
+  investorInformationData: state.InvestorRelationPageReducer.investorInformationData,
+  investorNewsData: state.InvestorRelationPageReducer.investorNewsData,
+  investorUvationData: state.InvestorRelationPageReducer.investorUvationData,
+  investorWantData: state.InvestorRelationPageReducer.investorWantData,
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  investorInformationPageDataStart: () => dispatch(investorInformationPageDataStart()),
+  investorNewsPageDataStart: () => dispatch(investorNewsPageDataStart()),
+  investorUvationDataStart: () => dispatch(investorUvationDataStart()),
+  investorWantDataStart: () => dispatch(investorWantDataStart()),
+
+  
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(InvestersRelation);

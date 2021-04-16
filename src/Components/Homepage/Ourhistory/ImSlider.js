@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import {connect} from 'react-redux';
+import {historyPageDataStart} from "../../../actions/index";
 
-function TopSection() {
+function TopSection(props) {
   return (
     <div className='banner'>
-      <h6>OUR HISTORY</h6>
-      <h3>Inside Uvation</h3>
-      <p>We are a multinational company, with over 2 decades of experience.</p>
+      <h6>{props.Heading}</h6>
+      <h3>{props.SubHeading}</h3>
+      <p>{props.Desc}</p>
     </div>
   );
 }
@@ -159,33 +161,111 @@ const TabItemComponent = ({ id, title, onItemClicked, isActive = false }) => {
   );
 };
 
-const ImSlider = () => {
-  const [active, setActive] = useState('1');
+const ImSlider = ({historyPageDataStart,historyData}) => {
+  const [active, setActive] = useState('1999');
+  useEffect(() => {
+    // historyPageDataStart();
+  }, []);
+    
+    console.log(historyData && historyData.mission_content && historyData.mission_content,"historyData...");
+
+  //   if(historyData){ 
+  //    for(const property in historyData) {
+  //     console.log(`${property}: ${historyData[property]}`);
+  //   }
+  // }
+
+    // console.log(data,"data");
+
+//     console.log(active,"active");
+//     console.log(historyData && historyData.growth,"growth.....");
+// const data=historyData && historyData.growth && historyData.growth.map(({key,year,breakthrough_heading})  => ({
+//                         year,breakthrough_heading
+// }))
+
+// var result = arr.map(person => ({ value: person.id, text: person.name }));
+// console.log(data,"data");
+
   return (
+    <>
+    <div>
     <div className='bx--grid--full-width home__slider'>
       <div className='bx--row bx--no-gutter' style={{ margin: '0' }}>
         <div className='bx--col-lg-1'>
           <div className='tabs'>
-            {tabItems.map(({ id, title }) => (
+            {historyData && historyData.growth && historyData.growth.map(( value ) => (
               <TabItemComponent
-                key={id}
-                title={title}
-                onItemClicked={() => setActive(id)}
-                isActive={active === id}
+                key={value.year}
+                title={value.year}
+                onItemClicked={() => setActive(value.year)}
+                isActive={active === value.year}
               />
             ))}
           </div>
         </div>
         <div className='bx--col-lg-15'>
           <div className='content'>
-            {tabItems.map(({ id, content }) => {
-              return active === id ? content : '';
+          <div className={active === "1999" || active === "2010" || active === "2020" ? "content1" :
+           active === "2000" || active === "2014"  ? "content2" : "content3"}>
+              <TopSection Heading={historyData && historyData.history_top_heading} SubHeading={historyData && historyData.history_heading} Desc={historyData && historyData.history_description} />
+
+            {historyData && historyData.growth && historyData.growth.map((value) => {
+              return value.year === active ? 
+              <div className='bx--col-lg-6'>
+                <div className='breakthrough'>
+                  <h2>{value.breakthrough_heading}</h2>
+                  <p>
+                   {value.breakthrough_description}
+                  </p>
+                </div>
+              </div>
+             : '';
             })}
+            </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
+
+
+  <div className='bx--grid--full-width mission-row'>
+        <div className='bx--row bx--no-gutter'>
+        {historyData && historyData.mission_content && historyData.mission_content.map(value=>{
+                return(
+                     <>
+                         <div className='bx--col bx--col-sm-4 mission-border'>
+                              <div className='mission'>
+                                <h6>{value.s_r}</h6>
+                                <h2>{value.mission_content_heading}</h2>
+                                <p>
+                                  {value.mission_content_description}
+                                </p>
+                              </div>
+                           </div>
+                     </>
+                )
+              }) }
+      
+        </div>
+      </div>
+
+
+    </>
+    
+    
   );
 };
 
-export default ImSlider;
+const mapStateToProps = state => ({
+  historyData: state.landingPageReducer.historyData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  historyPageDataStart: () => dispatch(historyPageDataStart())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(ImSlider);
+
+

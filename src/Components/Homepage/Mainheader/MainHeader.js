@@ -131,16 +131,16 @@ const MainHeader = () => {
     setToogle(false);
   };
 
-  useEffect(() => {
-    if (toogle || show || shows || headSetToogle || userToogle) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [toogle, show, shows, headSetToogle, userToogle]);
+  // useEffect(() => {
+  //   if (toogle || show || shows || headSetToogle || userToogle) {
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //   } else {
+  //     // document.removeEventListener('mousedown', handleClickOutside);
+  //   }
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [toogle, show, shows, headSetToogle, userToogle]);
 
   const handleClickOutside = (e) => {
     // if (
@@ -155,8 +155,8 @@ const MainHeader = () => {
     //   return;
     // }
     // outside click
-
-    setToogle(false);
+console.log("clicked");
+    // setToogle(false);
     setShow(false);
     setShows(false);
     setHeadsetToogle(false);
@@ -175,6 +175,8 @@ const MainHeader = () => {
   useEffect(() => {
     executeScroll();
   }, []);
+
+  // console.log(toogle,"toogle");
 
   return (
     <div className='main-header' ref={myRef}>
@@ -658,7 +660,7 @@ const MainHeader = () => {
                     onClick={toogler}
                     isActive={toogle}
                   >
-                    {toogle ? <Close20 /> : <AppSwitcher20 />}
+                    {toogle ? <Close20  /> : <AppSwitcher20 />}
                   </HeaderGlobalAction>
                   <div className='sidenav--link'>
                     <HeaderPanel expanded={toogle} aria-label='s' ref={node1}>
